@@ -15,7 +15,10 @@ namespace StretchIt
         static public void setDefault(short[] frame)
         {
             default_frame = new short[frame.Length];
-            frame.CopyTo(default_frame, 0);
+            for (int i = 0; i < frame.Length; ++i)
+            {
+                default_frame[i] = (short)(frame[i] >> DepthImageFrame.PlayerIndexBitmaskWidth);
+            }
         }
 
         static public void setBack(short[] frame)
@@ -88,7 +91,7 @@ namespace StretchIt
         {
             for (int i = 0; i < num_pixels; ++i)
             {
-                short input_diff = (short) (raw_depth_pixels[i] >> DepthImageFrame.PlayerIndexBitmaskWidth - default_frame[i]);
+                short input_diff = (short) ((raw_depth_pixels[i] >> DepthImageFrame.PlayerIndexBitmaskWidth) - default_frame[i]);
 
                 if (Math.Abs(input_diff) > Math.Abs(depth_pixels[i]))
                 {

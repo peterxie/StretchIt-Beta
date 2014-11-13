@@ -133,7 +133,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
         private void GenerateColoredBytes(DepthImageFrame depthImageFrame)
         {
-            if (this.frame_num%5 == 0) return;
+            if (this.frame_num%5 != 0) return;
             short[] rawDepthData = new short[depthImageFrame.PixelDataLength];
             depthImageFrame.CopyPixelDataTo(rawDepthData);
 
@@ -175,7 +175,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                         depthFrame.CopyPixelDataTo(firstDepthData);
 
                         Frame_t.setDefault(firstDepthData);
-                        this.ref_frame = new Frame_t(firstDepthData);
+                        this.ref_frame = new Frame_t();
 
                         for (int i = 0; i < this.colorPixels.Length; ++i)
                         {
