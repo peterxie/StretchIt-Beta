@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Microsoft.Kinect;
 //not finished
 
 namespace StretchIt
@@ -11,15 +11,70 @@ namespace StretchIt
         private short[] depth_pixels;
         private static short[] default_frame;
         private static short[] back_frame;
+
+        static public void setDefault(short[] frame)
+        {
+            default_frame = new short[frame.Length];
+            frame.CopyTo(default_frame, 0);
+        }
+
+        static public void setBack(short[] frame)
+        {
+            back_frame = frame;
+        }
     
         public Frame_t(int _num_pixels = 307200)
         {
             num_pixels = _num_pixels;
             depth_pixels = new short[num_pixels];
-            default_frame = new short[num_pixels];
-            back_frame = new short[num_pixels];
         }
 
+        public Frame_t(DepthImageFrame depthFrame)
+        {
+            if (depthFrame == null)
+            {
+                num_pixels = 307200;
+            }
+            else
+            {
+                num_pixels = depthFrame.PixelDataLength;
+            }
+            depth_pixels = new short[num_pixels];
+        }
+
+        public Frame_t(short[] pixels)
+        {
+            if (pixels == null)
+            {
+                num_pixels = 307200;
+                depth_pixels = new short[num_pixels];
+            }
+            else
+            {
+                num_pixels = pixels.Length;
+                depth_pixels = new short[num_pixels];
+                pixels.CopyTo(depth_pixels, 0);
+            }
+
+        }
+
+        public short[] getPixels()
+        {
+            return this.depth_pixels;
+        }
+
+        public short this[int index]
+        {
+            get
+            {
+                return depth_pixels[index];
+            }
+        }
+
+        public int getNumPixels()
+        {
+            return this.num_pixels;
+        }
         /*public Frame_t(Frame_t frame_one, Frame_t frame_two)
         {
             num_pixels = frame_one.num_pixels;
@@ -33,10 +88,9 @@ namespace StretchIt
         {
             for (int i = 0; i < num_pixels; ++i)
             {
-                short input_diff = (short) Math.Abs(raw_depth_pixels[i] - depth_pixels[i]);
-                short ref_diff = (short) Math.Abs(raw_depth_pixels[i] - default_frame[i]);
+                short input_diff = (short) (raw_depth_pixels[i] >> DepthImageFrame.PlayerIndexBitmaskWidth - default_frame[i]);
 
-                if (input_diff > ref_diff)
+                if (Math.Abs(input_diff) > Math.Abs(depth_pixels[i]))
                 {
                     depth_pixels[i] = input_diff;
                 }
