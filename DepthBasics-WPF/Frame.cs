@@ -77,6 +77,17 @@ namespace StretchIt
             StreamReader file = new StreamReader(fileName);
             string pixelNum = file.ReadLine();
             int size = Convert.ToInt32(pixelNum);
+            this.num_pixels = size;
+            if (depth_pixels == null || depth_pixels.Length != num_pixels)
+            {
+                depth_pixels = new short[num_pixels];
+            }
+            for (int i = 0; i < num_pixels; ++i)
+            {
+                int val = Convert.ToInt32(file.ReadLine());
+                depth_pixels[i] = (short)val;
+            }
+            return;
         }
 
         public short[] getPixels()
