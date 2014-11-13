@@ -49,6 +49,18 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             InitializeComponent();
         }
 
+        private void AVTest(){
+            AV_Output_t av1 = new AV_Output_t(@"../../verne.bmp", @"../../audio.wav");
+            av1.load();
+
+            Stopwatch s = new Stopwatch();
+            s.Start();
+            while (s.ElapsedMilliseconds < 5000) { }
+            s.Stop();
+
+            //AV_Output_t av2 = new AV_Out
+        }
+
         /// <summary>
         /// Execute startup tasks
         /// </summary>
@@ -337,6 +349,9 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         private void captureButton_Click(object sender, RoutedEventArgs e)
         {
             this.frame_num = 0;
+
+            AVTest();
+            
             return;
         }
     }
