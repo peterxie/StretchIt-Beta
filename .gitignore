@@ -2,4 +2,6 @@
 
 DepthBasics-WPF/obj/*
 DepthBasics-WPF/bin/*
-DepthBasics-WPF/DepthBasics-WPF.*
+DepthBasics-WPF/DepthBasics-WPF.v*
+DepthBasics-WPF/DepthBasics-WPF.csproj
+DepthBasics-WPF/DepthBasics-WPF.csproj.user
