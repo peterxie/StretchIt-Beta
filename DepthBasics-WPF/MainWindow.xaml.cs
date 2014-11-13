@@ -58,7 +58,9 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             while (s.ElapsedMilliseconds < 5000) { }
             s.Stop();
 
-            //AV_Output_t av2 = new AV_Out
+            AV_Output_t av2 = new AV_Output_t(@"../../Block M.gif", @"../../audio.wav");
+
+            av2.load();
         }
 
         /// <summary>
@@ -351,7 +353,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             this.frame_num = 0;
 
             AVTest();
-            
+
             return;
         }
     }
