@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Kinect;
+using System.IO;
 //not finished
 
 namespace StretchIt
@@ -59,6 +60,23 @@ namespace StretchIt
                 pixels.CopyTo(depth_pixels, 0);
             }
 
+        }
+
+        public void write(string fileName)
+        {
+            StreamWriter file = new StreamWriter(fileName);
+            file.WriteLine(num_pixels.ToString());
+            for (int i = 0; i < num_pixels; ++i)
+            {
+                file.WriteLine(depth_pixels[i].ToString());
+            }
+        }
+
+        public void read(string fileName)
+        {
+            StreamReader file = new StreamReader(fileName);
+            string pixelNum = file.ReadLine();
+            int size = Convert.ToInt32(pixelNum);
         }
 
         public short[] getPixels()

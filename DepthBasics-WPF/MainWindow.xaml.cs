@@ -15,6 +15,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
     using System.Diagnostics;
     using Microsoft.Kinect;
     using StretchIt;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -39,6 +40,8 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         private int frame_num;
 
         private Frame_t ref_frame;
+
+        public bool kinect_record;
 
 
         /// <summary>
@@ -97,6 +100,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
                 this.frame_num = 0;
                 this.firstDepthData = null;
+                this.kinect_record = false;
                 // Start the sensor!
                 try
                 {
@@ -133,7 +137,8 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
         private void GenerateColoredBytes(DepthImageFrame depthImageFrame)
         {
-            if (this.frame_num%5 != 0) return;
+            //if (this.frame_num%5 != 0) return;
+            if (!this.kinect_record) return;
             short[] rawDepthData = new short[depthImageFrame.PixelDataLength];
             depthImageFrame.CopyPixelDataTo(rawDepthData);
 
@@ -337,6 +342,44 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         private void captureButton_Click(object sender, RoutedEventArgs e)
         {
             this.frame_num = 0;
+            if (this.kinect_record)
+            {
+                this.kinect_record = false;
+                captureButton.Content = "Calibrate/Record";
+                this.ref_frame.write("frame_out.txt");
+
+                // create a png bitmap encoder which knows how to save a .png file
+                BitmapEncoder encoder = new PngBitmapEncoder();
+
+                // create frame from the writable bitmap and add to encoder
+                encoder.Frames.Add(BitmapFrame.Create(this.colorBitmap));
+
+                string time = System.DateTime.Now.ToString("hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
+
+                string myPhotos = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+
+                string path = Path.Combine(myPhotos, "KinectSnapshot-" + time + ".png");
+
+                // write the new file to disk
+                try
+                {
+                    using (FileStream fs = new FileStream(path, FileMode.Create))
+                    {
+                        encoder.Save(fs);
+                    }
+
+                    this.statusBarText.Text = string.Format(CultureInfo.InvariantCulture, "{0} {1}", Properties.Resources.ScreenshotWriteSuccess, path);
+                }
+                catch (IOException)
+                {
+                    this.statusBarText.Text = string.Format(CultureInfo.InvariantCulture, "{0} {1}", Properties.Resources.ScreenshotWriteFailed, path);
+                }
+            }
+            else
+            {
+                this.kinect_record = true;
+                captureButton.Content = "Calibrate/Stop";
+            }
             return;
         }
     }
