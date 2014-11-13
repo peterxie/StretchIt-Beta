@@ -12,7 +12,6 @@ namespace Microsoft.Samples.Kinect.DepthBasics
     using System.Windows;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
-    using System.Threading;
     using Microsoft.Kinect;
 
     /// <summary>
@@ -25,7 +24,6 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         /// </summary>
         private KinectSensor sensor;
 
-        private Model model;
         /// <summary>
         /// Bitmap that will hold color information
         /// </summary>
@@ -44,7 +42,6 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         private int frame_num;
         DepthImageFrame first_frame;
 
-        private int counter;
 
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
@@ -90,6 +87,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                 // Allocate space to put the color pixels we'll create
                 this.colorPixels = new byte[this.sensor.ColorStream.FramePixelDataLength];
 
+
                 // This is the bitmap we'll display on-screen
                 this.colorBitmap = new WriteableBitmap(this.sensor.DepthStream.FrameWidth, this.sensor.DepthStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
 
@@ -113,14 +111,6 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                 {
                     this.sensor = null;
                 }
-                this.counter = 0;
-                this.commands = new int[10];
-                this.num_correct = 0;
-                for (int i = 0; i < 10; ++i)
-                {
-                    commands[i] = i % 2;
-                }
-                this.recognizedGesture = false;
             }
 
             if (null == this.sensor)
@@ -130,12 +120,6 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             }
             this.sensor.DepthStream.Range = DepthRange.Near;
 
-            model = new Model();
-            int reps = 10;
-            for (int i = 0; i < reps; ++i)
-            {
-                model.get_gesture().do_gesture();
-            }
         }
 
         /// <summary>
@@ -161,30 +145,6 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             //System.Console.WriteLine("HEY");
             using (DepthImageFrame depthFrame = e.OpenDepthImageFrame())
             {
-               /* if ((frame_num % 30) != 0 || recognizedGesture)
-                {
-                    textBox1.Text = frame_num.ToString();
-                    frame_num++;
-
-                    return;
-                }*/
-                recognizedGesture = false;
-                if (counter < 10)
-                {
-                    switch ((Commands)commands[counter])
-                    {
-                        case Commands.Push:
-                            commandTextBox.Text = "Execute a Push!";
-                            break;
-                        case Commands.Pull:
-                            commandTextBox.Text = "Execute a Pull!";
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                else return;
-
                 if (depthFrame != null)
                 {
 
@@ -192,61 +152,79 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                     if (this.frame_num == 0)
                     {
                         this.first_frame = depthFrame;
-                        this.min_frame_depth = getMinDepth(depthFrame);
-                        this.max_frame_depth = getMaxDepth(depthFrame);
                     }
                     else
                     {
-
                         // Copy the pixel data from the image to a temporary array
                         depthFrame.CopyDepthImagePixelDataTo(this.depthPixels);
-
-                        // Get the min and max reliable depth for the current frame
-                        int minDepth = getMinDepth(depthFrame);
-                        int maxDepth = getMaxDepth(depthFrame);
-
-                        textBox1.Text = minDepth.ToString();
-                        textBox2.Text = maxDepth.ToString();
-                        if (this.min_frame_depth - minDepth > 50)
+                        this.colorPixels = GenerateColoredBytes(depthFrame);
+                        if (this.colorPixels == null)
                         {
-                            if ((Commands)commands[counter] != Commands.Push)
-                            {
-                            }
-                            else
-                            {
-                                counter++;
-                                num_correct++;
-                                textBox3.Text = num_correct.ToString();
-                                scoreBox.Text = "Push Recognized";
-                            }
-                            //recognizedGesture = true;
-                        }
+                            const int BlueIndex = 0;
+                            const int GreenIndex = 1;
+                            const int RedIndex = 2;
 
-                        else if (maxDepth - this.max_frame_depth > 50)
-                        {
-                            if ((Commands)commands[counter] != Commands.Pull)
-                            {
-
+                            for (int depthIndex = 0, colorIndex = 0;
+                                   depthIndex < depthFrame.PixelDataLength && colorIndex < depthFrame.PixelDataLength;
+                                   depthIndex++, colorIndex += 4)
+                            {                               
+                                this.colorPixels[colorIndex + BlueIndex] = 255;
+                                this.colorPixels[colorIndex + GreenIndex] = 255;
+                                this.colorPixels[colorIndex + RedIndex] = 255;
+                                
                             }
-                            else
-                            {
-                                counter++;
-                                num_correct++;
-                                textBox3.Text = num_correct.ToString();
-                                scoreBox.Text = "Pull Recognized";
-                            }
-                            //recognizedGesture = true;
-                        }
-                        else
-                        {
-                            textBox1.Text = minDepth.ToString();
-                            textBox2.Text = maxDepth.ToString();
                         }
                     }
                     this.frame_num++;
 
                 }
             }
+        }
+
+        private byte[] GenerateColoredBytes(DepthImageFrame depthImageFrame)
+        {
+            if (this.frame_num == 0) return null;
+            if (depthImageFrame.PixelDataLength != first_frame.PixelDataLength) return null;
+            short[] rawDepthData = new short[depthImageFrame.PixelDataLength];
+            depthImageFrame.CopyPixelDataTo(rawDepthData);
+
+            short[] firstDepthData = new short[this.first_frame.PixelDataLength];
+            this.first_frame.CopyPixelDataTo(firstDepthData);
+
+            byte[] pixels = new byte[depthImageFrame.Height * depthImageFrame.Width * 4];
+
+            const int BlueIndex = 0;
+            const int GreenIndex = 1;
+            const int RedIndex = 2;
+
+            for (int depthIndex = 0, colorIndex = 0;
+                depthIndex < rawDepthData.Length && colorIndex < pixels.Length;
+                depthIndex++, colorIndex += 4)
+            {
+                int depth = rawDepthData[depthIndex] >> DepthImageFrame.PlayerIndexBitmaskWidth;
+                int first_depth = firstDepthData[depthIndex] >> DepthImageFrame.PlayerIndexBitmaskWidth;
+                int delta = depth - first_depth;
+
+                if (delta <= -10)
+                {
+                    pixels[colorIndex + BlueIndex] = 255;
+                    pixels[colorIndex + GreenIndex] = 0;
+                    pixels[colorIndex + RedIndex] = 0;
+                }
+                else if (depth > 10)
+                {
+                    pixels[colorIndex + BlueIndex] = 0;
+                    pixels[colorIndex + GreenIndex] = 255;
+                    pixels[colorIndex + RedIndex] = 0;
+                }
+                else
+                {
+                    pixels[colorIndex + BlueIndex] = 255;
+                    pixels[colorIndex + GreenIndex] = 255;
+                    pixels[colorIndex + RedIndex] = 255;
+                }
+            }
+            return pixels;
         }
 
         /// <summary>
@@ -344,8 +322,6 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         private void captureButton_Click(object sender, RoutedEventArgs e)
         {
             this.frame_num = 0;
-            this.counter = 0;
-            num_correct = 0;
             return;
         }
     }
