@@ -14,7 +14,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
     using System.Windows.Media.Imaging;
     using System.Diagnostics;
     using Microsoft.Kinect;
-
+    using StretchIt;
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -35,10 +35,10 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         /// </summary>
         private byte[] colorPixels;
         short[] firstDepthData;
-        short[] depthMap;
 
         private int frame_num;
-        DepthImageFrame first_frame;
+
+        private Frame_t ref_frame;
 
 
         /// <summary>
@@ -96,7 +96,6 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                 this.sensor.ColorFrameReady += this.SensorColorFrameReady;
 
                 this.frame_num = 0;
-                this.first_frame = null;
                 this.firstDepthData = null;
                 // Start the sensor!
                 try
@@ -138,19 +137,20 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             short[] rawDepthData = new short[depthImageFrame.PixelDataLength];
             depthImageFrame.CopyPixelDataTo(rawDepthData);
 
-            for (int depthIndex = 0; depthIndex < rawDepthData.Length; depthIndex++)
-            {
-                int depth = rawDepthData[depthIndex] >> DepthImageFrame.PlayerIndexBitmaskWidth;
-                int first_depth = firstDepthData[depthIndex] >> DepthImageFrame.PlayerIndexBitmaskWidth;
-              //  Debug.WriteLine(depth.ToString());
-                //Debug.WriteLine(first_depth.ToString());
-                int delta = depth - first_depth;
+            this.ref_frame.adjustFrame(rawDepthData);
+            //for (int depthIndex = 0; depthIndex < rawDepthData.Length; depthIndex++)
+            //{
+            //    int depth = rawDepthData[depthIndex] >> DepthImageFrame.PlayerIndexBitmaskWidth;
+            //    int first_depth = firstDepthData[depthIndex] >> DepthImageFrame.PlayerIndexBitmaskWidth;
+            //  //  Debug.WriteLine(depth.ToString());
+            //    //Debug.WriteLine(first_depth.ToString());
+            //    int delta = depth - first_depth;
 
-                if ( Math.Abs(delta) > Math.Abs(this.depthMap[depthIndex]))
-                {
-                    this.depthMap[depthIndex] = (short)delta;
-                }
-            }
+            //    if ( Math.Abs(delta) > Math.Abs(this.depthMap[depthIndex]))
+            //    {
+            //        this.depthMap[depthIndex] = (short)delta;
+            //    }
+            //}
             return;
         }
 
@@ -170,11 +170,13 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                     //if this is the first frame, save it
                     if (this.frame_num == 0)
                     {
-                        this.first_frame = depthFrame;
-                        
                         this.firstDepthData = new short[depthFrame.PixelDataLength];
-                        this.depthMap = new short[depthFrame.PixelDataLength];
+                        //this.depthMap = new short[depthFrame.PixelDataLength];
                         depthFrame.CopyPixelDataTo(firstDepthData);
+
+                        Frame_t.setDefault(firstDepthData);
+                        this.ref_frame = new Frame_t(firstDepthData);
+
                         for (int i = 0; i < this.colorPixels.Length; ++i)
                         {
                             this.colorPixels[i] = 255;
@@ -186,7 +188,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                         GenerateColoredBytes(depthFrame);
 
                     }
-                    if (this.colorPixels != null && this.depthMap != null)
+                    if (this.colorPixels != null)
                     {
                         // Copy the pixel data from the image to a temporary array
                         //colorFrame.CopyPixelDataTo(this.colorPixels);
@@ -236,17 +238,19 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             const int GreenIndex = 1;
             const int RedIndex = 2;
 
+            short[] depth_pixels = this.ref_frame.getPixels();
+
             for (int depthIndex = 0, colorIndex = 0;
-                depthIndex < this.depthMap.Length && colorIndex < this.colorPixels.Length;
+                depthIndex < depth_pixels.Length && colorIndex < this.colorPixels.Length;
                 depthIndex++, colorIndex += 4)
             {
-                if (this.depthMap[depthIndex] > 100)
+                if (depth_pixels[depthIndex] > 100)
                 {
                     this.colorPixels[colorIndex + BlueIndex] = 255;
                     this.colorPixels[colorIndex + GreenIndex] = 0;
                     this.colorPixels[colorIndex + RedIndex] = 0;
                 }
-                else if (this.depthMap[depthIndex] < -100)
+                else if (depth_pixels[depthIndex] < -100)
                 {
                     this.colorPixels[colorIndex + BlueIndex] = 0;
                     this.colorPixels[colorIndex + GreenIndex] = 255;
