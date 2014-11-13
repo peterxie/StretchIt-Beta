@@ -12,6 +12,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
     using System.Windows;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
+    using System.Diagnostics;
     using Microsoft.Kinect;
 
     /// <summary>
@@ -30,14 +31,11 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         private WriteableBitmap colorBitmap;
 
         /// <summary>
-        /// Intermediate storage for the depth data received from the camera
-        /// </summary>
-        private DepthImagePixel[] depthPixels;
-
-        /// <summary>
         /// Intermediate storage for the depth data converted to color
         /// </summary>
         private byte[] colorPixels;
+        short[] firstDepthData;
+        short[] depthMap;
 
         private int frame_num;
         DepthImageFrame first_frame;
@@ -81,9 +79,6 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                 // Turn on the color stream to receive color frames
                 this.sensor.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
 
-                // Allocate space to put the depth pixels we'll receive
-                this.depthPixels = new DepthImagePixel[this.sensor.DepthStream.FramePixelDataLength];
-
                 // Allocate space to put the color pixels we'll create
                 this.colorPixels = new byte[this.sensor.ColorStream.FramePixelDataLength];
 
@@ -102,6 +97,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
                 this.frame_num = 0;
                 this.first_frame = null;
+                this.firstDepthData = null;
                 // Start the sensor!
                 try
                 {
@@ -135,6 +131,47 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             }
         }
 
+
+        private void GenerateColoredBytes(DepthImageFrame depthImageFrame)
+        {
+            if (this.frame_num%2 == 0) return;
+            short[] rawDepthData = new short[depthImageFrame.PixelDataLength];
+            depthImageFrame.CopyPixelDataTo(rawDepthData);
+
+            const int BlueIndex = 0;
+            const int GreenIndex = 1;
+            const int RedIndex = 2;
+
+            for (int depthIndex = 0, colorIndex = 0;
+                depthIndex < rawDepthData.Length && colorIndex < this.colorPixels.Length;
+                depthIndex++, colorIndex += 4)
+            {
+                int depth = rawDepthData[depthIndex] >> DepthImageFrame.PlayerIndexBitmaskWidth;
+                int first_depth = firstDepthData[depthIndex] >> DepthImageFrame.PlayerIndexBitmaskWidth;
+              //  Debug.WriteLine(depth.ToString());
+                //Debug.WriteLine(first_depth.ToString());
+                int delta = depth - first_depth;
+
+                if ( Math.Abs(delta) > Math.Abs(this.depthMap[depthIndex]))
+                {
+                    this.depthMap[depthIndex];
+                }
+                else if (delta >= 100)
+                {
+                    this.colorPixels[colorIndex + BlueIndex] = 0;
+                    this.colorPixels[colorIndex + GreenIndex] = 100;
+                    this.colorPixels[colorIndex + RedIndex] = 0;
+                }
+                else
+                {
+                    /*this.colorPixels[colorIndex + BlueIndex] = 255;
+                    this.colorPixels[colorIndex + GreenIndex] = 255;
+                    this.colorPixels[colorIndex + RedIndex] = 255;*/
+                }
+            }
+            return;
+        }
+
         /// <summary>
         /// Event handler for Kinect sensor's DepthFrameReady event
         /// </summary>
@@ -152,28 +189,20 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                     if (this.frame_num == 0)
                     {
                         this.first_frame = depthFrame;
+                        
+                        this.firstDepthData = new short[depthFrame.PixelDataLength];
+                        this.depthMap = new short[depthFrame.PixelDataLength];
+                        depthFrame.CopyPixelDataTo(firstDepthData);
+                        for (int i = 0; i < this.colorPixels.Length; ++i)
+                        {
+                            this.colorPixels[i] = 255;
+                        }
                     }
                     else
                     {
                         // Copy the pixel data from the image to a temporary array
-                        depthFrame.CopyDepthImagePixelDataTo(this.depthPixels);
-                        this.colorPixels = GenerateColoredBytes(depthFrame);
-                        if (this.colorPixels == null)
-                        {
-                            const int BlueIndex = 0;
-                            const int GreenIndex = 1;
-                            const int RedIndex = 2;
+                        GenerateColoredBytes(depthFrame);
 
-                            for (int depthIndex = 0, colorIndex = 0;
-                                   depthIndex < depthFrame.PixelDataLength && colorIndex < depthFrame.PixelDataLength;
-                                   depthIndex++, colorIndex += 4)
-                            {                               
-                                this.colorPixels[colorIndex + BlueIndex] = 255;
-                                this.colorPixels[colorIndex + GreenIndex] = 255;
-                                this.colorPixels[colorIndex + RedIndex] = 255;
-                                
-                            }
-                        }
                     }
                     this.frame_num++;
 
@@ -181,51 +210,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             }
         }
 
-        private byte[] GenerateColoredBytes(DepthImageFrame depthImageFrame)
-        {
-            if (this.frame_num == 0) return null;
-            if (depthImageFrame.PixelDataLength != first_frame.PixelDataLength) return null;
-            short[] rawDepthData = new short[depthImageFrame.PixelDataLength];
-            depthImageFrame.CopyPixelDataTo(rawDepthData);
 
-            short[] firstDepthData = new short[this.first_frame.PixelDataLength];
-            this.first_frame.CopyPixelDataTo(firstDepthData);
-
-            byte[] pixels = new byte[depthImageFrame.Height * depthImageFrame.Width * 4];
-
-            const int BlueIndex = 0;
-            const int GreenIndex = 1;
-            const int RedIndex = 2;
-
-            for (int depthIndex = 0, colorIndex = 0;
-                depthIndex < rawDepthData.Length && colorIndex < pixels.Length;
-                depthIndex++, colorIndex += 4)
-            {
-                int depth = rawDepthData[depthIndex] >> DepthImageFrame.PlayerIndexBitmaskWidth;
-                int first_depth = firstDepthData[depthIndex] >> DepthImageFrame.PlayerIndexBitmaskWidth;
-                int delta = depth - first_depth;
-
-                if (delta <= -10)
-                {
-                    pixels[colorIndex + BlueIndex] = 255;
-                    pixels[colorIndex + GreenIndex] = 0;
-                    pixels[colorIndex + RedIndex] = 0;
-                }
-                else if (depth > 10)
-                {
-                    pixels[colorIndex + BlueIndex] = 0;
-                    pixels[colorIndex + GreenIndex] = 255;
-                    pixels[colorIndex + RedIndex] = 0;
-                }
-                else
-                {
-                    pixels[colorIndex + BlueIndex] = 255;
-                    pixels[colorIndex + GreenIndex] = 255;
-                    pixels[colorIndex + RedIndex] = 255;
-                }
-            }
-            return pixels;
-        }
 
         /// <summary>
         /// Event handler for Kinect sensor's ColorFrameReady event
@@ -239,7 +224,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                 if (colorFrame != null)
                 {
                     // Copy the pixel data from the image to a temporary array
-                    colorFrame.CopyPixelDataTo(this.colorPixels);
+                    //colorFrame.CopyPixelDataTo(this.colorPixels);
 
                     // Write the pixel data into our bitmap
                     this.colorBitmap.WritePixels(
