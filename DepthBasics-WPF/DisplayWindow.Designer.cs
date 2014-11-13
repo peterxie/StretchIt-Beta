@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Samples.Kinect.DepthBasics
+﻿namespace StretchIt
 {
     partial class DisplayWindow
     {
@@ -47,7 +47,7 @@
             this.Name = "DisplayWindow";
             ((System.ComponentModel.ISupportInitialize)(this.ImageHolder)).EndInit();
             this.ResumeLayout(false);
-            this.Visible = true;
+
         }
 
         #endregion

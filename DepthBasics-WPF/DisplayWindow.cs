@@ -9,7 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace Microsoft.Samples.Kinect.DepthBasics
+namespace StretchIt
 {
     public partial class DisplayWindow : Form
     {
@@ -22,18 +22,20 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             InitializeComponent();
 
             player = new SoundPlayer();
-            t = new Thread(player.PlaySync);
         }
 
         public void loadOutput(string audio_file, string image_file)
         {
-            ImageHolder.ImageLocation = image_file;
+            t = new Thread(player.PlaySync);
+            //initializePicture();
+
+            ImageHolder.Image = Image.FromFile(image_file);
+
             player.SoundLocation = audio_file;
 
             t.Start();
         }
 
-       
  
     }
 }
