@@ -13,7 +13,10 @@ namespace StretchIt
 
         public abstract void back();
 
-        public abstract void display();
+        public void display()
+        {
+            output.load();
+        }
 
         public void addFrameFnPair(Tuple<Frame_t, MenuOptDelegate> fn_pair)
         {

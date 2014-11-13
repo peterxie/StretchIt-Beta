@@ -16,12 +16,6 @@ namespace StretchIt
 
         }
 
-        //not listed in design doc, but assuming we need this
-        public override void display()
-        {
-
-        }
-
         public void loadStatistics()
         {
             StreamReader file = new StreamReader(path);
