@@ -11,13 +11,13 @@ namespace StretchIt
         private int rec_longest_streak; //recent
         private double rec_percent_correct;
 
-        public void back()
+        public override void back()
         {
 
         }
 
         //not listed in design doc, but assuming we need this
-        public void display()
+        public override void display()
         {
 
         }
