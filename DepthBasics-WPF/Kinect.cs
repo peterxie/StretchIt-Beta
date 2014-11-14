@@ -14,7 +14,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
     using Microsoft.Kinect;
     using StretchIt;
 
-    class Kinect
+    class Kinect_t
     {
         /// <summary>
         /// Active Kinect sensor
@@ -23,7 +23,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
         private Frame_t input;
 
-        public Kinect()
+        public Kinect_t()
         {
             // Look through all sensors and start the first connected one.
             // This requires that a Kinect is connected at the time of app startup.
