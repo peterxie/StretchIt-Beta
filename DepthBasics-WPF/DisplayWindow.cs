@@ -27,9 +27,9 @@ namespace StretchIt
         public void loadOutput(string audio_file, string image_file)
         {
             t = new Thread(player.PlaySync);
-            //initializePicture();
 
             ImageHolder.Image = Image.FromFile(image_file);
+            ImageHolder.Update();
 
             player.SoundLocation = audio_file;
 
