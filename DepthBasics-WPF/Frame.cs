@@ -90,6 +90,12 @@ namespace StretchIt
             return;
         }
 
+        public void reset(int _num_pixels = 307200)
+        {
+            num_pixels = _num_pixels;
+            depth_pixels = new short[num_pixels];
+        }
+
         public short[] getPixels()
         {
             return this.depth_pixels;
