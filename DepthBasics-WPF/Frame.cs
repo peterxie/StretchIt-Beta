@@ -97,7 +97,7 @@ namespace StretchIt
             }
         }
 
-        public Game_State_e computeDeviation(Frame_t input_frame)
+        public Gesture_rc_e computeDeviation(Frame_t input_frame)
         {
             double input_gesture_error = 0;
             double def_gesture_error = 0;
@@ -112,20 +112,20 @@ namespace StretchIt
 
             if(input_gesture_error / num_pixels < error_threshold)
             {
-                return Game_State_e.Correct;
+                return Gesture_rc_e.Correct;
             }
 
             else if(def_gesture_error / num_pixels < error_threshold)
             {
-                return Game_State_e.No_Input;
+                return Gesture_rc_e.No_Input;
             }
 
             else if(back_gesture_error / num_pixels < error_threshold)
             {
-                return Game_State_e.Back_Button;
+                return Gesture_rc_e.Back_Button;
             }
 
-            return Game_State_e.Incorrect;
+            return Gesture_rc_e.Incorrect;
         }
 
         //finish this (yeah its not an empty function)
