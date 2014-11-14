@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Kinect;
 //not finished
 
@@ -12,20 +13,11 @@ namespace StretchIt
         private static short[] default_frame;
         private static short[] back_frame;
 
-        static public void setDefault(short[] frame)
-        {
-            default_frame = new short[frame.Length];
-            frame.CopyTo(default_frame, 0);
-        }
+        private const int default_pixels_c = 307200;
 
-        static public void setBack(short[] frame)
+        public Frame_t(int num_pixels_ = default_pixels_c)
         {
-            back_frame = frame;
-        }
-    
-        public Frame_t(int _num_pixels = 307200)
-        {
-            num_pixels = _num_pixels;
+            num_pixels = num_pixels_;
             depth_pixels = new short[num_pixels];
         }
 
@@ -33,7 +25,7 @@ namespace StretchIt
         {
             if (depthFrame == null)
             {
-                num_pixels = 307200;
+                num_pixels = default_pixels_c;
             }
             else
             {
@@ -46,7 +38,7 @@ namespace StretchIt
         {
             if (pixels == null)
             {
-                num_pixels = 307200;
+                num_pixels = default_pixels_c;
                 depth_pixels = new short[num_pixels];
             }
             else
@@ -56,6 +48,35 @@ namespace StretchIt
                 pixels.CopyTo(depth_pixels, 0);
             }
 
+        }
+
+        public Frame_t(string filename)
+        {
+            StreamReader inFile = new StreamReader(filename);
+
+            inFile.ReadLine(); //Eat the gesture name
+
+            num_pixels = int.Parse(inFile.ReadLine());
+            depth_pixels = new short[num_pixels];
+
+            for (int i = 0; i < num_pixels; ++i)
+            {
+                depth_pixels[i] = short.Parse(inFile.ReadLine());
+            }
+
+            inFile.Close();            
+        }
+        
+        static public void setDefault(short[] frame)
+        {
+            default_frame = new short[frame.Length];
+            frame.CopyTo(default_frame, 0);
+        }
+
+        static public void setBack(short[] frame)
+        {
+            back_frame = new short[frame.Length];
+            frame.CopyTo(back_frame, 0);
         }
 
         public short[] getPixels()
@@ -75,13 +96,6 @@ namespace StretchIt
         {
             return this.num_pixels;
         }
-        /*public Frame_t(Frame_t frame_one, Frame_t frame_two)
-        {
-            num_pixels = frame_one.num_pixels;
-            //Not sure which array to copy from either one
-            Buffer.BlockCopy(frame_one.depth_pixels, 0, depth_pixels, 0, num_pixels);
-            Buffer.BlockCopy(default_frame, 0, default_frame, 0, num_pixels);
-        }*/
 
         // Need to discuss whether these should be absolute values
         public void adjustFrame(short[] raw_depth_pixels)
@@ -133,5 +147,13 @@ namespace StretchIt
         {
 
         }
+
+        /*public Frame_t(Frame_t frame_one, Frame_t frame_two)
+        {
+            num_pixels = frame_one.num_pixels;
+            //Not sure which array to copy from either one
+            Buffer.BlockCopy(frame_one.depth_pixels, 0, depth_pixels, 0, num_pixels);
+            Buffer.BlockCopy(default_frame, 0, default_frame, 0, num_pixels);
+        }*/
     }
 }
