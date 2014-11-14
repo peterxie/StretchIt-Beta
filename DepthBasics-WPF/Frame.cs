@@ -114,7 +114,10 @@ namespace StretchIt
         static public void setBack(short[] frame)
         {
             back_frame = new short[frame.Length];
-            frame.CopyTo(back_frame, 0);
+            for (int i = 0; i < frame.Length; ++i)
+            {
+                back_frame[i] = (short)(frame[i] >> DepthImageFrame.PlayerIndexBitmaskWidth);
+            }
         }
 
         public short[] getPixels()
