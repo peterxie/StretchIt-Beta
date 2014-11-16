@@ -109,6 +109,8 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                 // Set the image we display to point to the bitmap where we'll put the image data
                 this.Image.Source = this.colorBitmap;
 
+                this.kinect_t.resetReference();
+
                 /* // Add an event handler to be called whenever there is new depth frame data
                  this.kinect_t.getSensor().DepthFrameReady += this.kinect_t.getSensor()DepthFrameReady;
 
@@ -359,9 +361,9 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
         private void captureButton_Click(object sender, RoutedEventArgs e)
         {
+            this.kinect_t.resetReference();
 
-
-            this.kinect_t.record_gesture(50);
+            this.kinect_t.recordGesture(50);
             makeColor();
             this.colorBitmap.WritePixels(
                 new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight),
