@@ -15,6 +15,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
     using System.Diagnostics;
     using Microsoft.Kinect;
     using StretchIt;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -40,6 +41,8 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
         private Frame_t ref_frame;
 
+        public bool kinect_record;
+
 
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
@@ -47,6 +50,20 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void AVTest(){
+            AV_Output_t av1 = new AV_Output_t(@"../../verne.bmp", @"../../audio.wav");
+            av1.load();
+
+            Stopwatch s = new Stopwatch();
+            s.Start();
+            while (s.ElapsedMilliseconds < 5000) { }
+            s.Stop();
+
+            AV_Output_t av2 = new AV_Output_t(@"../../Block M.gif", @"../../audio.wav");
+
+            av2.load();
         }
 
         /// <summary>
@@ -97,6 +114,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
                 this.frame_num = 0;
                 this.firstDepthData = null;
+                this.kinect_record = false;
                 // Start the sensor!
                 try
                 {
@@ -133,7 +151,8 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
         private void GenerateColoredBytes(DepthImageFrame depthImageFrame)
         {
-            if (this.frame_num%5 == 0) return;
+            //if (this.frame_num%5 != 0) return;
+            if (!this.kinect_record) return;
             short[] rawDepthData = new short[depthImageFrame.PixelDataLength];
             depthImageFrame.CopyPixelDataTo(rawDepthData);
 
@@ -175,7 +194,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                         depthFrame.CopyPixelDataTo(firstDepthData);
 
                         Frame_t.setDefault(firstDepthData);
-                        this.ref_frame = new Frame_t(firstDepthData);
+                        this.ref_frame = new Frame_t();
 
                         for (int i = 0; i < this.colorPixels.Length; ++i)
                         {
@@ -337,6 +356,46 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         private void captureButton_Click(object sender, RoutedEventArgs e)
         {
             this.frame_num = 0;
+<<<<<<< HEAD
+            if (this.kinect_record)
+            {
+                this.kinect_record = false;
+                captureButton.Content = "Calibrate/Record";
+                this.ref_frame.write("frame_out.txt");
+
+                // create a png bitmap encoder which knows how to save a .png file
+                BitmapEncoder encoder = new PngBitmapEncoder();
+
+                // create frame from the writable bitmap and add to encoder
+                encoder.Frames.Add(BitmapFrame.Create(this.colorBitmap));
+
+                string time = System.DateTime.Now.ToString("hh'-'mm'-'ss", CultureInfo.CurrentUICulture.DateTimeFormat);
+
+                string myPhotos = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+
+                string path = Path.Combine(myPhotos, "KinectSnapshot-" + time + ".png");
+
+                // write the new file to disk
+                try
+                {
+                    using (FileStream fs = new FileStream(path, FileMode.Create))
+                    {
+                        encoder.Save(fs);
+                    }
+
+                    this.statusBarText.Text = string.Format(CultureInfo.InvariantCulture, "{0} {1}", Properties.Resources.ScreenshotWriteSuccess, path);
+                }
+                catch (IOException)
+                {
+                    this.statusBarText.Text = string.Format(CultureInfo.InvariantCulture, "{0} {1}", Properties.Resources.ScreenshotWriteFailed, path);
+                }
+            }
+            else
+            {
+                this.kinect_record = true;
+                captureButton.Content = "Calibrate/Stop";
+            }
+
             return;
         }
     }

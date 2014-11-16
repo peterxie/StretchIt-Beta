@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Kinect;
+using System.IO;
 //not finished
 
 namespace StretchIt
@@ -11,21 +13,12 @@ namespace StretchIt
         private short[] depth_pixels;
         private static short[] default_frame;
         private static short[] back_frame;
+        
+        private const int default_pixels_c = 307200;
 
-        static public void setDefault(short[] frame)
+        public Frame_t(int num_pixels_ = default_pixels_c)
         {
-            default_frame = new short[frame.Length];
-            frame.CopyTo(default_frame, 0);
-        }
-
-        static public void setBack(short[] frame)
-        {
-            back_frame = frame;
-        }
-    
-        public Frame_t(int _num_pixels = 307200)
-        {
-            num_pixels = _num_pixels;
+            num_pixels = num_pixels_;
             depth_pixels = new short[num_pixels];
         }
 
@@ -33,7 +26,7 @@ namespace StretchIt
         {
             if (depthFrame == null)
             {
-                num_pixels = 307200;
+                num_pixels = default_pixels_c;
             }
             else
             {
@@ -46,7 +39,7 @@ namespace StretchIt
         {
             if (pixels == null)
             {
-                num_pixels = 307200;
+                num_pixels = default_pixels_c;
                 depth_pixels = new short[num_pixels];
             }
             else
@@ -56,6 +49,75 @@ namespace StretchIt
                 pixels.CopyTo(depth_pixels, 0);
             }
 
+        }
+
+        public void write(string fileName)
+        {
+            StreamWriter file = new StreamWriter(fileName);
+            file.WriteLine(num_pixels.ToString());
+            for (int i = 0; i < num_pixels; ++i)
+            {
+                file.WriteLine(depth_pixels[i].ToString());
+            }
+        }
+
+        public void read(string fileName)
+        {
+            StreamReader file = new StreamReader(fileName);
+            string pixelNum = file.ReadLine();
+            int size = Convert.ToInt32(pixelNum);
+            this.num_pixels = size;
+            if (depth_pixels == null || depth_pixels.Length != num_pixels)
+            {
+                depth_pixels = new short[num_pixels];
+            }
+            for (int i = 0; i < num_pixels; ++i)
+            {
+                int val = Convert.ToInt32(file.ReadLine());
+                depth_pixels[i] = (short)val;
+            }
+            return;
+        }
+
+        public void reset(int _num_pixels = 307200)
+        {
+            num_pixels = _num_pixels;
+            depth_pixels = new short[num_pixels];
+        }
+
+        public Frame_t(string filename)
+        {
+            StreamReader inFile = new StreamReader(filename);
+
+            inFile.ReadLine(); //Eat the gesture name
+
+            num_pixels = int.Parse(inFile.ReadLine());
+            depth_pixels = new short[num_pixels];
+
+            for (int i = 0; i < num_pixels; ++i)
+            {
+                depth_pixels[i] = short.Parse(inFile.ReadLine());
+            }
+
+            inFile.Close();            
+        }
+        
+        static public void setDefault(short[] frame)
+        {
+            default_frame = new short[frame.Length];
+            for (int i = 0; i < frame.Length; ++i)
+            {
+                default_frame[i] = (short)(frame[i] >> DepthImageFrame.PlayerIndexBitmaskWidth);
+            }
+        }
+
+        static public void setBack(short[] frame)
+        {
+            back_frame = new short[frame.Length];
+            for (int i = 0; i < frame.Length; ++i)
+            {
+                back_frame[i] = (short)(frame[i] >> DepthImageFrame.PlayerIndexBitmaskWidth);
+            }
         }
 
         public short[] getPixels()
@@ -75,20 +137,13 @@ namespace StretchIt
         {
             return this.num_pixels;
         }
-        /*public Frame_t(Frame_t frame_one, Frame_t frame_two)
-        {
-            num_pixels = frame_one.num_pixels;
-            //Not sure which array to copy from either one
-            Buffer.BlockCopy(frame_one.depth_pixels, 0, depth_pixels, 0, num_pixels);
-            Buffer.BlockCopy(default_frame, 0, default_frame, 0, num_pixels);
-        }*/
 
         // Need to discuss whether these should be absolute values
         public void adjustFrame(short[] raw_depth_pixels)
         {
             for (int i = 0; i < num_pixels; ++i)
             {
-                short input_diff = (short) (raw_depth_pixels[i] >> DepthImageFrame.PlayerIndexBitmaskWidth - default_frame[i]);
+                short input_diff = (short) ((raw_depth_pixels[i] >> DepthImageFrame.PlayerIndexBitmaskWidth) - default_frame[i]);
 
                 if (Math.Abs(input_diff) > Math.Abs(depth_pixels[i]))
                 {
@@ -97,7 +152,7 @@ namespace StretchIt
             }
         }
 
-        public Game_State_e computeDeviation(Frame_t input_frame)
+        public Gesture_rc_e computeDeviation(Frame_t input_frame)
         {
             double input_gesture_error = 0;
             double def_gesture_error = 0;
@@ -112,20 +167,20 @@ namespace StretchIt
 
             if(input_gesture_error / num_pixels < error_threshold)
             {
-                return Game_State_e.Correct;
+                return Gesture_rc_e.Correct;
             }
 
             else if(def_gesture_error / num_pixels < error_threshold)
             {
-                return Game_State_e.No_Input;
+                return Gesture_rc_e.No_Input;
             }
 
             else if(back_gesture_error / num_pixels < error_threshold)
             {
-                return Game_State_e.Back_Button;
+                return Gesture_rc_e.Back_Button;
             }
 
-            return Game_State_e.Incorrect;
+            return Gesture_rc_e.Incorrect;
         }
 
         //finish this (yeah its not an empty function)
@@ -133,5 +188,13 @@ namespace StretchIt
         {
 
         }
+
+        /*public Frame_t(Frame_t frame_one, Frame_t frame_two)
+        {
+            num_pixels = frame_one.num_pixels;
+            //Not sure which array to copy from either one
+            Buffer.BlockCopy(frame_one.depth_pixels, 0, depth_pixels, 0, num_pixels);
+            Buffer.BlockCopy(default_frame, 0, default_frame, 0, num_pixels);
+        }*/
     }
 }
