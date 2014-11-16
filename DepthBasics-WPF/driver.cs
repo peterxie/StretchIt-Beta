@@ -6,22 +6,18 @@ namespace StretchIt
 {
     public class driver
     {
-        bool kinect_record;
         Game_mode_e mode;
         Dictionary<string,Gesture_t> reference_gestures;
         Settings_t settings;
         Statistics_t statistics;
-        
 
         public driver()
         {
-            kinect_record = true;
             mode = Game_mode_e.Menu_Mode;
             reference_gestures = new Dictionary<string,Gesture_t>();
             settings = new Settings_t();
             statistics = new Statistics_t();
             loadReferenceFrames();
-
         }
         private void loadReferenceFrames()
         {
