@@ -55,8 +55,10 @@ namespace StretchIt
                 {
                     this.sensor = null;
                 }
+
+                this.sensor.DepthStream.Range = DepthRange.Near;
+
             }
-            this.sensor.DepthStream.Range = DepthRange.Near;
 
         }
 
@@ -85,8 +87,15 @@ namespace StretchIt
             short[] data = new short[depthFrame.PixelDataLength];
             depthFrame.CopyPixelDataTo(data);
 
+            //extract the depth information
+            for (int i = 0; i < data.Length; ++i)
+            {
+                data[i] = (short)(data[i] >> DepthImageFrame.PlayerIndexBitmaskWidth);
+            }
+
             //set the default reference frame for Frame objects
             Frame_t.setDefault(data);
+            Frame_t.setBack(data);
 
             //throw the frame away to clear memory
             depthFrame.Dispose();
