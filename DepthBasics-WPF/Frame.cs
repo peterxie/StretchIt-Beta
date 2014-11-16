@@ -22,6 +22,13 @@ namespace StretchIt
             depth_pixels = new short[num_pixels];
         }
 
+        public Frame_t(Frame_t copyFrame)
+        {
+            this.num_pixels = copyFrame.num_pixels;
+            this.error_threshold = copyFrame.error_threshold;
+            Buffer.BlockCopy(copyFrame.depth_pixels, 0, this.depth_pixels, 0, this.num_pixels);
+        }
+
         public Frame_t(DepthImageFrame depthFrame)
         {
             if (depthFrame == null)

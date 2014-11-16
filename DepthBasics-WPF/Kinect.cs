@@ -12,8 +12,6 @@ using Microsoft.Kinect;
 
 namespace StretchIt
 {
-
-
     public class Kinect_t
     {
         /// <summary>
