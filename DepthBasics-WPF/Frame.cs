@@ -51,19 +51,22 @@ namespace StretchIt
 
         }
 
-        public void write(string fileName)
+        public void write(string fileName,string gestureName)
         {
             StreamWriter file = new StreamWriter(fileName);
+            file.WriteLine(gestureName);
             file.WriteLine(num_pixels.ToString());
             for (int i = 0; i < num_pixels; ++i)
             {
                 file.WriteLine(depth_pixels[i].ToString());
             }
+            file.Close();
         }
 
         public void read(string fileName)
         {
             StreamReader file = new StreamReader(fileName);
+            string gestureName = file.ReadLine();
             string pixelNum = file.ReadLine();
             int size = Convert.ToInt32(pixelNum);
             this.num_pixels = size;
@@ -76,7 +79,7 @@ namespace StretchIt
                 int val = Convert.ToInt32(file.ReadLine());
                 depth_pixels[i] = (short)val;
             }
-            return;
+            file.Close();
         }
 
         public void reset(int _num_pixels = 307200)
