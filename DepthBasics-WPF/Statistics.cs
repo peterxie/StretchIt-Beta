@@ -18,6 +18,12 @@ namespace StretchIt
         private int num_moves_correct_in_game; //number of moves correctly executed in current game
         private double rec_percent_correct; //percent moves correct in the current game
 
+        public Statistics_t()
+        {
+            path = "statistics.txt";
+        }
+
+
         public override void back()
         {
 
@@ -43,11 +49,28 @@ namespace StretchIt
 
         public void loadStatistics()
         {
-            StreamReader file = new StreamReader(path);
-            all_longest_streak = int.Parse(file.ReadLine());
-            all_percent_correct = double.Parse(file.ReadLine());
-            rec_longest_streak = int.Parse(file.ReadLine());
-            rec_percent_correct = double.Parse(file.ReadLine());
+            try
+            {
+                using(StreamReader file = new StreamReader(path))
+                {
+                    all_longest_streak = int.Parse(file.ReadLine());
+                    all_percent_correct = double.Parse(file.ReadLine());
+                    rec_longest_streak = int.Parse(file.ReadLine());
+                    rec_percent_correct = double.Parse(file.ReadLine());
+                }
+            }
+            catch(Exception e)
+            {
+                useDefaults();
+            }
+        }
+
+        private void useDefaults()
+        {
+            all_longest_streak = 0;
+            all_percent_correct = 0;
+            rec_longest_streak = 0;
+            rec_percent_correct = 0;
         }
 
         public void saveStatistics()
@@ -58,6 +81,7 @@ namespace StretchIt
             file.WriteLine(all_percent_correct);
             file.WriteLine(rec_longest_streak);
             file.WriteLine(rec_percent_correct);
+            file.Close();
         }
     }
 }
