@@ -192,11 +192,11 @@
             this.pushUpDown.TabIndex = 17;
             this.pushUpDown.ValueChanged += new System.EventHandler(this.pushUpDown_ValueChanged);
             // 
-            // Form1
+            // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 362);
+            this.ClientSize = new System.Drawing.Size(599, 399);
             this.Controls.Add(this.pushUpDown);
             this.Controls.Add(this.pullHardLabel);
             this.Controls.Add(this.pullHardUpDown);
@@ -213,7 +213,7 @@
             this.Controls.Add(this.pushLabel);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.title);
-            this.Name = "Form1";
+            this.Name = "Settings";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pullUpDown)).EndInit();
