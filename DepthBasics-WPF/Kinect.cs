@@ -12,6 +12,9 @@ using Microsoft.Kinect;
 
 namespace StretchIt
 {
+    //Kinect_t class wraps a KinectSensor object and provides functionality for recording a specified number of frames
+    // while updating an internal frame_t object with the maximum deviation depth data
+
     public class Kinect_t
     {
         /// <summary>
@@ -69,7 +72,7 @@ namespace StretchIt
         }
 
         //resets the reference frame of Frame_t to be depthFrame
-        public void reset_reference()
+        public void resetReference()
         {
             //attempt to read a depth frame until a valid frame is returned
             DepthImageFrame depthFrame = null;
@@ -91,31 +94,40 @@ namespace StretchIt
         }
 
         //records num_frames number of frames and aggregates them into a gesture input
-        public void record_gesture(int num_frames)
+        public void recordGesture(int num_frames)
         {
-            reset_reference();
+            //reset the depth_pixels of the input frame object
             DepthImageFrame depthFrame = null;
             this.input.reset();
             while (num_frames > 0)
             {
+                //attempt to read a frame from the kinect
                 depthFrame = this.sensor.DepthStream.OpenNextFrame(1000);
+
+                //if the attempt succeeded, aggregate the depth info into the inpur frame object
                 if (depthFrame != null)
                 {
                     short[] rawDepthData = new short[depthFrame.PixelDataLength];
                     depthFrame.CopyPixelDataTo(rawDepthData);
                     this.input.adjustFrame(rawDepthData);
+
+                    //only decrement num_frames if a frame was read
                     num_frames--;
+
+                    //dispose the frame object
                     depthFrame.Dispose();
                 }
             }
             return;
         }
 
+        //accessor for the frame object
         public Frame_t getFrame()
         {
             return this.input;
         }
 
+        //accessor for the KinectSensor object
         public KinectSensor getSensor()
         {
             return this.sensor;
