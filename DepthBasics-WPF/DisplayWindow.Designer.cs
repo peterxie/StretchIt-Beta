@@ -47,7 +47,7 @@
             this.Name = "DisplayWindow";
             ((System.ComponentModel.ISupportInitialize)(this.ImageHolder)).EndInit();
             this.ResumeLayout(false);
-
+            this.Visible = true;
         }
 
         #endregion
