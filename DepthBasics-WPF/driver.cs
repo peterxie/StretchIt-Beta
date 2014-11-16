@@ -53,6 +53,7 @@ namespace StretchIt
                         break;
                 }
             }
+            statistics.saveStatistics();
         }
         private void process_menu()
         {
@@ -68,8 +69,10 @@ namespace StretchIt
                 switch (state_gesture)
                 {
                     case Gesture_rc_e.Correct:
+                        statistics.recordResult(true);
                         break;
                     case Gesture_rc_e.Incorrect:
+                        statistics.recordResult(false);
                         break;
                     case Gesture_rc_e.Back_Button:
                         mode = Game_mode_e.Menu_Mode;
