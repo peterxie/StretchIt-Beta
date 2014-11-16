@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
+using System.IO;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Diagnostics;
+using Microsoft.Kinect;
 
-namespace Microsoft.Samples.Kinect.DepthBasics
+namespace StretchIt
 {
-    using System.Globalization;
-    using System.IO;
-    using System.Windows;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using System.Diagnostics;
-    using Microsoft.Kinect;
-    using StretchIt;
 
-    class Kinect_t
+
+    public class Kinect_t
     {
         /// <summary>
         /// Active Kinect sensor
@@ -55,6 +55,8 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                     this.sensor = null;
                 }
             }
+            this.sensor.DepthStream.Range = DepthRange.Near;
+
         }
 
         //adds data from stream snapshot to the current tracked frame "input"
@@ -93,11 +95,12 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         //records num_frames number of frames and aggregates them into a gesture input
         public void record_gesture(int num_frames)
         {
+            reset_reference();
             DepthImageFrame depthFrame = null;
             this.input.reset();
             while (num_frames > 0)
             {
-                depthFrame = this.sensor.DepthStream.OpenNextFrame(0);
+                depthFrame = this.sensor.DepthStream.OpenNextFrame(1000);
                 if (depthFrame != null)
                 {
                     short[] rawDepthData = new short[depthFrame.PixelDataLength];
@@ -108,6 +111,16 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                 }
             }
             return;
+        }
+
+        public Frame_t getFrame()
+        {
+            return this.input;
+        }
+
+        public KinectSensor getSensor()
+        {
+            return this.sensor;
         }
     }
 }
