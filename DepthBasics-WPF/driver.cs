@@ -1,43 +1,42 @@
 ﻿using System;
-using System.Collections.Generic.Dictionary;
+using System.Collections.Generic;
 using System.IO;
 
 namespace StretchIt
 {
-    enum Game_mode_e
-    {
-        Play,
-        Menu_Mode,
-        Exit_Game
-    }
     public class driver
     {
-        Frame_t current_kinect_frame;
-        bool kinect_record;
         Game_mode_e mode;
-        Dictionary<string, Gesture_t> enabled_menu_pages;
-        Dictionary<string,Frame_t> reference_frames;
-        Gesture_t processor;
+        Dictionary<string,Gesture_t> reference_gestures;
+        Settings_t settings;
+        Statistics_t statistics;
 
         public driver()
         {
-            kinect_record = true;
             mode = Game_mode_e.Menu_Mode;
-            enabled_menu_pages = new Dictionary<string,Gesture_t>();
-            reference_frames = new Dictionary<string,Gesture_t>();
+            reference_gestures = new Dictionary<string,Gesture_t>();
+            settings = new Settings_t();
+            statistics = new Statistics_t();
             loadReferenceFrames();
-
+            string[] filePaths = Directory.GetFiles(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C);
+            for (int i = 0; i < filePaths.Length; ++i)
+            {
+                StreamReader inFile = new StreamReader(filePaths[i]);
+                GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(inFile.ReadLine());
+                inFile.Close();
+            }
         }
         private void loadReferenceFrames()
         {
-            string[] filePaths = Directory.GetFiles(@"c:\MyDir\");
+            string[] filePaths = Directory.GetFiles(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C);
             for (int i = 0; i < filePaths.Length; ++i)
             {
-                StreamREader inFile = new StreamReader(filename);
+                StreamReader inFile = new StreamReader(filePaths[i]);
                 String gesture_name = inFile.ReadLine();
-                Frame_t ref_frame = new Frame_t(filename);
-                reference_frames.add(gesture_name, ref_frame);
-                inFile.close();
+                Frame_t ref_frame = new Frame_t(filePaths[i]);
+                Gesture_t ref_gesture = new Gesture_t(gesture_name, filePaths[i], "tmp", "tmp", "tmp", "tmp");
+                reference_gestures.Add(gesture_name, ref_gesture);
+                inFile.Close();
             }
         }
         public void run_system()
@@ -54,38 +53,40 @@ namespace StretchIt
                         break;
                 }
             }
+            statistics.saveStatistics();
         }
         private void process_menu()
         {
         }
         private void play_game()
         {
-            Game_State_e state_gesture;
+            Gesture_rc_e state_gesture;
             while (mode != Game_mode_e.Menu_Mode)
             {
-                update_current_kinect_frame();
-                state_gesture = processor.processGesture(current_kinect_frame());
+                GlobalVar.KINECT.record_gesture(GlobalVar.NUM_FRAMES_RECORD_C);
+                Gesture_t nextGesture = select_next_gesture();
+                state_gesture = nextGesture.processGesture(GlobalVar.GLOBAL_KINECT_FRAME);
                 switch (state_gesture)
                 {
-                    case Game_State_e.Correct:
+                    case Gesture_rc_e.Correct:
+                        statistics.recordResult(true);
                         break;
-                    case Game_State_e.Incorrect:
+                    case Gesture_rc_e.Incorrect:
+                        statistics.recordResult(false);
                         break;
-                    case Game_State_e.Back_Button:
+                    case Gesture_rc_e.Back_Button:
                         mode = Game_mode_e.Menu_Mode;
                         break;
-                    case Game_State_e.No_Input:
+                    case Gesture_rc_e.No_Input:
                         break;
                 }
             }
         }
-        private void update_current_kinect_frame()
+        private Gesture_t select_next_gesture()
         {
-            current_kinect_frame.num_pixels = global_kinect_frame.num_pixels;
-            current_kinect_frame.error_threshold = global_kinect_frame.error_threshold;
-            current_kinect_frame = global_kinect_frame;
-            current_kinect_frame = global_kinect_frame;
-            Buffer.BlockCopy(global_kinect_frame.depth_pixels, 0, current_kinect_frame.depth_pixels, 0, num_pixels);
+            Random r = new Random();
+            int selected_index = r.Next(settings.getGestures().Length);
+            return settings.getGestures()[selected_index];
         }
     }
 }

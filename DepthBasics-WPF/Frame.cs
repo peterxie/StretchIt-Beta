@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Kinect;
-using System.IO;
 //not finished
 
 namespace StretchIt
@@ -20,6 +19,14 @@ namespace StretchIt
         {
             num_pixels = num_pixels_;
             depth_pixels = new short[num_pixels];
+        }
+
+        public Frame_t(Frame_t copyFrame)
+        {
+            this.num_pixels = copyFrame.num_pixels;
+            this.error_threshold = copyFrame.error_threshold;
+            depth_pixels = new short[this.num_pixels];
+            Buffer.BlockCopy(copyFrame.depth_pixels, 0, this.depth_pixels, 0, this.num_pixels);
         }
 
         public Frame_t(DepthImageFrame depthFrame)
