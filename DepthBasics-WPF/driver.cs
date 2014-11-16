@@ -6,6 +6,11 @@ namespace StretchIt
 {
     public class driver
     {
+<<<<<<< HEAD
+=======
+
+        bool kinect_record;
+>>>>>>> origin/master
         Game_mode_e mode;
         Dictionary<string,Gesture_t> reference_gestures;
         Settings_t settings;
@@ -18,6 +23,13 @@ namespace StretchIt
             settings = new Settings_t();
             statistics = new Statistics_t();
             loadReferenceFrames();
+            string[] filePaths = Directory.GetFiles(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C);
+            for (int i = 0; i < filePaths.Length; ++i)
+            {
+                StreamReader inFile = new StreamReader(filePaths[i]);
+                GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(inFile.ReadLine());
+                inFile.Close();
+            }
         }
         private void loadReferenceFrames()
         {

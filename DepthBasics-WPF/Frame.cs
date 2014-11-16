@@ -25,6 +25,7 @@ namespace StretchIt
         {
             this.num_pixels = copyFrame.num_pixels;
             this.error_threshold = copyFrame.error_threshold;
+            depth_pixels = new short[this.num_pixels];
             Buffer.BlockCopy(copyFrame.depth_pixels, 0, this.depth_pixels, 0, this.num_pixels);
         }
 

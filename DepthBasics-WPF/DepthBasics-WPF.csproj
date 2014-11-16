@@ -63,6 +63,13 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="driver.cs" />
+    <Compile Include="Kinect.cs" />
+    <Compile Include="obj\Debug\App.g.cs" />
+    <Compile Include="obj\Debug\App.g.i.cs" />
+    <Compile Include="obj\Debug\DepthBasics-WPF_Content.g.i.cs" />
+    <Compile Include="obj\Debug\MainWindow.g.cs" />
+    <Compile Include="obj\Debug\MainWindow.g.i.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Statistics.cs" />
     <ApplicationDefinition Include="App.xaml">
@@ -110,10 +117,21 @@
     <EmbeddedResource Include="DisplayWindow.resx">
       <DependentUpon>DisplayWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\DepthBasics-WPF.g.resources" />
+    <EmbeddedResource Include="obj\Debug\Microsoft.Samples.Kinect.DepthBasics.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\DepthBasics-WPF.vshost.exe.manifest" />
+    <None Include="obj\Debug\App.baml" />
+    <None Include="obj\Debug\DepthBasics-WPF.csproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\DepthBasics-WPF.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\DepthBasics-WPF_MarkupCompile.cache" />
+    <None Include="obj\Debug\DepthBasics-WPF_MarkupCompile.i.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\MainWindow.baml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,7 +149,19 @@
     <Resource Include="Images\UncheckedHover.png" />
     <Resource Include="Images\UncheckedNormal.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="verne.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Block M.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="audio.wav" />
+    <Content Include="audio2.wav" />
+    <Content Include="bin\Debug\DepthBasics-WPF.vshost.exe" />
+    <Resource Include="obj\Debug\DepthBasics-WPF.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
