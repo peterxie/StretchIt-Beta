@@ -6,11 +6,6 @@ namespace StretchIt
 {
     public class driver
     {
-<<<<<<< HEAD
-=======
-
-        bool kinect_record;
->>>>>>> origin/master
         Game_mode_e mode;
         Dictionary<string,Gesture_t> reference_gestures;
         Settings_t settings;
