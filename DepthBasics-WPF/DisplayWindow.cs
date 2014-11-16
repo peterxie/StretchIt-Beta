@@ -32,8 +32,10 @@ namespace StretchIt
             ImageHolder.Update();
 
             player.SoundLocation = audio_file;
-
+            
             t.Start();
+
+            //should be able to remove thread and use player.Play()
         }
 
  
