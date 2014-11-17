@@ -34,7 +34,8 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
             streakAllTimeValue.Text = all_longest_streak.ToString();
             percentAllTimeValue.Text = all_percent_correct.ToString();
-            //Monthly??
+            streakMonthlyValue.Text = rec_longest_streak.ToString();
+            percentMonthlyValue.Text = rec_percent_correct.ToString();
         }
 
         public void recordResult(bool correctInput)
