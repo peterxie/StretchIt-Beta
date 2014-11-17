@@ -70,10 +70,11 @@
             // 
             this.pushLabel.AutoSize = true;
             this.pushLabel.BackColor = System.Drawing.Color.Transparent;
+            this.pushLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pushLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pushLabel.Location = new System.Drawing.Point(223, 137);
+            this.pushLabel.Location = new System.Drawing.Point(223, 132);
             this.pushLabel.Name = "pushLabel";
-            this.pushLabel.Size = new System.Drawing.Size(31, 13);
+            this.pushLabel.Size = new System.Drawing.Size(47, 18);
             this.pushLabel.TabIndex = 4;
             this.pushLabel.Text = "Push";
             // 
@@ -81,10 +82,11 @@
             // 
             this.pullLabel.AutoSize = true;
             this.pullLabel.BackColor = System.Drawing.Color.Transparent;
+            this.pullLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pullLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pullLabel.Location = new System.Drawing.Point(223, 163);
+            this.pullLabel.Location = new System.Drawing.Point(223, 158);
             this.pullLabel.Name = "pullLabel";
-            this.pullLabel.Size = new System.Drawing.Size(24, 13);
+            this.pullLabel.Size = new System.Drawing.Size(38, 18);
             this.pullLabel.TabIndex = 6;
             this.pullLabel.Text = "Pull";
             // 
@@ -100,10 +102,11 @@
             // 
             this.swipeLabel.AutoSize = true;
             this.swipeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.swipeLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.swipeLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.swipeLabel.Location = new System.Drawing.Point(223, 189);
+            this.swipeLabel.Location = new System.Drawing.Point(223, 184);
             this.swipeLabel.Name = "swipeLabel";
-            this.swipeLabel.Size = new System.Drawing.Size(36, 13);
+            this.swipeLabel.Size = new System.Drawing.Size(56, 18);
             this.swipeLabel.TabIndex = 8;
             this.swipeLabel.Text = "Swipe";
             // 
@@ -119,10 +122,11 @@
             // 
             this.pushHardLabel.AutoSize = true;
             this.pushHardLabel.BackColor = System.Drawing.Color.Transparent;
+            this.pushHardLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pushHardLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pushHardLabel.Location = new System.Drawing.Point(223, 267);
+            this.pushHardLabel.Location = new System.Drawing.Point(223, 262);
             this.pushHardLabel.Name = "pushHardLabel";
-            this.pushHardLabel.Size = new System.Drawing.Size(57, 13);
+            this.pushHardLabel.Size = new System.Drawing.Size(91, 18);
             this.pushHardLabel.TabIndex = 14;
             this.pushHardLabel.Text = "Push Hard";
             // 
@@ -138,10 +142,11 @@
             // 
             this.fistBumpLabel.AutoSize = true;
             this.fistBumpLabel.BackColor = System.Drawing.Color.Transparent;
+            this.fistBumpLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fistBumpLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.fistBumpLabel.Location = new System.Drawing.Point(223, 241);
+            this.fistBumpLabel.Location = new System.Drawing.Point(223, 236);
             this.fistBumpLabel.Name = "fistBumpLabel";
-            this.fistBumpLabel.Size = new System.Drawing.Size(53, 13);
+            this.fistBumpLabel.Size = new System.Drawing.Size(90, 18);
             this.fistBumpLabel.TabIndex = 12;
             this.fistBumpLabel.Text = "Fist Bump";
             // 
@@ -157,10 +162,11 @@
             // 
             this.highFiveLabel.AutoSize = true;
             this.highFiveLabel.BackColor = System.Drawing.Color.Transparent;
+            this.highFiveLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highFiveLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.highFiveLabel.Location = new System.Drawing.Point(223, 215);
+            this.highFiveLabel.Location = new System.Drawing.Point(223, 210);
             this.highFiveLabel.Name = "highFiveLabel";
-            this.highFiveLabel.Size = new System.Drawing.Size(52, 13);
+            this.highFiveLabel.Size = new System.Drawing.Size(84, 18);
             this.highFiveLabel.TabIndex = 10;
             this.highFiveLabel.Text = "High Five";
             // 
@@ -176,10 +182,11 @@
             // 
             this.pullHardLabel.AutoSize = true;
             this.pullHardLabel.BackColor = System.Drawing.Color.Transparent;
+            this.pullHardLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pullHardLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.pullHardLabel.Location = new System.Drawing.Point(223, 294);
+            this.pullHardLabel.Location = new System.Drawing.Point(223, 289);
             this.pullHardLabel.Name = "pullHardLabel";
-            this.pullHardLabel.Size = new System.Drawing.Size(50, 13);
+            this.pullHardLabel.Size = new System.Drawing.Size(82, 18);
             this.pullHardLabel.TabIndex = 16;
             this.pullHardLabel.Text = "Pull Hard";
             // 
@@ -235,7 +242,7 @@
             this.Controls.Add(this.pushLabel);
             this.Controls.Add(this.title);
             this.Name = "Settings";
-            this.Text = "Form1";
+            this.Text = "Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pullUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).EndInit();

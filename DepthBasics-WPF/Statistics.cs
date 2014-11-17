@@ -10,7 +10,7 @@ using System.IO;
 
 namespace StretchIt
 {
-    public partial class StatisticsForm : Form
+    public partial class Statistics_t : Form
     {
         private int all_longest_streak; //all-time
         private int all_number_executed_moves; //all-time number of executed moves
@@ -23,7 +23,7 @@ namespace StretchIt
         private int num_moves_correct_in_game; //number of moves correctly executed in current game
         private double rec_percent_correct; //percent moves correct in the current game
         
-        public StatisticsForm()
+        public Statistics_t()
         {
             InitializeComponent();
 

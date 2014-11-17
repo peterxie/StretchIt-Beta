@@ -1,13 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
 
 namespace StretchIt
 {
-    public sealed class MainMenu_t : MenuPage_t
+    public partial class MainMenu : Form
     {
-        public MainMenu_t()
-        { }
+        public MainMenu()
+        {
+            InitializeComponent();
+        }
 
-        public override void back()
+        private void playLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void statsLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void settingsLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void helpLabel_Click(object sender, EventArgs e)
         {
 
         }
