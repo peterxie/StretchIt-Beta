@@ -364,7 +364,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         private void captureButton_Click(object sender, RoutedEventArgs e)
         {
             this.kinect_t.resetReference();
-
+            this.kinect_t.clear();
             this.kinect_t.recordGesture(50);
             if (ref_frame != null)
             {
@@ -383,7 +383,6 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                 this.colorPixels,
                 this.colorBitmap.PixelWidth * sizeof(int),
                 0);
-
             return;
         }
     }
