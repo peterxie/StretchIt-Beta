@@ -1,4 +1,4 @@
-﻿namespace StretchIt
+﻿namespace Microsoft.Samples.Kinect.DepthBasics
 {
     partial class MainMenu
     {
@@ -40,8 +40,8 @@
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Action Jackson", 47.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.Transparent;
-            this.titleLabel.Location = new System.Drawing.Point(74, 39);
+            this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.titleLabel.Location = new System.Drawing.Point(83, 44);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(441, 65);
             this.titleLabel.TabIndex = 0;
@@ -53,11 +53,11 @@
             this.playLabel.BackColor = System.Drawing.Color.Transparent;
             this.playLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playLabel.Location = new System.Drawing.Point(234, 139);
+            this.playLabel.Location = new System.Drawing.Point(246, 144);
             this.playLabel.Name = "playLabel";
             this.playLabel.Size = new System.Drawing.Size(114, 38);
             this.playLabel.TabIndex = 1;
-            this.playLabel.Text = "PLAY";
+            this.playLabel.Text = "play";
             this.playLabel.Click += new System.EventHandler(this.playLabel_Click);
             // 
             // statsLabel
@@ -66,11 +66,11 @@
             this.statsLabel.BackColor = System.Drawing.Color.Transparent;
             this.statsLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statsLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.statsLabel.Location = new System.Drawing.Point(225, 198);
+            this.statsLabel.Location = new System.Drawing.Point(239, 202);
             this.statsLabel.Name = "statsLabel";
             this.statsLabel.Size = new System.Drawing.Size(131, 38);
             this.statsLabel.TabIndex = 2;
-            this.statsLabel.Text = "STATS";
+            this.statsLabel.Text = "stats";
             this.statsLabel.Click += new System.EventHandler(this.statsLabel_Click);
             // 
             // settingsLabel
@@ -79,11 +79,11 @@
             this.settingsLabel.BackColor = System.Drawing.Color.Transparent;
             this.settingsLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingsLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.settingsLabel.Location = new System.Drawing.Point(194, 258);
+            this.settingsLabel.Location = new System.Drawing.Point(208, 260);
             this.settingsLabel.Name = "settingsLabel";
             this.settingsLabel.Size = new System.Drawing.Size(201, 38);
             this.settingsLabel.TabIndex = 3;
-            this.settingsLabel.Text = "Settings";
+            this.settingsLabel.Text = "settings";
             this.settingsLabel.Click += new System.EventHandler(this.settingsLabel_Click);
             // 
             // helpLabel
@@ -92,11 +92,11 @@
             this.helpLabel.BackColor = System.Drawing.Color.Transparent;
             this.helpLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.helpLabel.Location = new System.Drawing.Point(242, 319);
+            this.helpLabel.Location = new System.Drawing.Point(248, 315);
             this.helpLabel.Name = "helpLabel";
             this.helpLabel.Size = new System.Drawing.Size(112, 38);
             this.helpLabel.TabIndex = 4;
-            this.helpLabel.Text = "Help";
+            this.helpLabel.Text = "help";
             this.helpLabel.Click += new System.EventHandler(this.helpLabel_Click);
             // 
             // MainMenu

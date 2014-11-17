@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace StretchIt
+namespace Microsoft.Samples.Kinect.DepthBasics
 {
     public partial class MainMenu : Form
     {
