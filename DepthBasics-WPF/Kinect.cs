@@ -17,12 +17,9 @@ namespace StretchIt
 
     public class Kinect_t
     {
-        /// <summary>
-        /// Active Kinect sensor
-        /// </summary>
-        private KinectSensor sensor;
+        private KinectSensor    sensor;         //Active Kinect sensor
 
-        private Frame_t input;
+        private Frame_t         input;          //internal frame object    
 
         public Kinect_t()
         {
@@ -140,6 +137,11 @@ namespace StretchIt
         public KinectSensor getSensor()
         {
             return this.sensor;
+        }
+
+        public void clear()
+        {
+            this.input.reset();
         }
     }
 }
