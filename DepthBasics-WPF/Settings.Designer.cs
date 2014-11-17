@@ -1,6 +1,6 @@
 ﻿namespace StretchIt
 {
-    partial class Settings
+    partial class Settings_t
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings_t));
             this.title = new System.Windows.Forms.Label();
             this.pushLabel = new System.Windows.Forms.Label();
             this.pullLabel = new System.Windows.Forms.Label();

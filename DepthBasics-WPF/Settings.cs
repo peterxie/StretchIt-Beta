@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace StretchIt
 {
-    public partial class Settings : Form
+    public partial class Settings_t : Form
     {
         private List<string> selected_gestures;
         private Dictionary<string, int> configuration;
         private string path;
 
-        public Settings()
+        public Settings_t()
         {
             InitializeComponent();
 
