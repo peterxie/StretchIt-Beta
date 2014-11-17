@@ -81,6 +81,11 @@ namespace StretchIt
             }
         }
 
+        public List<string> getGestures()
+        {
+            return selected_gestures;
+        }
+
         private void save()
         {
             using(StreamWriter sw = new StreamWriter(path))
