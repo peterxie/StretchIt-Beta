@@ -12,8 +12,6 @@ namespace StretchIt
 {
     public partial class StatisticsForm : Form
     {
-        private string path;
-
         private int all_longest_streak; //all-time
         private int all_number_executed_moves; //all-time number of executed moves
         private int all_number_correct_moves; //all-time number of correct executed moves
@@ -28,7 +26,6 @@ namespace StretchIt
         public StatisticsForm()
         {
             InitializeComponent();
-            path = "statistics.txt";
 
             loadStatistics();
 
@@ -61,7 +58,7 @@ namespace StretchIt
         {
             try
             {
-                using(StreamReader file = new StreamReader(path))
+                using(StreamReader file = new StreamReader(GlobalVar.STATS_PATH_C))
                 {
                     all_longest_streak = int.Parse(file.ReadLine());
                     all_percent_correct = double.Parse(file.ReadLine());
@@ -88,7 +85,7 @@ namespace StretchIt
         {
             all_percent_correct = (all_number_correct_moves / all_number_executed_moves);
             
-            StreamWriter file = new StreamWriter(path);
+            StreamWriter file = new StreamWriter(GlobalVar.STATS_PATH_C);
             file.WriteLine(all_longest_streak);
             file.WriteLine(all_percent_correct);
             file.WriteLine(rec_longest_streak);

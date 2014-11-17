@@ -13,6 +13,8 @@ namespace StretchIt
         public static int NUM_FRAMES_RECORD_C = 100;
         public static Frame_t GLOBAL_KINECT_FRAME = new Frame_t(NUM_PIXELS_C);
         public static Kinect_t KINECT = new Kinect_t();
+
+        public static string STATS_PATH_C = "statistics.txt";
     }
 
     public enum Gesture_rc_e
