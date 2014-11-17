@@ -1,6 +1,6 @@
 ﻿namespace StretchIt
 {
-    partial class StatisticsForm
+    partial class Statistics_t
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatisticsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Statistics_t));
             this.StatisticsLabel = new System.Windows.Forms.Label();
             this.streakAllTimeLabel = new System.Windows.Forms.Label();
             this.streakMonthlyLabel = new System.Windows.Forms.Label();
