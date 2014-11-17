@@ -46,16 +46,20 @@ namespace StretchIt
             StreamReader file = new StreamReader(path);
             all_longest_streak = int.Parse(file.ReadLine());
             all_percent_correct = double.Parse(file.ReadLine());
+            all_number_executed_moves = int.Parse(file.ReadLine());
+            all_number_correct_moves = int.Parse(file.ReadLine());
             rec_longest_streak = int.Parse(file.ReadLine());
             rec_percent_correct = double.Parse(file.ReadLine());
         }
 
         public void saveStatistics()
         {
-            all_percent_correct = (all_number_correct_moves / all_number_executed_moves);
+            all_percent_correct = (all_number_correct_moves / all_number_executed_moves) * 100;
             StreamWriter file = new StreamWriter(path);
             file.WriteLine(all_longest_streak);
             file.WriteLine(all_percent_correct);
+            file.WriteLine(all_number_executed_moves);
+            file.WriteLine(all_number_correct_moves);
             file.WriteLine(rec_longest_streak);
             file.WriteLine(rec_percent_correct);
         }
