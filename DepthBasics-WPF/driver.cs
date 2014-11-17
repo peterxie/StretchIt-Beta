@@ -85,7 +85,7 @@ namespace StretchIt
         private Gesture_t select_next_gesture()
         {
             Random r = new Random();
-            int selected_index = r.Next(settings.getGestures().Length);
+            int selected_index = r.Next(settings.getGestures().Count);
             return settings.getGestures()[selected_index];
         }
     }

@@ -24,7 +24,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         /// <summary>
         /// Active Kinect sensor
         /// </summary>
-        private KinectSensor sensor;
+       // private KinectSensor sensor;
 
         /// <summary>
         /// Bitmap that will hold color information
@@ -44,6 +44,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
       //  public bool kinect_record;
         public Kinect_t kinect_t;
 
+        private Frame_t ref_frame;
 
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
@@ -298,6 +299,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         /// <param name="e">event arguments</param>
         private void ButtonScreenshotClick(object sender, RoutedEventArgs e)
         {
+            this.ref_frame = new Frame_t(this.kinect_t.getFrame());
             /*if (null == this.kinect_t.getSensor())
             {
                 this.statusBarText.Text = Properties.Resources.ConnectDeviceFirst;
@@ -305,7 +307,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             }*/
 
             // create a png bitmap encoder which knows how to save a .png file
-            BitmapEncoder encoder = new PngBitmapEncoder();
+            /*BitmapEncoder encoder = new PngBitmapEncoder();
 
             // create frame from the writable bitmap and add to encoder
             encoder.Frames.Add(BitmapFrame.Create(this.colorBitmap));
@@ -329,7 +331,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             catch (IOException)
             {
                 this.statusBarText.Text = string.Format(CultureInfo.InvariantCulture, "{0} {1}", Properties.Resources.ScreenshotWriteFailed, path);
-            }
+            }*/
         }
 
         /// <summary>
@@ -364,6 +366,17 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             this.kinect_t.resetReference();
 
             this.kinect_t.recordGesture(50);
+            if (ref_frame != null)
+            {
+                Gesture_rc_e output = this.ref_frame.computeDeviation(this.kinect_t.getFrame());
+                switch (output)
+                {
+                    case Gesture_rc_e.Correct: this.textBox1.Text = "Correct!"; break;
+                    case Gesture_rc_e.Incorrect: this.textBox1.Text = "Incorrect!"; break;
+                    case Gesture_rc_e.No_Input: this.textBox1.Text = "No Input!"; break;
+                    default: break;
+                }
+            }
             makeColor();
             this.colorBitmap.WritePixels(
                 new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight),

@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
 using System.IO;
 
-namespace StretchIt
+namespace Microsoft.Samples.Kinect.DepthBasics
 {
-    public class Statistics_t : MenuPage_t
+    public partial class StatisticsForm : Form
     {
         private string path;
 
@@ -17,11 +24,19 @@ namespace StretchIt
         private int num_moves_game; //number of moves executed in the current game
         private int num_moves_correct_in_game; //number of moves correctly executed in current game
         private double rec_percent_correct; //percent moves correct in the current game
-
-        public override void back()
+        
+        public StatisticsForm()
         {
+            InitializeComponent();
+            path = "statistics.txt";
 
+            loadStatistics();
+
+            streakAllTimeValue.Text = all_longest_streak.ToString();
+            percentAllTimeValue.Text = all_percent_correct.ToString();
+            //Monthly??
         }
+
         public void recordResult(bool correctInput)
         {
             ++num_moves_game;
@@ -43,25 +58,46 @@ namespace StretchIt
 
         public void loadStatistics()
         {
-            StreamReader file = new StreamReader(path);
-            all_longest_streak = int.Parse(file.ReadLine());
-            all_percent_correct = double.Parse(file.ReadLine());
-            all_number_executed_moves = int.Parse(file.ReadLine());
-            all_number_correct_moves = int.Parse(file.ReadLine());
-            rec_longest_streak = int.Parse(file.ReadLine());
-            rec_percent_correct = double.Parse(file.ReadLine());
+            try
+            {
+                using(StreamReader file = new StreamReader(path))
+                {
+                    all_longest_streak = int.Parse(file.ReadLine());
+                    all_percent_correct = double.Parse(file.ReadLine());
+                    rec_longest_streak = int.Parse(file.ReadLine());
+                    rec_percent_correct = double.Parse(file.ReadLine());
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Exception caught in loadStatistics: {0}", e);
+                useDefaults();
+            }
+        }
+
+        private void useDefaults()
+        {
+            all_longest_streak = 0;
+            all_percent_correct = 0;
+            rec_longest_streak = 0;
+            rec_percent_correct = 0;
         }
 
         public void saveStatistics()
         {
-            all_percent_correct = (all_number_correct_moves / all_number_executed_moves) * 100;
+            all_percent_correct = (all_number_correct_moves / all_number_executed_moves);
+            
             StreamWriter file = new StreamWriter(path);
             file.WriteLine(all_longest_streak);
             file.WriteLine(all_percent_correct);
-            file.WriteLine(all_number_executed_moves);
-            file.WriteLine(all_number_correct_moves);
             file.WriteLine(rec_longest_streak);
             file.WriteLine(rec_percent_correct);
+            file.Close();
+        }
+
+        private void backLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

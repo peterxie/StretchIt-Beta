@@ -64,18 +64,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="driver.cs" />
+    <Compile Include="GlobalVar.cs" />
+    <Compile Include="Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kinect.cs" />
-    <Compile Include="obj\Debug\App.g.cs" />
-    <Compile Include="obj\Debug\App.g.i.cs" />
-    <Compile Include="obj\Debug\DepthBasics-WPF_Content.g.i.cs" />
-    <Compile Include="obj\Debug\MainWindow.g.cs" />
-    <Compile Include="obj\Debug\MainWindow.g.i.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="Settings_temp.cs" />
     <Compile Include="Statistics.cs" />
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="StatisticsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatisticsForm.Designer.cs">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,7 +106,7 @@
       <DependentUpon>DisplayWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Gesture.cs" />
-    <Compile Include="Help.cs" />
+    <Compile Include="Help_old.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -117,21 +131,21 @@
     <EmbeddedResource Include="DisplayWindow.resx">
       <DependentUpon>DisplayWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\DepthBasics-WPF.g.resources" />
     <EmbeddedResource Include="obj\Debug\Microsoft.Samples.Kinect.DepthBasics.Properties.Resources.resources" />
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="bin\Debug\DepthBasics-WPF.vshost.exe.manifest" />
-    <None Include="obj\Debug\App.baml" />
-    <None Include="obj\Debug\DepthBasics-WPF.csproj.GenerateResource.Cache" />
-    <None Include="obj\Debug\DepthBasics-WPF.csprojResolveAssemblyReference.cache" />
-    <None Include="obj\Debug\DepthBasics-WPF_MarkupCompile.cache" />
-    <None Include="obj\Debug\DepthBasics-WPF_MarkupCompile.i.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\MainWindow.baml" />
+    <EmbeddedResource Include="StatisticsForm.resx">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -150,17 +164,7 @@
     <Resource Include="Images\UncheckedNormal.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="verne.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Block M.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="audio.wav" />
-    <Content Include="audio2.wav" />
-    <Content Include="bin\Debug\DepthBasics-WPF.vshost.exe" />
-    <Resource Include="obj\Debug\DepthBasics-WPF.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <None Include="Images\chalkboard.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
