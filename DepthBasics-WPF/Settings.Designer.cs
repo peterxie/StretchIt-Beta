@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.title = new System.Windows.Forms.Label();
-            this.Back = new System.Windows.Forms.Button();
             this.pushLabel = new System.Windows.Forms.Label();
             this.pullLabel = new System.Windows.Forms.Label();
             this.pullUpDown = new System.Windows.Forms.NumericUpDown();
@@ -45,6 +44,7 @@
             this.pullHardLabel = new System.Windows.Forms.Label();
             this.pullHardUpDown = new System.Windows.Forms.NumericUpDown();
             this.pushUpDown = new System.Windows.Forms.NumericUpDown();
+            this.backLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pullUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pushHardUpDown)).BeginInit();
@@ -65,16 +65,6 @@
             this.title.Size = new System.Drawing.Size(348, 65);
             this.title.TabIndex = 0;
             this.title.Text = "Settings";
-            // 
-            // Back
-            // 
-            this.Back.Location = new System.Drawing.Point(12, 364);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(75, 23);
-            this.Back.TabIndex = 2;
-            this.Back.Text = "Back";
-            this.Back.UseVisualStyleBackColor = true;
-            this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
             // pushLabel
             // 
@@ -209,12 +199,26 @@
             this.pushUpDown.TabIndex = 17;
             this.pushUpDown.ValueChanged += new System.EventHandler(this.pushUpDown_ValueChanged);
             // 
+            // backLabel
+            // 
+            this.backLabel.AutoSize = true;
+            this.backLabel.BackColor = System.Drawing.Color.Transparent;
+            this.backLabel.Font = new System.Drawing.Font("Action Jackson", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backLabel.ForeColor = System.Drawing.Color.White;
+            this.backLabel.Location = new System.Drawing.Point(13, 355);
+            this.backLabel.Name = "backLabel";
+            this.backLabel.Size = new System.Drawing.Size(96, 32);
+            this.backLabel.TabIndex = 18;
+            this.backLabel.Text = "Back";
+            this.backLabel.Click += new System.EventHandler(this.backLabel_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(599, 399);
+            this.Controls.Add(this.backLabel);
             this.Controls.Add(this.pushUpDown);
             this.Controls.Add(this.pullHardLabel);
             this.Controls.Add(this.pullHardUpDown);
@@ -229,7 +233,6 @@
             this.Controls.Add(this.pullLabel);
             this.Controls.Add(this.pullUpDown);
             this.Controls.Add(this.pushLabel);
-            this.Controls.Add(this.Back);
             this.Controls.Add(this.title);
             this.Name = "Settings";
             this.Text = "Form1";
@@ -249,7 +252,6 @@
         #endregion
 
         private System.Windows.Forms.Label title;
-        private System.Windows.Forms.Button Back;
         private System.Windows.Forms.Label pushLabel;
         private System.Windows.Forms.Label pullLabel;
         private System.Windows.Forms.NumericUpDown pullUpDown;
@@ -264,5 +266,6 @@
         private System.Windows.Forms.Label pullHardLabel;
         private System.Windows.Forms.NumericUpDown pullHardUpDown;
         private System.Windows.Forms.NumericUpDown pushUpDown;
+        private System.Windows.Forms.Label backLabel;
     }
 }

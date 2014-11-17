@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatisticsForm));
-            this.Back = new System.Windows.Forms.Button();
             this.StatisticsLabel = new System.Windows.Forms.Label();
             this.streakAllTimeLabel = new System.Windows.Forms.Label();
             this.streakMonthlyLabel = new System.Windows.Forms.Label();
@@ -39,17 +38,8 @@
             this.streakMonthlyValue = new System.Windows.Forms.Label();
             this.percentAllTimeValue = new System.Windows.Forms.Label();
             this.percentMonthlyValue = new System.Windows.Forms.Label();
+            this.backLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // Back
-            // 
-            this.Back.Location = new System.Drawing.Point(12, 364);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(75, 23);
-            this.Back.TabIndex = 0;
-            this.Back.Text = "Back";
-            this.Back.UseVisualStyleBackColor = true;
-            this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
             // StatisticsLabel
             // 
@@ -159,12 +149,26 @@
             this.percentMonthlyValue.TabIndex = 9;
             this.percentMonthlyValue.Text = "0";
             // 
+            // backLabel
+            // 
+            this.backLabel.AutoSize = true;
+            this.backLabel.BackColor = System.Drawing.Color.Transparent;
+            this.backLabel.Font = new System.Drawing.Font("Action Jackson", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backLabel.ForeColor = System.Drawing.Color.White;
+            this.backLabel.Location = new System.Drawing.Point(13, 355);
+            this.backLabel.Name = "backLabel";
+            this.backLabel.Size = new System.Drawing.Size(96, 32);
+            this.backLabel.TabIndex = 10;
+            this.backLabel.Text = "Back";
+            this.backLabel.Click += new System.EventHandler(this.backLabel_Click);
+            // 
             // StatisticsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(599, 399);
+            this.Controls.Add(this.backLabel);
             this.Controls.Add(this.percentMonthlyValue);
             this.Controls.Add(this.percentAllTimeValue);
             this.Controls.Add(this.streakMonthlyValue);
@@ -174,7 +178,6 @@
             this.Controls.Add(this.streakMonthlyLabel);
             this.Controls.Add(this.streakAllTimeLabel);
             this.Controls.Add(this.StatisticsLabel);
-            this.Controls.Add(this.Back);
             this.Name = "StatisticsForm";
             this.Text = "Statistics";
             this.ResumeLayout(false);
@@ -184,7 +187,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Back;
         private System.Windows.Forms.Label StatisticsLabel;
         private System.Windows.Forms.Label streakAllTimeLabel;
         private System.Windows.Forms.Label streakMonthlyLabel;
@@ -194,5 +196,6 @@
         private System.Windows.Forms.Label streakMonthlyValue;
         private System.Windows.Forms.Label percentAllTimeValue;
         private System.Windows.Forms.Label percentMonthlyValue;
+        private System.Windows.Forms.Label backLabel;
     }
 }

@@ -14,6 +14,14 @@ namespace Microsoft.Samples.Kinect.DepthBasics
         public Help()
         {
             InitializeComponent();
+            //this.HelpTextBox.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            HelpTextBox.BackColor = System.Drawing.Color.Transparent;
+            HelpTextBox.Text = "This is the help text!";
+        }
+
+        private void backLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

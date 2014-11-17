@@ -81,12 +81,6 @@ namespace StretchIt
             }
         }
 
-        private void Back_Click(object sender, EventArgs e)
-        {
-            save();
-            this.Visible = false;
-        }
-
         private void save()
         {
             using(StreamWriter sw = new StreamWriter(path))
@@ -140,6 +134,12 @@ namespace StretchIt
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             save();
+        }
+
+        private void backLabel_Click(object sender, EventArgs e)
+        {
+            save();
+            this.Visible = false;
         }
         /******************end Numeric UpDowns **************************/
     }
