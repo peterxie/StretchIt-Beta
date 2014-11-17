@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
-namespace Microsoft.Samples.Kinect.DepthBasics
+namespace StretchIt
 {
     public partial class StatisticsForm : Form
     {
@@ -98,7 +98,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
         private void backLabel_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
         }
     }
 }

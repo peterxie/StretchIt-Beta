@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Samples.Kinect.DepthBasics
+﻿namespace StretchIt
 {
     partial class Help
     {

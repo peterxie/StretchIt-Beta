@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Microsoft.Samples.Kinect.DepthBasics
+namespace StretchIt
 {
     public partial class Help : Form
     {
@@ -21,7 +21,7 @@ namespace Microsoft.Samples.Kinect.DepthBasics
 
         private void backLabel_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
         }
     }
 }
