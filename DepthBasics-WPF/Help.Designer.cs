@@ -1,6 +1,6 @@
 ﻿namespace StretchIt
 {
-    partial class Help
+    partial class Help_t
     {
         /// <summary>
         /// Required designer variable.

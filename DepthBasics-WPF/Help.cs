@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace StretchIt
 {
-    public partial class Help : Form
+    public partial class Help_t : Form
     {
-        public Help()
+        public Help_t()
         {
             InitializeComponent();
         }
