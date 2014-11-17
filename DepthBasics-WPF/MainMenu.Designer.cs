@@ -1,6 +1,6 @@
-﻿namespace Microsoft.Samples.Kinect.DepthBasics
+﻿namespace StretchIt
 {
-    partial class MainMenu
+    partial class MainMenu_t
     {
         /// <summary>
         /// Required designer variable.
