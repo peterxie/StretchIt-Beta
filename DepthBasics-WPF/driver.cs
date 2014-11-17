@@ -53,6 +53,7 @@ namespace StretchIt
                         break;
                 }
             }
+            statistics.saveStatistics();
         }
         private void process_menu()
         {
@@ -68,8 +69,10 @@ namespace StretchIt
                 switch (state_gesture)
                 {
                     case Gesture_rc_e.Correct:
+                        statistics.recordResult(true);
                         break;
                     case Gesture_rc_e.Incorrect:
+                        statistics.recordResult(false);
                         break;
                     case Gesture_rc_e.Back_Button:
                         mode = Game_mode_e.Menu_Mode;
@@ -82,7 +85,7 @@ namespace StretchIt
         private Gesture_t select_next_gesture()
         {
             Random r = new Random();
-            int selected_index = r.Next(settings.getGestures().Length);
+            int selected_index = r.Next(settings.getGestures().Count);
             return settings.getGestures()[selected_index];
         }
     }
