@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace StretchIt
 {
@@ -9,6 +12,18 @@ namespace StretchIt
         Dictionary<string,Gesture_t> reference_gestures;
         Kinect_t kinect;
 
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            MainMenu_t m = new MainMenu_t();
+
+            GlobalVar.MAIN_MENU = m;
+
+            Application.Run(m);
+        }
+        
         public driver()
         {
             reference_gestures = new Dictionary<string,Gesture_t>();
