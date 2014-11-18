@@ -21,6 +21,8 @@ namespace StretchIt
             stats_menu = new Statistics_t();
             settings_menu = new Settings_t();
             help_menu = new Help_t();
+
+            this.Visible = true;
         }
 
         /* Accessor Properties */
