@@ -11,9 +11,6 @@ namespace StretchIt
         public static List<string> ALL_POSSIBLE_GESTURES_C = new List<string>();
         public static int NUM_PIXELS_C = 307200;
         public static int NUM_FRAMES_RECORD_C = 100;
-        public static Frame_t GLOBAL_KINECT_FRAME = new Frame_t(NUM_PIXELS_C);
-        public static Kinect_t KINECT = new Kinect_t();
-
         public static string STATS_PATH_C = "statistics.txt";
     }
 
