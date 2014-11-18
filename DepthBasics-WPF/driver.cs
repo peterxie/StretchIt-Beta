@@ -63,7 +63,7 @@ namespace StretchIt
             Gesture_rc_e state_gesture;
             while (mode != Game_mode_e.Menu_Mode)
             {
-                GlobalVar.KINECT.record_gesture(GlobalVar.NUM_FRAMES_RECORD_C);
+                GlobalVar.KINECT.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
                 Gesture_t nextGesture = select_next_gesture();
                 state_gesture = nextGesture.processGesture(GlobalVar.GLOBAL_KINECT_FRAME);
                 switch (state_gesture)
