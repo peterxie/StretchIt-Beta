@@ -96,6 +96,7 @@ namespace StretchIt
         private void backLabel_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+            GlobalVar.MAIN_MENU.Visible = true;
         }
     }
 }

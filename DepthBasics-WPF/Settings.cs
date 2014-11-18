@@ -145,6 +145,7 @@ namespace StretchIt
         {
             save();
             this.Visible = false;
+            GlobalVar.MAIN_MENU.Visible = true;
         }
         /******************end Numeric UpDowns **************************/
     }
