@@ -16,8 +16,12 @@ namespace StretchIt
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
-            Application.Run(new MainMenu_t());
+
+            MainMenu_t m = new MainMenu_t();
+
+            GlobalVar.MAIN_MENU = m;
+
+            Application.Run(m);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace StretchIt
         public static Game_mode_e MODE = Game_mode_e.Menu_Mode;
 
         //Maybe put this in a View class that has all of these. Then one global View instance
-        public static MainMenu_t MAIN_MENU = new MainMenu_t();
+        public static MainMenu_t MAIN_MENU;// = new MainMenu_t();
 
         public static string STATS_PATH_C = "statistics.txt";
     }
