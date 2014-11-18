@@ -21,9 +21,9 @@ namespace StretchIt
             MainMenu_t m = new MainMenu_t();
             GlobalVar.MAIN_MENU = m;
 
-            driver d = new driver();
-            Thread t = new Thread(d.run_system);
-            t.Start();
+            //driver d = new driver();
+            //Thread t = new Thread(d.run_system);
+            //t.Start();
 
             Application.Run(m);
         }
