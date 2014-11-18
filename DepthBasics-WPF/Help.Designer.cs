@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Help));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Help_t));
             this.Title = new System.Windows.Forms.Label();
             this.backLabel = new System.Windows.Forms.Label();
             this.helpText = new System.Windows.Forms.Label();
@@ -40,7 +40,7 @@
             this.Title.BackColor = System.Drawing.Color.Transparent;
             this.Title.Font = new System.Drawing.Font("Action Jackson", 47.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Title.ForeColor = System.Drawing.Color.White;
-            this.Title.Location = new System.Drawing.Point(203, 18);
+            this.Title.Location = new System.Drawing.Point(203, 36);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(193, 65);
             this.Title.TabIndex = 1;
@@ -64,14 +64,14 @@
             this.helpText.BackColor = System.Drawing.Color.Transparent;
             this.helpText.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpText.ForeColor = System.Drawing.Color.White;
-            this.helpText.Location = new System.Drawing.Point(54, 113);
+            this.helpText.Location = new System.Drawing.Point(54, 118);
             this.helpText.Name = "helpText";
             this.helpText.Size = new System.Drawing.Size(488, 217);
             this.helpText.TabIndex = 5;
             this.helpText.Text = "This is a user\'s manual! It explains the functionality of each of the menus and h" +
     "ow to play the game. This text will be altered before the beta release!";
             // 
-            // Help
+            // Help_t
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -80,8 +80,9 @@
             this.Controls.Add(this.helpText);
             this.Controls.Add(this.backLabel);
             this.Controls.Add(this.Title);
-            this.Name = "Help";
+            this.Name = "Help_t";
             this.Text = "Help";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Help_t_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

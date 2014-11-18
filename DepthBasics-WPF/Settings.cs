@@ -19,6 +19,7 @@ namespace StretchIt
         public Settings_t()
         {
             InitializeComponent();
+            this.Visible = false;
 
             selected_gestures = new List<string>();
             configuration = new Dictionary<string, int>();
@@ -136,17 +137,21 @@ namespace StretchIt
                 up_down.Value = 5;
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            save();
-        }
+        /******************end Numeric UpDowns **************************/
 
         private void backLabel_Click(object sender, EventArgs e)
         {
             save();
             this.Visible = false;
             GlobalVar.MAIN_MENU.Visible = true;
+            GlobalVar.MAIN_MENU.Activate();
         }
-        /******************end Numeric UpDowns **************************/
+
+        private void Settings_t_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            MessageBox.Show("You must exit via the Back button.");
+        }
+
     }
 }

@@ -162,7 +162,7 @@
             this.backLabel.Text = "Back";
             this.backLabel.Click += new System.EventHandler(this.backLabel_Click);
             // 
-            // StatisticsForm
+            // Statistics_t
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -178,8 +178,10 @@
             this.Controls.Add(this.streakMonthlyLabel);
             this.Controls.Add(this.streakAllTimeLabel);
             this.Controls.Add(this.StatisticsLabel);
-            this.Name = "StatisticsForm";
+            this.Name = "Statistics_t";
             this.Text = "Statistics";
+            this.Activated += new System.EventHandler(this.Statistics_t_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Statistics_t_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

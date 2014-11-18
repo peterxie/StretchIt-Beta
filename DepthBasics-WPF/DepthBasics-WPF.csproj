@@ -110,14 +110,12 @@
       <DependentUpon>DisplayWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Gesture.cs" />
-    <Compile Include="Help_old.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

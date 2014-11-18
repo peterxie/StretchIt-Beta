@@ -26,6 +26,7 @@ namespace StretchIt
         public Statistics_t()
         {
             InitializeComponent();
+            this.Visible = false;
 
             loadStatistics();
 
@@ -93,10 +94,25 @@ namespace StretchIt
             file.Close();
         }
 
+        /* Event Handling Functions */
+
         private void backLabel_Click(object sender, EventArgs e)
         {
             this.Visible = false;
             GlobalVar.MAIN_MENU.Visible = true;
+            GlobalVar.MAIN_MENU.Activate();
+        }
+
+        private void Statistics_t_Activated(object sender, EventArgs e)
+        {
+            loadStatistics();
+            this.Refresh();
+        }
+
+        private void Statistics_t_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            MessageBox.Show("You must exit via the Back button.");
         }
     }
 }

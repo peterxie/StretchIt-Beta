@@ -219,7 +219,7 @@
             this.backLabel.Text = "Back";
             this.backLabel.Click += new System.EventHandler(this.backLabel_Click);
             // 
-            // Settings
+            // Settings_t
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -241,9 +241,9 @@
             this.Controls.Add(this.pullUpDown);
             this.Controls.Add(this.pushLabel);
             this.Controls.Add(this.title);
-            this.Name = "Settings";
+            this.Name = "Settings_t";
             this.Text = "Settings";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_t_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pullUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pushHardUpDown)).EndInit();

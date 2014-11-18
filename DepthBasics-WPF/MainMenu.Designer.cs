@@ -99,7 +99,7 @@
             this.helpLabel.Text = "help";
             this.helpLabel.Click += new System.EventHandler(this.helpLabel_Click);
             // 
-            // MainMenu
+            // MainMenu_t
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -110,8 +110,9 @@
             this.Controls.Add(this.statsLabel);
             this.Controls.Add(this.playLabel);
             this.Controls.Add(this.titleLabel);
-            this.Name = "MainMenu";
+            this.Name = "MainMenu_t";
             this.Text = "Main Menu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_t_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
