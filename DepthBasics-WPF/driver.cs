@@ -8,15 +8,17 @@ namespace StretchIt
     {
         Game_mode_e mode;
         Dictionary<string,Gesture_t> reference_gestures;
-        Settings_t settings;
-        Statistics_t statistics;
+        Settings settings;
+        StatisticsForm statistics;
+        Kinect_t kinect;
 
         public driver()
         {
             mode = Game_mode_e.Menu_Mode;
             reference_gestures = new Dictionary<string,Gesture_t>();
-            settings = new Settings_t();
-            statistics = new Statistics_t();
+            settings = new Settings();
+            statistics = new StatisticsForm();
+            kinect = new Kinect_t();
             loadReferenceFrames();
             string[] filePaths = Directory.GetFiles(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C);
             for (int i = 0; i < filePaths.Length; ++i)
@@ -63,9 +65,9 @@ namespace StretchIt
             Gesture_rc_e state_gesture;
             while (mode != Game_mode_e.Menu_Mode)
             {
-                GlobalVar.KINECT.record_gesture(GlobalVar.NUM_FRAMES_RECORD_C);
+                kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
                 Gesture_t nextGesture = select_next_gesture();
-                state_gesture = nextGesture.processGesture(GlobalVar.GLOBAL_KINECT_FRAME);
+                state_gesture = nextGesture.processGesture(kinect.getFrame());
                 switch (state_gesture)
                 {
                     case Gesture_rc_e.Correct:
@@ -86,7 +88,7 @@ namespace StretchIt
         {
             Random r = new Random();
             int selected_index = r.Next(settings.getGestures().Count);
-            return settings.getGestures()[selected_index];
+            return reference_gestures[settings.getGestures()[selected_index]];
         }
     }
 }

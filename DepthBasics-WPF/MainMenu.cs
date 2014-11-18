@@ -23,17 +23,20 @@ namespace StretchIt
 
         private void statsLabel_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
+            GlobalVar.STATS_MENU.Visible = true;
         }
 
         private void settingsLabel_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
+            GlobalVar.SETTINGS_MENU.Visible = true;
         }
 
         private void helpLabel_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
+            GlobalVar.HELP_MENU.Visible = true;
         }
     }
 }

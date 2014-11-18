@@ -41,7 +41,7 @@
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Action Jackson", 47.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.titleLabel.Location = new System.Drawing.Point(83, 44);
+            this.titleLabel.Location = new System.Drawing.Point(84, 42);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(441, 65);
             this.titleLabel.TabIndex = 0;
@@ -53,7 +53,7 @@
             this.playLabel.BackColor = System.Drawing.Color.Transparent;
             this.playLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playLabel.Location = new System.Drawing.Point(246, 144);
+            this.playLabel.Location = new System.Drawing.Point(249, 142);
             this.playLabel.Name = "playLabel";
             this.playLabel.Size = new System.Drawing.Size(114, 38);
             this.playLabel.TabIndex = 1;
@@ -66,7 +66,7 @@
             this.statsLabel.BackColor = System.Drawing.Color.Transparent;
             this.statsLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statsLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.statsLabel.Location = new System.Drawing.Point(239, 202);
+            this.statsLabel.Location = new System.Drawing.Point(241, 195);
             this.statsLabel.Name = "statsLabel";
             this.statsLabel.Size = new System.Drawing.Size(131, 38);
             this.statsLabel.TabIndex = 2;
@@ -79,7 +79,7 @@
             this.settingsLabel.BackColor = System.Drawing.Color.Transparent;
             this.settingsLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingsLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.settingsLabel.Location = new System.Drawing.Point(208, 260);
+            this.settingsLabel.Location = new System.Drawing.Point(204, 250);
             this.settingsLabel.Name = "settingsLabel";
             this.settingsLabel.Size = new System.Drawing.Size(201, 38);
             this.settingsLabel.TabIndex = 3;
@@ -92,7 +92,7 @@
             this.helpLabel.BackColor = System.Drawing.Color.Transparent;
             this.helpLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.helpLabel.Location = new System.Drawing.Point(248, 315);
+            this.helpLabel.Location = new System.Drawing.Point(255, 303);
             this.helpLabel.Name = "helpLabel";
             this.helpLabel.Size = new System.Drawing.Size(112, 38);
             this.helpLabel.TabIndex = 4;

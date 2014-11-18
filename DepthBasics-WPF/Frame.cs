@@ -147,6 +147,11 @@ namespace StretchIt
         {
             back_frame = new short[frame.Length];
             frame.CopyTo(back_frame, 0);
+
+            for (int i = 0; i < frame.Length; ++i)
+            {
+                back_frame[i] = (short)(back_frame[i] - (short)default_frame[i]);
+            }
         }
 
         //accessor for the depth_pixels
@@ -194,7 +199,8 @@ namespace StretchIt
             for (int i = 0; i < num_pixels; ++i)
             {
                 input_gesture_error += Math.Abs(depth_pixels[i] - input_frame.depth_pixels[i]);
-                def_gesture_error += Math.Abs(default_frame[i] - input_frame.depth_pixels[i]);
+                //being close to the default_frame would mean input_frame has an array of close to 0
+                def_gesture_error += Math.Abs(input_frame.depth_pixels[i]);
                 back_gesture_error += Math.Abs(back_frame[i] - input_frame.depth_pixels[i]);
             }
 
