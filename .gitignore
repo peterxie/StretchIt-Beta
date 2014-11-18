@@ -1,7 +1,12 @@
 
-
 DepthBasics-WPF/obj/*
 DepthBasics-WPF/bin/*
 DepthBasics-WPF/DepthBasics-WPF.v*
 DepthBasics-WPF/DepthBasics-WPF.csproj
 DepthBasics-WPF/DepthBasics-WPF.csproj.user
+
+StretchIt/obj/*
+StretchIt/bin/*
+StretchIt/DepthBasics-WPF.v*
+StretchIt/DepthBasics-WPF.csproj
+StretchIt/DepthBasics-WPF.csproj.user
