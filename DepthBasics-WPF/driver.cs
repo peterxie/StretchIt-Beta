@@ -6,17 +6,13 @@ namespace StretchIt
 {
     public class driver
     {
-        Game_mode_e mode;
         Dictionary<string,Gesture_t> reference_gestures;
-        Settings_t settings;
-        Statistics_t statistics;
+        Kinect_t kinect;
 
         public driver()
         {
-            mode = Game_mode_e.Menu_Mode;
             reference_gestures = new Dictionary<string,Gesture_t>();
-            settings = new Settings_t();
-            statistics = new Statistics_t();
+            kinect = new Kinect_t();
             loadReferenceFrames();
             string[] filePaths = Directory.GetFiles(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C);
             for (int i = 0; i < filePaths.Length; ++i)
@@ -41,9 +37,9 @@ namespace StretchIt
         }
         public void run_system()
         {
-            while(mode != Game_mode_e.Exit_Game)
+            while(GlobalVar.MODE != Game_mode_e.Exit_Game)
             {
-                switch (mode)
+                switch (GlobalVar.MODE)
                 {
                     case Game_mode_e.Play:
                         play_game();
@@ -53,7 +49,7 @@ namespace StretchIt
                         break;
                 }
             }
-            statistics.saveStatistics();
+            GlobalVar.MAIN_MENU.Stats.saveStatistics();
         }
         private void process_menu()
         {
@@ -61,21 +57,21 @@ namespace StretchIt
         private void play_game()
         {
             Gesture_rc_e state_gesture;
-            while (mode != Game_mode_e.Menu_Mode)
+            while (GlobalVar.MODE != Game_mode_e.Menu_Mode)
             {
-                GlobalVar.KINECT.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
+                kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
                 Gesture_t nextGesture = select_next_gesture();
-                state_gesture = nextGesture.processGesture(GlobalVar.GLOBAL_KINECT_FRAME);
+                state_gesture = nextGesture.processGesture(kinect.getFrame());
                 switch (state_gesture)
                 {
                     case Gesture_rc_e.Correct:
-                        statistics.recordResult(true);
+                        GlobalVar.MAIN_MENU.Stats.recordResult(true);
                         break;
                     case Gesture_rc_e.Incorrect:
-                        statistics.recordResult(false);
+                        GlobalVar.MAIN_MENU.Stats.recordResult(false);
                         break;
                     case Gesture_rc_e.Back_Button:
-                        mode = Game_mode_e.Menu_Mode;
+                        GlobalVar.MODE = Game_mode_e.Menu_Mode;
                         break;
                     case Gesture_rc_e.No_Input:
                         break;
@@ -85,8 +81,8 @@ namespace StretchIt
         private Gesture_t select_next_gesture()
         {
             Random r = new Random();
-            int selected_index = r.Next(settings.getGestures().Count);
-            return GlobalVar.MAIN_MENU.Settings.getGestures()[selected_index];
+            int selected_index = r.Next(GlobalVar.MAIN_MENU.Settings.getGestures().Count);
+            return reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestures()[selected_index]];
         }
     }
 }
