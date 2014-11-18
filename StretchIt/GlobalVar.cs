@@ -20,8 +20,9 @@ namespace StretchIt
 
     public static class GlobalVar
     {
-        public static string REFERENCE_GESTURE_DIRECTORY_C = @"c:.\Reference_Gestures\";
-        public static string AV_DIRECTORY_C = @"c:.\AudioVideo\";
+        public static string REFERENCE_GESTURE_DIRECTORY_C = @"../../Gestures/";
+        public static string AUDIO_DIRECTORY_C = @"../../Audio/";
+        public static string IMAGE_DIRECTORY_C = @"../../Images/";
         public static List<string> ALL_POSSIBLE_GESTURES_C = new List<string>();
         public static int NUM_PIXELS_C = 307200;
         public static int NUM_FRAMES_RECORD_C = 100;
