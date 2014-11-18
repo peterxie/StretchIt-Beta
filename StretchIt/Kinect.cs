@@ -54,7 +54,7 @@ namespace StretchIt
                 }
 
                 this.sensor.DepthStream.Range = DepthRange.Near;
-
+                this.resetReference();
             }
 
         }
