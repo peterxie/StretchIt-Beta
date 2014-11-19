@@ -11,11 +11,17 @@ namespace StretchIt
 {
     public partial class Help_t : Form
     {
-        private string statistics_help_text = "The statistics screen allows " +
-            "you to track your all time score and see the difference " +
-        "between all of your scores and your current score.";
-        private string settings_help_text = "Settings help text";
-        private string howTo_help_text = "This is how to play";
+        private string statistics_help_text = "The Statistics screen allows " +
+            "you to track your best all time streak versus your most recent score. " +
+            "You can also similarly examine the percent of correct gestures.";
+        private string settings_help_text = "The Settings screen is where " +
+            "you may select the frequency that each gesture appears in the game. " +
+            "Setting a frequency of 0 disables the gesture. You can also record " +
+            "new gestures from this panel.";
+        private string howTo_help_text = "When PLAY is selected, the left side of" +
+            " the textile will depict a visual cue of the type of gesture. The " +
+            "zone where the textile should be manipulated will glow. After " + 
+            "interacting, the game will return feedback indicating correctness.";
         private bool is_nested = false;
 
         public Help_t()
@@ -78,7 +84,6 @@ namespace StretchIt
             headerLabel.Text = "How to play";
             helpText.Text = howTo_help_text;
             toggle_help_menu();
-
         }
 
 
