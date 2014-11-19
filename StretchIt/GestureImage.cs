@@ -20,16 +20,17 @@ namespace StretchIt
         private byte[] color_pixels;
         Frame_t frame;
 
-        public GestureImage()
+        public GestureImage(string fileName)
         {
             InitializeComponent();
 
             this.color_pixels = new byte[1228800];
-            this.color_bitmap = new WriteableBitmap(480, 640, 96.0, 96.0, PixelFormats.Bgr32, null);
-            Frame_t frame = new Frame_t(@"../../Gestures/gesture.txt");
+            this.color_bitmap = new WriteableBitmap(640, 480, 96.0, 96.0, PixelFormats.Bgr32, null);
+            frame = new Frame_t(fileName);
             makeColor();
             saveImage();
-            this.BackgroundImage = Image.FromFile(@"../../Gestures/gesture.txt");
+            this.BackgroundImage = Image.FromFile(@"../../GestureImages/gesture.png");
+            this.Visible = true;
         }
 
 
@@ -69,19 +70,38 @@ namespace StretchIt
 
         private void saveImage()
         {
+            this.color_bitmap.WritePixels(
+                new Int32Rect(0, 0, this.color_bitmap.PixelWidth, this.color_bitmap.PixelHeight),
+                this.color_pixels,
+                this.color_bitmap.PixelWidth * sizeof(int),
+                0);
+            
             // create a png bitmap encoder which knows how to save a .png file
             BitmapEncoder encoder = new PngBitmapEncoder();
 
             // create frame from the writable bitmap and add to encoder
             encoder.Frames.Add(BitmapFrame.Create(this.color_bitmap));
 
-            string path = @"../../Gestures/gesture.png";
+            string path = @"../../GestureImages/gesture.png";
 
             // write the new file to disk
             using (FileStream fs = new FileStream(path, FileMode.Create))
             {
                 encoder.Save(fs);
             }
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // GestureImage
+            // 
+            this.ClientSize = new System.Drawing.Size(624, 442);
+            this.Name = "GestureImage";
+            this.Text = "Gesture Image";
+            this.ResumeLayout(false);
+
         }
     }
 }

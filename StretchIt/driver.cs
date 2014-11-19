@@ -130,7 +130,7 @@ namespace StretchIt
             f.write(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt", gesture_name);
 
             //Append Settings file with new gesture and default frequency
-            /*StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
+            StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
             
             outFile.WriteLine(gesture_name);
             outFile.WriteLine(1);
@@ -138,7 +138,21 @@ namespace StretchIt
             outFile.Close();
             
             GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(gesture_name);
-            */
+
+            Thread t = new Thread(createGestureImage);
+            t.Start();
+
+            GlobalVar.MODE = Game_mode_e.Menu_Mode;
+        }
+
+        public void createGestureImage()
+        {
+            GestureImage g = new GestureImage(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + "gesture.txt");
+
+            System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
+            s.Start();
+
+            while (s.ElapsedMilliseconds < 5000) { }
         }
     }
 }

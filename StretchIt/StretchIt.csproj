@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +46,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AV_Output.cs" />
@@ -57,6 +59,9 @@
     <Compile Include="driver.cs" />
     <Compile Include="Frame.cs" />
     <Compile Include="Gesture.cs" />
+    <Compile Include="GestureImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GlobalVar.cs" />
     <Compile Include="Help.cs">
       <SubType>Form</SubType>
@@ -86,6 +91,9 @@
     </Compile>
     <EmbeddedResource Include="DisplayWindow.resx">
       <DependentUpon>DisplayWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestureImage.resx">
+      <DependentUpon>GestureImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Help.resx">
       <DependentUpon>Help.cs</DependentUpon>
