@@ -64,18 +64,22 @@ namespace StretchIt
 
         public void run_system()
         {
-            while(GlobalVar.MODE != Game_mode_e.Exit_Game)
-            {
-                switch (GlobalVar.MODE)
+            while(GlobalVar.MODE != Game_mode_e.Exit_Game) {
+                lock (GlobalVar.key)
                 {
-                    case Game_mode_e.Play:
-                        play_game();
-                        break;
+                    while (GlobalVar.MODE != Game_mode_e.Play || GlobalVar.MODE != Game_mode_e.Record)
+                        Monitor.Wait(GlobalVar.key);
+                    switch (GlobalVar.MODE)
+                    {
+                        case Game_mode_e.Play:
+                            play_game();
+                            break;
 
-                    case Game_mode_e.Record:
-                        createGesture();
-                        break;
-                    //default: maybe put a pause here
+                        case Game_mode_e.Record:
+                            createGesture();
+                            break;
+                        //default: maybe put a pause here
+                    }
                 }
             }
             

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace StretchIt
 {
@@ -141,7 +142,11 @@ namespace StretchIt
         private void retrieveInput_Click(object sender, EventArgs e)
         {
             record_gesture_name = this.inputText.Text;
-            GlobalVar.MODE = Game_mode_e.Record;
+            lock (GlobalVar.key)
+            {
+                GlobalVar.MODE = Game_mode_e.Record;
+                Monitor.Pulse(GlobalVar.key);
+            }
             backLabel_Click(sender, e);
         }
 
