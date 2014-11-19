@@ -111,5 +111,14 @@ namespace StretchIt
             
             return reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestures()[selected_index]];
         }
+
+        private void createGesture(string gesture_name)
+        {
+            kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
+
+            Frame_t f = kinect.getFrame();
+
+            f.write(gesture_name + ".txt", gesture_name);
+        }
     }
 }
