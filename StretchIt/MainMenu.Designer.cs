@@ -34,6 +34,7 @@
             this.statsLabel = new System.Windows.Forms.Label();
             this.settingsLabel = new System.Windows.Forms.Label();
             this.helpLabel = new System.Windows.Forms.Label();
+            this.exitLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -42,7 +43,7 @@
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Action Jackson", 47.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.titleLabel.Location = new System.Drawing.Point(84, 42);
+            this.titleLabel.Location = new System.Drawing.Point(84, 38);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(441, 65);
             this.titleLabel.TabIndex = 0;
@@ -54,7 +55,7 @@
             this.playLabel.BackColor = System.Drawing.Color.Transparent;
             this.playLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playLabel.Location = new System.Drawing.Point(249, 142);
+            this.playLabel.Location = new System.Drawing.Point(249, 125);
             this.playLabel.Name = "playLabel";
             this.playLabel.Size = new System.Drawing.Size(114, 38);
             this.playLabel.TabIndex = 1;
@@ -67,7 +68,7 @@
             this.statsLabel.BackColor = System.Drawing.Color.Transparent;
             this.statsLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statsLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.statsLabel.Location = new System.Drawing.Point(241, 195);
+            this.statsLabel.Location = new System.Drawing.Point(241, 178);
             this.statsLabel.Name = "statsLabel";
             this.statsLabel.Size = new System.Drawing.Size(131, 38);
             this.statsLabel.TabIndex = 2;
@@ -80,7 +81,7 @@
             this.settingsLabel.BackColor = System.Drawing.Color.Transparent;
             this.settingsLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingsLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.settingsLabel.Location = new System.Drawing.Point(204, 250);
+            this.settingsLabel.Location = new System.Drawing.Point(204, 233);
             this.settingsLabel.Name = "settingsLabel";
             this.settingsLabel.Size = new System.Drawing.Size(201, 38);
             this.settingsLabel.TabIndex = 3;
@@ -93,12 +94,25 @@
             this.helpLabel.BackColor = System.Drawing.Color.Transparent;
             this.helpLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.helpLabel.Location = new System.Drawing.Point(255, 303);
+            this.helpLabel.Location = new System.Drawing.Point(255, 286);
             this.helpLabel.Name = "helpLabel";
             this.helpLabel.Size = new System.Drawing.Size(112, 38);
             this.helpLabel.TabIndex = 4;
             this.helpLabel.Text = "help";
             this.helpLabel.Click += new System.EventHandler(this.helpLabel_Click);
+            // 
+            // exitLabel
+            // 
+            this.exitLabel.AutoSize = true;
+            this.exitLabel.BackColor = System.Drawing.Color.Transparent;
+            this.exitLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.exitLabel.Location = new System.Drawing.Point(255, 337);
+            this.exitLabel.Name = "exitLabel";
+            this.exitLabel.Size = new System.Drawing.Size(115, 38);
+            this.exitLabel.TabIndex = 5;
+            this.exitLabel.Text = "exit";
+            this.exitLabel.Click += new System.EventHandler(this.exitLabel_Click);
             // 
             // MainMenu_t
             // 
@@ -106,6 +120,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(599, 399);
+            this.Controls.Add(this.exitLabel);
             this.Controls.Add(this.helpLabel);
             this.Controls.Add(this.settingsLabel);
             this.Controls.Add(this.statsLabel);
@@ -126,5 +141,6 @@
         private System.Windows.Forms.Label statsLabel;
         private System.Windows.Forms.Label settingsLabel;
         private System.Windows.Forms.Label helpLabel;
+        private System.Windows.Forms.Label exitLabel;
     }
 }
