@@ -84,8 +84,16 @@ namespace StretchIt
 
         public void saveStatistics()
         {
-            all_percent_correct = (all_number_correct_moves / all_number_executed_moves);
-            
+            if (all_number_executed_moves == 0)
+            {
+                all_percent_correct = 0;
+            }
+
+            else
+            {
+                all_percent_correct = (all_number_correct_moves / all_number_executed_moves);
+            }
+
             StreamWriter file = new StreamWriter(GlobalVar.STATS_PATH_C);
             file.WriteLine(all_longest_streak);
             file.WriteLine(all_percent_correct);

@@ -48,6 +48,7 @@
             this.recordLabel = new System.Windows.Forms.Label();
             this.inputText = new System.Windows.Forms.TextBox();
             this.retrieveInput = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pullUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pushHardUpDown)).BeginInit();
@@ -288,6 +289,11 @@
             this.retrieveInput.UseVisualStyleBackColor = true;
             this.retrieveInput.Click += new System.EventHandler(this.retrieveInput_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.bmp;*.png;*.gif";
+            // 
             // Settings_t
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,5 +356,6 @@
         private System.Windows.Forms.Label recordLabel;
         private System.Windows.Forms.TextBox inputText;
         private System.Windows.Forms.Button retrieveInput;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

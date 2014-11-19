@@ -10,3 +10,4 @@ StretchIt/bin/*
 StretchIt/DepthBasics-WPF.v*
 StretchIt/DepthBasics-WPF.csproj
 StretchIt/DepthBasics-WPF.csproj.user
+StretchIt/*.suo

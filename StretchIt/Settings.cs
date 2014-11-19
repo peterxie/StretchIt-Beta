@@ -16,6 +16,8 @@ namespace StretchIt
         private List<string> selected_gestures;
         private Dictionary<string, int> configuration;
         public string record_gesture_name { get; set; }
+        public string record_gesture_image { get; set; }
+        //public string record_gesture_audio { get; set; }
 
         public Settings_t()
         {
@@ -142,12 +144,21 @@ namespace StretchIt
         private void retrieveInput_Click(object sender, EventArgs e)
         {
             record_gesture_name = this.inputText.Text;
+
+            DialogResult result = openFileDialog1.ShowDialog();
+
+            if(result == DialogResult.OK)
+            {
+                record_gesture_image = openFileDialog1.FileName;
+            }
+
+            backLabel_Click(sender, e);
+
             lock (GlobalVar.key)
             {
                 GlobalVar.MODE = Game_mode_e.Record;
                 Monitor.Pulse(GlobalVar.key);
             }
-            backLabel_Click(sender, e);
         }
 
     }
