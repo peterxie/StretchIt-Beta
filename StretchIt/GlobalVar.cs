@@ -24,6 +24,7 @@ namespace StretchIt
         public static const string AUDIO_DIRECTORY_C = @"..\..\Audio\";
         public static const string IMAGE_DIRECTORY_C = @"..\..\Images\";
         public static const string STATS_PATH_C = @"..\..\statistics.txt";
+        public static const string SETTINGS_PATH_C = @"..\..\settings.txt";
         public static const int NUM_PIXELS_C = 307200;
         public static const int NUM_FRAMES_RECORD_C = 100;
 
