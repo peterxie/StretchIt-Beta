@@ -121,7 +121,7 @@ namespace StretchIt
 
         private void createGesture()
         {
-            string gesture_name = "gesture";//GlobalVar.MAIN_MENU.Settings.record_gesture_name;
+            string gesture_name = GlobalVar.MAIN_MENU.Settings.record_gesture_name;
             
             kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
 
@@ -136,6 +136,8 @@ namespace StretchIt
             outFile.WriteLine(1);
             
             outFile.Close();
+            
+            GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(gesture_name);
             */
         }
     }

@@ -264,19 +264,20 @@ namespace Microsoft.Samples.Kinect.DepthBasics
             const int GreenIndex = 1;
             const int RedIndex = 2;
 
-            short[] depth_pixels = this.kinect_t.getFrame().getPixels();
+            Frame_t f = new Frame_t(@"..\..\..\StretchIt\Gestures\gesture.txt");
+            short[] depth_pixels = f.getPixels();
 
             for (int depthIndex = 0, colorIndex = 0;
                 depthIndex < depth_pixels.Length && colorIndex < this.colorPixels.Length;
                 depthIndex++, colorIndex += 4)
             {
-                if (depth_pixels[depthIndex] > 100)
+                if (depth_pixels[depthIndex] > 500)
                 {
                     this.colorPixels[colorIndex + BlueIndex] = 255;
                     this.colorPixels[colorIndex + GreenIndex] = 0;
                     this.colorPixels[colorIndex + RedIndex] = 0;
                 }
-                else if (depth_pixels[depthIndex] < -100)
+                else if (depth_pixels[depthIndex] < -500)
                 {
                     this.colorPixels[colorIndex + BlueIndex] = 0;
                     this.colorPixels[colorIndex + GreenIndex] = 255;
