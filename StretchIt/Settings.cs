@@ -23,7 +23,7 @@ namespace StretchIt
 
             selected_gestures = new List<string>();
             configuration = new Dictionary<string, int>();
-            path = "settings.txt";
+            path = GlobalVar.SETTINGS_PATH_C;
 
             try
             {
@@ -151,6 +151,20 @@ namespace StretchIt
         {
             e.Cancel = true;
             MessageBox.Show("You must exit via the Back button.");
+        }
+
+        private void recordLabel_Click(object sender, EventArgs e)
+        {
+            GlobalVar.MODE = Game_mode_e.Record;
+            backLabel_Click(sender, e);
+        }
+
+        private void Settings_t_Activated(object sender, EventArgs e)
+        {
+            //will we be reloading the settings file after a new gesture is written to it?
+            //dependent on how we handle a new gesture
+
+            //Refresh();
         }
 
     }
