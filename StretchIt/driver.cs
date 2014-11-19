@@ -34,15 +34,6 @@ namespace StretchIt
             kinect = new Kinect_t();
 
             loadReferenceFrames();
-            
-            string[] filePaths = Directory.GetFiles(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C);
-            
-            for (int i = 0; i < filePaths.Length; ++i)
-            {
-                StreamReader inFile = new StreamReader(filePaths[i]);
-                GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(inFile.ReadLine());
-                inFile.Close();
-            }
         }
 
         private void loadReferenceFrames()
@@ -54,7 +45,8 @@ namespace StretchIt
                 StreamReader inFile = new StreamReader(filePaths[i]);
                 
                 String gesture_name = inFile.ReadLine();
-                
+                GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(gesture_name);
+
                 Frame_t ref_frame = new Frame_t(filePaths[i]);
                 
                 Gesture_t ref_gesture = new Gesture_t(gesture_name, filePaths[i], "tmp", "tmp", "tmp", "tmp");
