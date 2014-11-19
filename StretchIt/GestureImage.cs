@@ -20,13 +20,13 @@ namespace StretchIt
         private byte[] color_pixels;
         Frame_t frame;
 
-        public GestureImage(string fileName)
+        public GestureImage(string gesture_name)
         {
             InitializeComponent();
 
             this.color_pixels = new byte[1228800];
             this.color_bitmap = new WriteableBitmap(640, 480, 96.0, 96.0, PixelFormats.Bgr32, null);
-            frame = new Frame_t(fileName);
+            frame = new Frame_t(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt");
             makeColor();
             saveImage();
             this.BackgroundImage = Image.FromFile(@"../../GestureImages/gesture.png");
@@ -90,6 +90,7 @@ namespace StretchIt
                 using (FileStream fs = new FileStream(path, FileMode.Create))
                 {
                     encoder.Save(fs);
+                    fs.Close();
                 }
             }
             catch (IOException)
@@ -107,8 +108,15 @@ namespace StretchIt
             this.ClientSize = new System.Drawing.Size(624, 442);
             this.Name = "GestureImage";
             this.Text = "Gesture Image";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestureImage_FormClosing);
             this.ResumeLayout(false);
 
+        }
+
+        private void GestureImage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.BackgroundImage = null;
+            this.Update();
         }
     }
 }

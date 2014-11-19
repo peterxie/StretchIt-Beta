@@ -104,6 +104,7 @@ namespace StretchIt
             //reset the depth_pixels of the input frame object
             DepthImageFrame depthFrame = null;
             this.input.reset();
+
             while (num_frames > 0)
             {
                 //attempt to read a frame from the kinect

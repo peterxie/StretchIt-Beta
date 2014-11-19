@@ -133,9 +133,8 @@ namespace StretchIt
             Frame_t f = kinect.getFrame();
             f.write(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt", gesture_name);
 
-            GestureImage g = new GestureImage(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt");
-            //Thread t = new Thread(createGestureImage);
-           // t.Start();
+            GestureImage g = new GestureImage(gesture_name);
+            
             if (MessageBox.Show("Do you want to save this gesture?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 //Append Settings file with new gesture and default frequency
@@ -152,19 +151,13 @@ namespace StretchIt
             {
                 File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt");
             }
-            File.Delete(@"../../GestureImages/gesture.png");
+
             g.Close();
+
+            //File.Delete(@"../../GestureImages/gesture.png");
+            
             GlobalVar.MODE = Game_mode_e.Menu_Mode;
         }
 
-        public void createGestureImage()
-        {
-            GestureImage g = new GestureImage(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + "gesture.txt");
-
-            /*System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
-            s.Start();
-
-            while (s.ElapsedMilliseconds < 5000) { }*/
-        }
     }
 }
