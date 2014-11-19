@@ -20,6 +20,7 @@ namespace StretchIt
 
     public static class GlobalVar
     {
+        public static readonly object key = new object();
         public const string REFERENCE_GESTURE_DIRECTORY_C = @"..\..\Gestures\";
         public const string AUDIO_DIRECTORY_C = @"..\..\Audio\";
         public const string IMAGE_DIRECTORY_C = @"..\..\Images\";

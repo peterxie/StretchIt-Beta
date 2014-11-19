@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace StretchIt
 {
@@ -55,7 +56,11 @@ namespace StretchIt
 
         private void playLabel_Click(object sender, EventArgs e)
         {
-            GlobalVar.MODE = Game_mode_e.Play;
+            lock (GlobalVar.key)
+            {
+                GlobalVar.MODE = Game_mode_e.Play;
+                Monitor.Pulse(GlobalVar.key);
+            }
         }
 
         private void statsLabel_Click(object sender, EventArgs e)
@@ -81,12 +86,20 @@ namespace StretchIt
 
         private void MainMenu_t_FormClosing(object sender, FormClosingEventArgs e)
         {
-            GlobalVar.MODE = Game_mode_e.Exit_Game;
+            lock (GlobalVar.key)
+            {
+                GlobalVar.MODE = Game_mode_e.Exit_Game;
+                Monitor.Pulse(GlobalVar.key);
+            }
         }
 
         private void exitLabel_Click(object sender, EventArgs e)
         {
-            GlobalVar.MODE = Game_mode_e.Exit_Game;
+            lock (GlobalVar.key)
+            {
+                GlobalVar.MODE = Game_mode_e.Exit_Game;
+                Monitor.Pulse(GlobalVar.key);
+            }
             Close();
         }
     }
