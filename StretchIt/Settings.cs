@@ -14,20 +14,22 @@ namespace StretchIt
     {
         private List<string> selected_gestures;
         private Dictionary<string, int> configuration;
-        private string path;
+        public string record_gesture_name { get; set; }
 
         public Settings_t()
         {
             InitializeComponent();
             this.Visible = false;
+            inputText.Visible = false;
+            retrieveInput.Visible = false;
 
             selected_gestures = new List<string>();
             configuration = new Dictionary<string, int>();
-            path = GlobalVar.SETTINGS_PATH_C;
+            record_gesture_name = "";
 
             try
             {
-                using (StreamReader sr = new StreamReader(path))
+                using (StreamReader sr = new StreamReader(GlobalVar.SETTINGS_PATH_C))
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)
@@ -89,7 +91,7 @@ namespace StretchIt
 
         private void save()
         {
-            using(StreamWriter sw = new StreamWriter(path))
+            using(StreamWriter sw = new StreamWriter(GlobalVar.SETTINGS_PATH_C))
             {
                 foreach(KeyValuePair<string, int> option in configuration)
                 {
@@ -98,46 +100,6 @@ namespace StretchIt
                 }
             }
         }
-
-        /********** Numeric UpDown ***********************/
-        private void pushUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            upDownBound(this.pushUpDown);
-        }
-        private void pullUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            upDownBound(this.pullUpDown);
-        }
-        private void swipeUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            upDownBound(this.swipeUpDown);
-        }
-        private void highFiveUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            upDownBound(this.highFiveUpDown);
-        }
-        // aka fistBumpUpDown
-        private void firstBumpUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            upDownBound(this.fistBumpUpDown);
-        }
-        private void pushHardUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            upDownBound(this.pushHardUpDown);
-        }
-        private void pullHardUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            upDownBound(this.pullHardUpDown);
-        }
-        private void upDownBound(NumericUpDown up_down)
-        {
-            if (up_down.Value < 0)
-                up_down.Value = 0;
-            else if (up_down.Value > 5)
-                up_down.Value = 5;
-        }
-
-        /******************end Numeric UpDowns **************************/
 
         private void backLabel_Click(object sender, EventArgs e)
         {
@@ -155,8 +117,8 @@ namespace StretchIt
 
         private void recordLabel_Click(object sender, EventArgs e)
         {
-            GlobalVar.MODE = Game_mode_e.Record;
-            backLabel_Click(sender, e);
+            retrieveInput.Visible = true;
+            inputText.Visible = true;
         }
 
         private void Settings_t_Activated(object sender, EventArgs e)
@@ -165,6 +127,22 @@ namespace StretchIt
             //dependent on how we handle a new gesture
 
             //Refresh();
+        }
+
+        private void upDownBound(object sender, EventArgs e)
+        {
+            NumericUpDown updown = (NumericUpDown)sender;
+            if (updown.Value < 0)
+                updown.Value = 0;
+            else if (updown.Value > 5)
+                updown.Value = 5;
+        }
+
+        private void retrieveInput_Click(object sender, EventArgs e)
+        {
+            record_gesture_name = this.inputText.Text;
+            GlobalVar.MODE = Game_mode_e.Record;
+            backLabel_Click(sender, e);
         }
 
     }

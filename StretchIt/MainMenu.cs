@@ -83,5 +83,11 @@ namespace StretchIt
         {
             GlobalVar.MODE = Game_mode_e.Exit_Game;
         }
+
+        private void exitLabel_Click(object sender, EventArgs e)
+        {
+            GlobalVar.MODE = Game_mode_e.Exit_Game;
+            Close();
+        }
     }
 }
