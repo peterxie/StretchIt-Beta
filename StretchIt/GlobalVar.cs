@@ -31,9 +31,6 @@ namespace StretchIt
         public static List<string> ALL_POSSIBLE_GESTURES_C = new List<string>();
         public static Game_mode_e MODE = Game_mode_e.Menu_Mode;
         public static MainMenu_t MAIN_MENU;// = new MainMenu_t();
-
-        //do we need this?
-        //public static Frame_t GLOBAL_KINECT_FRAME = new Frame_t(NUM_PIXELS_C);
     }
 
 }

@@ -180,7 +180,6 @@ namespace StretchIt
         {
             double input_gesture_error = 0;
             double def_gesture_error = 0;
-            double back_gesture_error = 0;
 
             for (int i = 0; i < num_pixels; ++i)
             {

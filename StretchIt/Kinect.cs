@@ -92,7 +92,6 @@ namespace StretchIt
 
             //set the default reference frame for Frame objects
             Frame_t.setDefault(data);
-            Frame_t.setBack(data);
 
             //throw the frame away to clear memory
             depthFrame.Dispose();
