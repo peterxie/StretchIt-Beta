@@ -20,13 +20,13 @@ namespace StretchIt
 
     public static class GlobalVar
     {
-        public static const string REFERENCE_GESTURE_DIRECTORY_C = @"..\..\Gestures\";
-        public static const string AUDIO_DIRECTORY_C = @"..\..\Audio\";
-        public static const string IMAGE_DIRECTORY_C = @"..\..\Images\";
-        public static const string STATS_PATH_C = @"..\..\statistics.txt";
-        public static const string SETTINGS_PATH_C = @"..\..\settings.txt";
-        public static const int NUM_PIXELS_C = 307200;
-        public static const int NUM_FRAMES_RECORD_C = 100;
+        public const string REFERENCE_GESTURE_DIRECTORY_C = @"..\..\Gestures\";
+        public const string AUDIO_DIRECTORY_C = @"..\..\Audio\";
+        public const string IMAGE_DIRECTORY_C = @"..\..\Images\";
+        public const string STATS_PATH_C = @"..\..\statistics.txt";
+        public const string SETTINGS_PATH_C = @"..\..\settings.txt";
+        public const int NUM_PIXELS_C = 307200;
+        public const int NUM_FRAMES_RECORD_C = 100;
 
         public static List<string> ALL_POSSIBLE_GESTURES_C = new List<string>();
         public static Game_mode_e MODE = Game_mode_e.Menu_Mode;
