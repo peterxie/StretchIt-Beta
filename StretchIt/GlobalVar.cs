@@ -8,32 +8,31 @@ namespace StretchIt
     {
         Correct,
         No_Input,
-        Back_Button,
         Incorrect
     }
     public enum Game_mode_e
     {
         Play,
         Menu_Mode,
+        Record,
         Exit_Game
     }
 
     public static class GlobalVar
     {
-        public static string REFERENCE_GESTURE_DIRECTORY_C = @"../../Gestures/";
-        public static string AUDIO_DIRECTORY_C = @"../../Audio/";
-        public static string IMAGE_DIRECTORY_C = @"../../Images/";
-        public static List<string> ALL_POSSIBLE_GESTURES_C = new List<string>();
-        public static int NUM_PIXELS_C = 307200;
-        public static int NUM_FRAMES_RECORD_C = 100;
-        public static Frame_t GLOBAL_KINECT_FRAME = new Frame_t(NUM_PIXELS_C);
-        public static Kinect_t KINECT = new Kinect_t();
-        public static Game_mode_e MODE = Game_mode_e.Menu_Mode;
+        public static const string REFERENCE_GESTURE_DIRECTORY_C = @"..\..\Gestures\";
+        public static const string AUDIO_DIRECTORY_C = @"..\..\Audio\";
+        public static const string IMAGE_DIRECTORY_C = @"..\..\Images\";
+        public static const string STATS_PATH_C = @"..\..\statistics.txt";
+        public static const int NUM_PIXELS_C = 307200;
+        public static const int NUM_FRAMES_RECORD_C = 100;
 
-        //Maybe put this in a View class that has all of these. Then one global View instance
+        public static List<string> ALL_POSSIBLE_GESTURES_C = new List<string>();
+        public static Game_mode_e MODE = Game_mode_e.Menu_Mode;
         public static MainMenu_t MAIN_MENU;// = new MainMenu_t();
 
-        public static string STATS_PATH_C = "statistics.txt";
+        //do we need this?
+        //public static Frame_t GLOBAL_KINECT_FRAME = new Frame_t(NUM_PIXELS_C);
     }
 
 }

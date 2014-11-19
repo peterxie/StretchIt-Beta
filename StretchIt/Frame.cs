@@ -14,13 +14,11 @@ namespace StretchIt
         private double              error_threshold;    //average deviation/pixel threshold for determining correctness
         private short[]             depth_pixels;       //stores the depth "image" for a motion
         private static short[]      default_frame;      //stores the depth "image" reference across all Frame_t objects
-        private static short[]      back_frame;         //stores the depth "image" for a back motion across all Frame_t objects
         
-        private const int           default_pixels_c = 307200;    // constant for the default size of arrays
         private const double        default_threshold_c = 100.0;
 
         //default constructor which takes the number of pixels as an argument
-        public Frame_t(int num_pixels_ = default_pixels_c, double threshold_ = default_threshold_c)
+        public Frame_t(int num_pixels_ = GlobalVar.NUM_PIXELS_C, double threshold_ = default_threshold_c)
         {
             num_pixels = num_pixels_;
             depth_pixels = new short[num_pixels];
@@ -43,7 +41,7 @@ namespace StretchIt
         {
             if (depthFrame == null)
             {
-                num_pixels = default_pixels_c;
+                num_pixels = GlobalVar.NUM_PIXELS_C;
                 depth_pixels = new short[num_pixels];
             }
             else
@@ -67,7 +65,7 @@ namespace StretchIt
         {
             if (pixels == null)
             {
-                num_pixels = default_pixels_c;
+                num_pixels = GlobalVar.NUM_PIXELS_C;
                 depth_pixels = new short[num_pixels];
             }
             else
@@ -142,18 +140,6 @@ namespace StretchIt
             frame.CopyTo(default_frame, 0);
         }
 
-        //set the static back_frame variable
-        static public void setBack(short[] frame)
-        {
-            back_frame = new short[frame.Length];
-            frame.CopyTo(back_frame, 0);
-
-            for (int i = 0; i < frame.Length; ++i)
-            {
-                back_frame[i] = (short)(back_frame[i] - (short)default_frame[i]);
-            }
-        }
-
         //accessor for the depth_pixels
         public short[] getPixels()
         {
@@ -201,7 +187,6 @@ namespace StretchIt
                 input_gesture_error += Math.Abs(depth_pixels[i] - input_frame.depth_pixels[i]);
                 //being close to the default_frame would mean input_frame has an array of close to 0
                 def_gesture_error += Math.Abs(input_frame.depth_pixels[i]);
-                back_gesture_error += Math.Abs(back_frame[i] - input_frame.depth_pixels[i]);
             }
 
             if(input_gesture_error / num_pixels < error_threshold)
@@ -212,11 +197,6 @@ namespace StretchIt
             else if(def_gesture_error / num_pixels < error_threshold)
             {
                 return Gesture_rc_e.No_Input;
-            }
-
-            else if(back_gesture_error / num_pixels < error_threshold)
-            {
-                return Gesture_rc_e.Back_Button;
             }
 
             return Gesture_rc_e.Incorrect;

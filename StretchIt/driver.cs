@@ -118,7 +118,7 @@ namespace StretchIt
 
             Frame_t f = kinect.getFrame();
 
-            f.write(gesture_name + ".txt", gesture_name);
+            f.write(@"../../Gestures/" + gesture_name + ".txt", gesture_name);
         }
     }
 }
