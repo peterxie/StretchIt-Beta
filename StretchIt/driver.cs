@@ -100,9 +100,6 @@ namespace StretchIt
                         case Gesture_rc_e.Incorrect:
                             GlobalVar.MAIN_MENU.Stats.recordResult(false);
                             break;
-                        case Gesture_rc_e.Back_Button:
-                            GlobalVar.MODE = Game_mode_e.Menu_Mode;
-                            break;
                     }
                 }
             }
@@ -115,6 +112,24 @@ namespace StretchIt
             int selected_index = r.Next(GlobalVar.MAIN_MENU.Settings.getGestures().Count);
             
             return reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestures()[selected_index]];
+        }
+
+        private void createGesture(string gesture_name)
+        {
+            kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
+
+            Frame_t f = kinect.getFrame();
+
+            f.write(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt", gesture_name);
+
+            //Append Settings file with new gesture and default frequency
+            /*StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
+            
+            outFile.WriteLine(gesture_name);
+            outFile.WriteLine(1);
+            
+            outFile.Close();
+            */
         }
     }
 }

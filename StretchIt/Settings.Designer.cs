@@ -45,6 +45,7 @@
             this.pullHardUpDown = new System.Windows.Forms.NumericUpDown();
             this.pushUpDown = new System.Windows.Forms.NumericUpDown();
             this.backLabel = new System.Windows.Forms.Label();
+            this.recordLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pullUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pushHardUpDown)).BeginInit();
@@ -96,6 +97,11 @@
             this.pullUpDown.Name = "pullUpDown";
             this.pullUpDown.Size = new System.Drawing.Size(43, 20);
             this.pullUpDown.TabIndex = 5;
+            this.pullUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.pullUpDown.ValueChanged += new System.EventHandler(this.pullUpDown_ValueChanged);
             // 
             // swipeLabel
@@ -116,6 +122,11 @@
             this.swipeUpDown.Name = "swipeUpDown";
             this.swipeUpDown.Size = new System.Drawing.Size(43, 20);
             this.swipeUpDown.TabIndex = 7;
+            this.swipeUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.swipeUpDown.ValueChanged += new System.EventHandler(this.swipeUpDown_ValueChanged);
             // 
             // pushHardLabel
@@ -136,6 +147,11 @@
             this.pushHardUpDown.Name = "pushHardUpDown";
             this.pushHardUpDown.Size = new System.Drawing.Size(43, 20);
             this.pushHardUpDown.TabIndex = 13;
+            this.pushHardUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.pushHardUpDown.ValueChanged += new System.EventHandler(this.pushHardUpDown_ValueChanged);
             // 
             // fistBumpLabel
@@ -156,6 +172,11 @@
             this.fistBumpUpDown.Name = "fistBumpUpDown";
             this.fistBumpUpDown.Size = new System.Drawing.Size(43, 20);
             this.fistBumpUpDown.TabIndex = 11;
+            this.fistBumpUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.fistBumpUpDown.ValueChanged += new System.EventHandler(this.firstBumpUpDown_ValueChanged);
             // 
             // highFiveLabel
@@ -176,6 +197,11 @@
             this.highFiveUpDown.Name = "highFiveUpDown";
             this.highFiveUpDown.Size = new System.Drawing.Size(43, 20);
             this.highFiveUpDown.TabIndex = 9;
+            this.highFiveUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.highFiveUpDown.ValueChanged += new System.EventHandler(this.highFiveUpDown_ValueChanged);
             // 
             // pullHardLabel
@@ -196,6 +222,11 @@
             this.pullHardUpDown.Name = "pullHardUpDown";
             this.pullHardUpDown.Size = new System.Drawing.Size(43, 20);
             this.pullHardUpDown.TabIndex = 15;
+            this.pullHardUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.pullHardUpDown.ValueChanged += new System.EventHandler(this.pullHardUpDown_ValueChanged);
             // 
             // pushUpDown
@@ -204,6 +235,11 @@
             this.pushUpDown.Name = "pushUpDown";
             this.pushUpDown.Size = new System.Drawing.Size(43, 20);
             this.pushUpDown.TabIndex = 17;
+            this.pushUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.pushUpDown.ValueChanged += new System.EventHandler(this.pushUpDown_ValueChanged);
             // 
             // backLabel
@@ -219,12 +255,26 @@
             this.backLabel.Text = "Back";
             this.backLabel.Click += new System.EventHandler(this.backLabel_Click);
             // 
+            // recordLabel
+            // 
+            this.recordLabel.AutoSize = true;
+            this.recordLabel.BackColor = System.Drawing.Color.Transparent;
+            this.recordLabel.Font = new System.Drawing.Font("Action Jackson", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recordLabel.ForeColor = System.Drawing.Color.White;
+            this.recordLabel.Location = new System.Drawing.Point(436, 355);
+            this.recordLabel.Name = "recordLabel";
+            this.recordLabel.Size = new System.Drawing.Size(151, 32);
+            this.recordLabel.TabIndex = 19;
+            this.recordLabel.Text = "Record...";
+            this.recordLabel.Click += new System.EventHandler(this.recordLabel_Click);
+            // 
             // Settings_t
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(599, 399);
+            this.Controls.Add(this.recordLabel);
             this.Controls.Add(this.backLabel);
             this.Controls.Add(this.pushUpDown);
             this.Controls.Add(this.pullHardLabel);
@@ -243,6 +293,7 @@
             this.Controls.Add(this.title);
             this.Name = "Settings_t";
             this.Text = "Settings";
+            this.Activated += new System.EventHandler(this.Settings_t_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_t_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pullUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).EndInit();
@@ -274,5 +325,6 @@
         private System.Windows.Forms.NumericUpDown pullHardUpDown;
         private System.Windows.Forms.NumericUpDown pushUpDown;
         private System.Windows.Forms.Label backLabel;
+        private System.Windows.Forms.Label recordLabel;
     }
 }
