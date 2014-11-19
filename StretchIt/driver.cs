@@ -33,23 +33,28 @@ namespace StretchIt
             reference_gestures = new Dictionary<string,Gesture_t>();
             kinect = new Kinect_t();
 
-            loadReferenceFrames();
+            loadReferenceGestures();
         }
 
-        private void loadReferenceFrames()
+        private void loadReferenceGestures()
         {
-            string[] filePaths = Directory.GetFiles(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C);
+            string[] filePathsGestures = Directory.GetFiles(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C);
+            string[] filePathsAudio = Directory.GetFiles(GlobalVar.AUDIO_DIRECTORY_C);
+            string[] filePathsVideo = Directory.GetFiles(GlobalVar.IMAGE_DIRECTORY_C);
+            Array.Sort<string>(filePathsGestures);
+            Array.Sort<string>(filePathsAudio);
+            Array.Sort<string>(filePathsVideo);
             
-            for (int i = 0; i < filePaths.Length; ++i)
+            for (int i = 0; i < filePathsGestures.Length; ++i)
             {
-                StreamReader inFile = new StreamReader(filePaths[i]);
+                StreamReader inFile = new StreamReader(filePathsGestures[i]);
                 
                 String gesture_name = inFile.ReadLine();
                 GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(gesture_name);
 
-                Frame_t ref_frame = new Frame_t(filePaths[i]);
-                
-                Gesture_t ref_gesture = new Gesture_t(gesture_name, filePaths[i], "tmp", "tmp", "tmp", "tmp");
+                Gesture_t ref_gesture = new Gesture_t(gesture_name, 
+                    filePathsGestures[i],filePathsAudio[i],filePathsVideo[i], 
+                    GlobalVar.AUDIO_DIRECTORY_C+"celebration.wav",GlobalVar.IMAGE_DIRECTORY_C+"celebration.jpg");
                 
                 reference_gestures.Add(gesture_name, ref_gesture);
                 
