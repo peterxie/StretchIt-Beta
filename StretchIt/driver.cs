@@ -12,6 +12,7 @@ namespace StretchIt
     {
         Dictionary<string, Gesture_t> reference_gestures;
         Kinect_t kinect;
+        public MessageBox gesture_valid_prompt;
 
         static void Main()
         {
@@ -67,7 +68,7 @@ namespace StretchIt
             while(GlobalVar.MODE != Game_mode_e.Exit_Game) {
                 lock (GlobalVar.key)
                 {
-                    while (GlobalVar.MODE != Game_mode_e.Play || GlobalVar.MODE != Game_mode_e.Record)
+                    while (GlobalVar.MODE != Game_mode_e.Play && GlobalVar.MODE != Game_mode_e.Record)
                         Monitor.Wait(GlobalVar.key);
                     switch (GlobalVar.MODE)
                     {
@@ -130,22 +131,29 @@ namespace StretchIt
             kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
 
             Frame_t f = kinect.getFrame();
-
             f.write(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt", gesture_name);
 
-            //Append Settings file with new gesture and default frequency
-            StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
-            
-            outFile.WriteLine(gesture_name);
-            outFile.WriteLine(1);
-            
-            outFile.Close();
-            
-            GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(gesture_name);
+            GestureImage g = new GestureImage(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt");
+            //Thread t = new Thread(createGestureImage);
+           // t.Start();
+            if (MessageBox.Show("Do you want to save this gesture?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                //Append Settings file with new gesture and default frequency
+                StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
 
-            Thread t = new Thread(createGestureImage);
-            t.Start();
+                outFile.WriteLine(gesture_name);
+                outFile.WriteLine(1);
 
+                outFile.Close();
+
+                GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(gesture_name);
+            }
+            else
+            {
+                File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt");
+            }
+            File.Delete(@"../../GestureImages/gesture.png");
+            g.Close();
             GlobalVar.MODE = Game_mode_e.Menu_Mode;
         }
 
@@ -153,10 +161,10 @@ namespace StretchIt
         {
             GestureImage g = new GestureImage(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + "gesture.txt");
 
-            System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
+            /*System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
             s.Start();
 
-            while (s.ElapsedMilliseconds < 5000) { }
+            while (s.ElapsedMilliseconds < 5000) { }*/
         }
     }
 }

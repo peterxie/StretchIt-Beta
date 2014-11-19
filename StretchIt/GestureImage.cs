@@ -85,9 +85,16 @@ namespace StretchIt
             string path = @"../../GestureImages/gesture.png";
 
             // write the new file to disk
-            using (FileStream fs = new FileStream(path, FileMode.Create))
+            try
             {
-                encoder.Save(fs);
+                using (FileStream fs = new FileStream(path, FileMode.Create))
+                {
+                    encoder.Save(fs);
+                }
+            }
+            catch (IOException)
+            {
+                  
             }
         }
 
