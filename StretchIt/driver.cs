@@ -21,9 +21,9 @@ namespace StretchIt
             MainMenu_t m = new MainMenu_t();
             GlobalVar.MAIN_MENU = m;
 
-            //driver d = new driver();
-            //Thread t = new Thread(d.run_system);
-            //t.Start();
+            driver d = new driver();
+            Thread t = new Thread(d.run_system);
+            t.Start();
 
             Application.Run(m);
         }
@@ -61,12 +61,17 @@ namespace StretchIt
         {
             while(GlobalVar.MODE != Game_mode_e.Exit_Game)
             {
-                if (GlobalVar.MODE == Game_mode_e.Play)
+                switch (GlobalVar.MODE)
                 {
-                    play_game();
-                }
+                    case Game_mode_e.Play:
+                        play_game();
+                        break;
 
-                //else {maybe put a pause here}
+                    case Game_mode_e.Record:
+                        createGesture();
+                        break;
+                    //default: maybe put a pause here
+                }
             }
             
             GlobalVar.MAIN_MENU.Stats.saveStatistics();
@@ -109,8 +114,10 @@ namespace StretchIt
             return reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestures()[selected_index]];
         }
 
-        private void createGesture(string gesture_name)
+        private void createGesture()
         {
+            string gesture_name = "gesture";//GlobalVar.MAIN_MENU.Settings.record_gesture_name;
+            
             kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
 
             Frame_t f = kinect.getFrame();
