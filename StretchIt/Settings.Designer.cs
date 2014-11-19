@@ -46,6 +46,8 @@
             this.pushUpDown = new System.Windows.Forms.NumericUpDown();
             this.backLabel = new System.Windows.Forms.Label();
             this.recordLabel = new System.Windows.Forms.Label();
+            this.inputText = new System.Windows.Forms.TextBox();
+            this.retrieveInput = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pullUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pushHardUpDown)).BeginInit();
@@ -73,7 +75,7 @@
             this.pushLabel.BackColor = System.Drawing.Color.Transparent;
             this.pushLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pushLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pushLabel.Location = new System.Drawing.Point(223, 132);
+            this.pushLabel.Location = new System.Drawing.Point(223, 121);
             this.pushLabel.Name = "pushLabel";
             this.pushLabel.Size = new System.Drawing.Size(47, 18);
             this.pushLabel.TabIndex = 4;
@@ -85,7 +87,7 @@
             this.pullLabel.BackColor = System.Drawing.Color.Transparent;
             this.pullLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pullLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pullLabel.Location = new System.Drawing.Point(223, 158);
+            this.pullLabel.Location = new System.Drawing.Point(223, 147);
             this.pullLabel.Name = "pullLabel";
             this.pullLabel.Size = new System.Drawing.Size(38, 18);
             this.pullLabel.TabIndex = 6;
@@ -93,7 +95,7 @@
             // 
             // pullUpDown
             // 
-            this.pullUpDown.Location = new System.Drawing.Point(331, 156);
+            this.pullUpDown.Location = new System.Drawing.Point(331, 145);
             this.pullUpDown.Name = "pullUpDown";
             this.pullUpDown.Size = new System.Drawing.Size(43, 20);
             this.pullUpDown.TabIndex = 5;
@@ -102,7 +104,7 @@
             0,
             0,
             0});
-            this.pullUpDown.ValueChanged += new System.EventHandler(this.pullUpDown_ValueChanged);
+            this.pullUpDown.ValueChanged += new System.EventHandler(this.upDownBound);
             // 
             // swipeLabel
             // 
@@ -110,7 +112,7 @@
             this.swipeLabel.BackColor = System.Drawing.Color.Transparent;
             this.swipeLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.swipeLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.swipeLabel.Location = new System.Drawing.Point(223, 184);
+            this.swipeLabel.Location = new System.Drawing.Point(223, 173);
             this.swipeLabel.Name = "swipeLabel";
             this.swipeLabel.Size = new System.Drawing.Size(56, 18);
             this.swipeLabel.TabIndex = 8;
@@ -118,7 +120,7 @@
             // 
             // swipeUpDown
             // 
-            this.swipeUpDown.Location = new System.Drawing.Point(331, 182);
+            this.swipeUpDown.Location = new System.Drawing.Point(331, 171);
             this.swipeUpDown.Name = "swipeUpDown";
             this.swipeUpDown.Size = new System.Drawing.Size(43, 20);
             this.swipeUpDown.TabIndex = 7;
@@ -127,7 +129,7 @@
             0,
             0,
             0});
-            this.swipeUpDown.ValueChanged += new System.EventHandler(this.swipeUpDown_ValueChanged);
+            this.swipeUpDown.ValueChanged += new System.EventHandler(this.upDownBound);
             // 
             // pushHardLabel
             // 
@@ -135,7 +137,7 @@
             this.pushHardLabel.BackColor = System.Drawing.Color.Transparent;
             this.pushHardLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pushHardLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pushHardLabel.Location = new System.Drawing.Point(223, 262);
+            this.pushHardLabel.Location = new System.Drawing.Point(223, 251);
             this.pushHardLabel.Name = "pushHardLabel";
             this.pushHardLabel.Size = new System.Drawing.Size(91, 18);
             this.pushHardLabel.TabIndex = 14;
@@ -143,7 +145,7 @@
             // 
             // pushHardUpDown
             // 
-            this.pushHardUpDown.Location = new System.Drawing.Point(331, 260);
+            this.pushHardUpDown.Location = new System.Drawing.Point(331, 249);
             this.pushHardUpDown.Name = "pushHardUpDown";
             this.pushHardUpDown.Size = new System.Drawing.Size(43, 20);
             this.pushHardUpDown.TabIndex = 13;
@@ -152,7 +154,7 @@
             0,
             0,
             0});
-            this.pushHardUpDown.ValueChanged += new System.EventHandler(this.pushHardUpDown_ValueChanged);
+            this.pushHardUpDown.ValueChanged += new System.EventHandler(this.upDownBound);
             // 
             // fistBumpLabel
             // 
@@ -160,7 +162,7 @@
             this.fistBumpLabel.BackColor = System.Drawing.Color.Transparent;
             this.fistBumpLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fistBumpLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.fistBumpLabel.Location = new System.Drawing.Point(223, 236);
+            this.fistBumpLabel.Location = new System.Drawing.Point(223, 225);
             this.fistBumpLabel.Name = "fistBumpLabel";
             this.fistBumpLabel.Size = new System.Drawing.Size(90, 18);
             this.fistBumpLabel.TabIndex = 12;
@@ -168,7 +170,7 @@
             // 
             // fistBumpUpDown
             // 
-            this.fistBumpUpDown.Location = new System.Drawing.Point(331, 234);
+            this.fistBumpUpDown.Location = new System.Drawing.Point(331, 223);
             this.fistBumpUpDown.Name = "fistBumpUpDown";
             this.fistBumpUpDown.Size = new System.Drawing.Size(43, 20);
             this.fistBumpUpDown.TabIndex = 11;
@@ -177,7 +179,7 @@
             0,
             0,
             0});
-            this.fistBumpUpDown.ValueChanged += new System.EventHandler(this.firstBumpUpDown_ValueChanged);
+            this.fistBumpUpDown.ValueChanged += new System.EventHandler(this.upDownBound);
             // 
             // highFiveLabel
             // 
@@ -185,7 +187,7 @@
             this.highFiveLabel.BackColor = System.Drawing.Color.Transparent;
             this.highFiveLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highFiveLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.highFiveLabel.Location = new System.Drawing.Point(223, 210);
+            this.highFiveLabel.Location = new System.Drawing.Point(223, 199);
             this.highFiveLabel.Name = "highFiveLabel";
             this.highFiveLabel.Size = new System.Drawing.Size(84, 18);
             this.highFiveLabel.TabIndex = 10;
@@ -193,7 +195,7 @@
             // 
             // highFiveUpDown
             // 
-            this.highFiveUpDown.Location = new System.Drawing.Point(331, 208);
+            this.highFiveUpDown.Location = new System.Drawing.Point(331, 197);
             this.highFiveUpDown.Name = "highFiveUpDown";
             this.highFiveUpDown.Size = new System.Drawing.Size(43, 20);
             this.highFiveUpDown.TabIndex = 9;
@@ -202,7 +204,7 @@
             0,
             0,
             0});
-            this.highFiveUpDown.ValueChanged += new System.EventHandler(this.highFiveUpDown_ValueChanged);
+            this.highFiveUpDown.ValueChanged += new System.EventHandler(this.upDownBound);
             // 
             // pullHardLabel
             // 
@@ -210,7 +212,7 @@
             this.pullHardLabel.BackColor = System.Drawing.Color.Transparent;
             this.pullHardLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pullHardLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.pullHardLabel.Location = new System.Drawing.Point(223, 289);
+            this.pullHardLabel.Location = new System.Drawing.Point(223, 278);
             this.pullHardLabel.Name = "pullHardLabel";
             this.pullHardLabel.Size = new System.Drawing.Size(82, 18);
             this.pullHardLabel.TabIndex = 16;
@@ -218,7 +220,7 @@
             // 
             // pullHardUpDown
             // 
-            this.pullHardUpDown.Location = new System.Drawing.Point(331, 287);
+            this.pullHardUpDown.Location = new System.Drawing.Point(331, 276);
             this.pullHardUpDown.Name = "pullHardUpDown";
             this.pullHardUpDown.Size = new System.Drawing.Size(43, 20);
             this.pullHardUpDown.TabIndex = 15;
@@ -227,11 +229,11 @@
             0,
             0,
             0});
-            this.pullHardUpDown.ValueChanged += new System.EventHandler(this.pullHardUpDown_ValueChanged);
+            this.pullHardUpDown.ValueChanged += new System.EventHandler(this.upDownBound);
             // 
             // pushUpDown
             // 
-            this.pushUpDown.Location = new System.Drawing.Point(331, 130);
+            this.pushUpDown.Location = new System.Drawing.Point(331, 119);
             this.pushUpDown.Name = "pushUpDown";
             this.pushUpDown.Size = new System.Drawing.Size(43, 20);
             this.pushUpDown.TabIndex = 17;
@@ -240,7 +242,7 @@
             0,
             0,
             0});
-            this.pushUpDown.ValueChanged += new System.EventHandler(this.pushUpDown_ValueChanged);
+            this.pushUpDown.ValueChanged += new System.EventHandler(this.upDownBound);
             // 
             // backLabel
             // 
@@ -268,12 +270,32 @@
             this.recordLabel.Text = "Record...";
             this.recordLabel.Click += new System.EventHandler(this.recordLabel_Click);
             // 
+            // inputText
+            // 
+            this.inputText.Location = new System.Drawing.Point(216, 327);
+            this.inputText.Name = "inputText";
+            this.inputText.Size = new System.Drawing.Size(175, 20);
+            this.inputText.TabIndex = 20;
+            this.inputText.Text = "Enter name here...";
+            // 
+            // retrieveInput
+            // 
+            this.retrieveInput.Location = new System.Drawing.Point(266, 350);
+            this.retrieveInput.Name = "retrieveInput";
+            this.retrieveInput.Size = new System.Drawing.Size(75, 23);
+            this.retrieveInput.TabIndex = 21;
+            this.retrieveInput.Text = "Submit";
+            this.retrieveInput.UseVisualStyleBackColor = true;
+            this.retrieveInput.Click += new System.EventHandler(this.retrieveInput_Click);
+            // 
             // Settings_t
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(599, 399);
+            this.Controls.Add(this.retrieveInput);
+            this.Controls.Add(this.inputText);
             this.Controls.Add(this.recordLabel);
             this.Controls.Add(this.backLabel);
             this.Controls.Add(this.pushUpDown);
@@ -326,5 +348,7 @@
         private System.Windows.Forms.NumericUpDown pushUpDown;
         private System.Windows.Forms.Label backLabel;
         private System.Windows.Forms.Label recordLabel;
+        private System.Windows.Forms.TextBox inputText;
+        private System.Windows.Forms.Button retrieveInput;
     }
 }
