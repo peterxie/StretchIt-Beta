@@ -108,6 +108,8 @@ namespace StretchIt
         {
             save();
             this.Visible = false;
+            inputText.Visible = false;
+            retrieveInput.Visible = false;
             GlobalVar.MAIN_MENU.Visible = true;
             GlobalVar.MAIN_MENU.Activate();
         }
@@ -143,6 +145,7 @@ namespace StretchIt
 
         private void retrieveInput_Click(object sender, EventArgs e)
         {
+            save(); //in case any settings were changed before recording
             record_gesture_name = this.inputText.Text;
 
             DialogResult result = openFileDialog1.ShowDialog();
@@ -160,6 +163,16 @@ namespace StretchIt
                 Monitor.Pulse(GlobalVar.key);
             }
         }
+
+        private void inputText_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                retrieveInput_Click(sender, e);
+            }
+        }
+
+
 
     }
 }

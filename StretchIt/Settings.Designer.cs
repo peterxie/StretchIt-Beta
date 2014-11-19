@@ -278,6 +278,7 @@
             this.inputText.Size = new System.Drawing.Size(175, 20);
             this.inputText.TabIndex = 20;
             this.inputText.Text = "Enter name here...";
+            this.inputText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.inputText_KeyUp);
             // 
             // retrieveInput
             // 
