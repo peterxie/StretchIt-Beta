@@ -296,6 +296,8 @@ namespace StretchIt
                     if (audio_result == DialogResult.OK)
                     {
                         record_gesture_audio = audioFileDialog.FileName;
+                        System.Diagnostics.Process.Start(@"../../Copy_Gesture.bat", record_gesture_name + " " + record_gesture_image + " " +
+                                                            record_gesture_audio + " " + GlobalVar.IMAGE_DIRECTORY_C + " " + GlobalVar.AUDIO_DIRECTORY_C);
 
                         backLabel_Click(sender, e);
                     }
