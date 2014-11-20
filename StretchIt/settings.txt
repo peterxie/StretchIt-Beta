@@ -8,5 +8,5 @@ High Five
 5
 Push Hard
 1
-Push Hard
+Pull Hard
 1

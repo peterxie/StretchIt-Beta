@@ -52,7 +52,7 @@ namespace StretchIt
             default_labels.Add(swipeLabel);
             default_labels.Add(highFiveLabel);
             default_labels.Add(pushHardLabel);
-            default_labels.Add(pushHardLabel);
+            default_labels.Add(pullHardLabel);
 
             custom_up_downs = new List<NumericUpDown>();
             custom_up_downs.Add(customUpDown1);
@@ -133,22 +133,6 @@ namespace StretchIt
             {
                 useDefaults();
             }
-
-            /*if (configuration.ContainsKey("push"))
-                this.pushUpDown.Value = configuration["push"];
-            if (configuration.ContainsKey("pull"))
-                this.swipeUpDown.Value = configuration["pull"];
-            if (configuration.ContainsKey("swipe"))
-                this.pushHardUpDown.Value = configuration["swipe"];
-            if (configuration.ContainsKey("high_five"))
-                this.customUpDown1.Value = configuration["high_five"];
-            if (configuration.ContainsKey("fist_bump"))
-                this.customUpDown3.Value = configuration["fist_bump"];
-            if (configuration.ContainsKey("push_hard"))
-                this.customUpDown5.Value = configuration["push_hard"];
-            if (configuration.ContainsKey("pull_hard"))
-                this.customUpDown7.Value = configuration["pull_hard"];
-             */
         }
 
         private void useDefaults()
@@ -159,6 +143,12 @@ namespace StretchIt
             {
                 selected_gestures.Add(default_labels[i].Text);
                 default_up_downs[i].Value = 1;
+            }
+
+            GlobalVar.ALL_POSSIBLE_GESTURES_C.Clear();
+            foreach(Label label in default_labels)
+            {
+                GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(label.Text);
             }
             
             /*foreach (string name in GlobalVar.ALL_POSSIBLE_GESTURES_C)
@@ -268,6 +258,15 @@ namespace StretchIt
 
         private void retrieveInput_Click(object sender, EventArgs e)
         {
+            // Ensure that this gesture name does not already exist
+            foreach (string name in GlobalVar.ALL_POSSIBLE_GESTURES_C)
+            {
+                if (name == inputText.Text)
+                {
+                    MessageBox.Show("Do you want to save this gesture?", "", MessageBoxButtons.OK);
+                    return;
+                }
+            }
             record_gesture_name = this.inputText.Text;
 
             lock (GlobalVar.key)
@@ -309,7 +308,7 @@ namespace StretchIt
 
                 outFile.Close();
 
-                //GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(record_gesture_name);
+                GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(record_gesture_name);
 
                 drawGesture(record_gesture_name);
                 
