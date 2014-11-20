@@ -115,6 +115,7 @@ namespace StretchIt
 
                         ++count;
 
+                        GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(name);
                         for (int i = 0; i < frequency; ++i)
                         {
                             selected_gestures.Add(name);
@@ -263,7 +264,7 @@ namespace StretchIt
             {
                 if (name == inputText.Text)
                 {
-                    MessageBox.Show("Do you want to save this gesture?", "", MessageBoxButtons.OK);
+                    MessageBox.Show("Looks like that name is already taken!", "Whoops!", MessageBoxButtons.OK);
                     return;
                 }
             }
