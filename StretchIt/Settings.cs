@@ -17,7 +17,7 @@ namespace StretchIt
         private Dictionary<string, int> configuration;
         public string record_gesture_name { get; set; }
         public string record_gesture_image { get; set; }
-        //public string record_gesture_audio { get; set; }
+        public string record_gesture_audio { get; set; }
 
         public Settings_t()
         {
@@ -148,19 +148,26 @@ namespace StretchIt
             save(); //in case any settings were changed before recording
             record_gesture_name = this.inputText.Text;
 
-            DialogResult result = openFileDialog1.ShowDialog();
+            DialogResult img_result = imageFileDialog.ShowDialog();
 
-            if(result == DialogResult.OK)
+            if(img_result == DialogResult.OK)
             {
-                record_gesture_image = openFileDialog1.FileName;
-            }
+                record_gesture_image = imageFileDialog.FileName;
 
-            backLabel_Click(sender, e);
+                DialogResult audio_result = audioFileDialog.ShowDialog();
 
-            lock (GlobalVar.key)
-            {
-                GlobalVar.MODE = Game_mode_e.Record;
-                Monitor.Pulse(GlobalVar.key);
+                if(audio_result == DialogResult.OK)
+                {
+                    record_gesture_audio = audioFileDialog.FileName;
+
+                    backLabel_Click(sender, e);
+
+                    lock (GlobalVar.key)
+                    {
+                        GlobalVar.MODE = Game_mode_e.Record;
+                        Monitor.Pulse(GlobalVar.key);
+                    }
+                }
             }
         }
 

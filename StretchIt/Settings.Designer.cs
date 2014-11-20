@@ -48,7 +48,8 @@
             this.recordLabel = new System.Windows.Forms.Label();
             this.inputText = new System.Windows.Forms.TextBox();
             this.retrieveInput = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.imageFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.audioFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pullUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pushHardUpDown)).BeginInit();
@@ -290,10 +291,15 @@
             this.retrieveInput.UseVisualStyleBackColor = true;
             this.retrieveInput.Click += new System.EventHandler(this.retrieveInput_Click);
             // 
-            // openFileDialog1
+            // imageFileDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.bmp;*.png;*.gif";
+            this.imageFileDialog.FileName = "imageFileDialog";
+            this.imageFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.bmp;*.png;*.gif";
+            // 
+            // audioFileDialog
+            // 
+            this.audioFileDialog.FileName = "audioFileDialog";
+            this.audioFileDialog.Filter = "Audio Files|*.wav";
             // 
             // Settings_t
             // 
@@ -357,6 +363,7 @@
         private System.Windows.Forms.Label recordLabel;
         private System.Windows.Forms.TextBox inputText;
         private System.Windows.Forms.Button retrieveInput;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog imageFileDialog;
+        private System.Windows.Forms.OpenFileDialog audioFileDialog;
     }
 }
