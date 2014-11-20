@@ -15,6 +15,14 @@ namespace StretchIt
     {
         private List<string> selected_gestures;
         private Dictionary<string, int> configuration;
+
+        private List<NumericUpDown> default_up_downs;
+        private List<Label> default_labels;
+        
+        private List<NumericUpDown> custom_up_downs;
+        private List<Label> custom_labels;
+        private int num_custom;
+
         public string record_gesture_name { get; set; }
         public string record_gesture_image { get; set; }
         public string record_gesture_audio { get; set; }
@@ -30,86 +38,195 @@ namespace StretchIt
             configuration = new Dictionary<string, int>();
             record_gesture_name = "";
 
+            default_up_downs = new List<NumericUpDown>();
+            default_up_downs.Add(pushUpDown);
+            default_up_downs.Add(pullUpDown);
+            default_up_downs.Add(swipeUpDown);
+            default_up_downs.Add(highFiveUpDown);
+            default_up_downs.Add(pushHardUpDown);
+            default_up_downs.Add(pullHardUpDown);
+
+            default_labels = new List<Label>();
+            default_labels.Add(pushLabel);
+            default_labels.Add(pullLabel);
+            default_labels.Add(swipeLabel);
+            default_labels.Add(highFiveLabel);
+            default_labels.Add(pushHardLabel);
+            default_labels.Add(pushHardLabel);
+
+            custom_up_downs = new List<NumericUpDown>();
+            custom_up_downs.Add(customUpDown1);
+            custom_up_downs.Add(customUpDown2);
+            custom_up_downs.Add(customUpDown3);
+            custom_up_downs.Add(customUpDown4);
+            custom_up_downs.Add(customUpDown5);
+            custom_up_downs.Add(customUpDown6);
+            custom_up_downs.Add(customUpDown7);
+            custom_up_downs.Add(customUpDown8);
+
+            foreach(NumericUpDown n in custom_up_downs)
+                n.Visible = false;
+
+            custom_labels = new List<Label>();
+            custom_labels.Add(customLabel1);
+            custom_labels.Add(customLabel2);
+            custom_labels.Add(customLabel3);
+            custom_labels.Add(customLabel4);
+            custom_labels.Add(customLabel5);
+            custom_labels.Add(customLabel6);
+            custom_labels.Add(customLabel7);
+            custom_labels.Add(customLabel8);
+
+            num_custom = 0;
+
             try
             {
                 using (StreamReader sr = new StreamReader(GlobalVar.SETTINGS_PATH_C))
                 {
                     string line;
+                    int count = 0;
+
+                    //each loop reads one pair of (name, frequency) values
                     while ((line = sr.ReadLine()) != null)
                     {
                         string name = line;
+
+                        //read frequency name, if not found use defaults
                         if ((line = sr.ReadLine()) == null)
                         {
                             useDefaults();
                         }
 
                         int frequency = int.Parse(line);
-                        configuration[name] = frequency;
+                        //configuration[name] = frequency;
+
+                        //if more gestures than default, add custom
+                        if (count >= default_labels.Count)
+                        {
+                            custom_labels[num_custom].Text = name;
+                            custom_up_downs[num_custom].Value = frequency;
+                            custom_up_downs[num_custom].Visible = true;
+                            ++num_custom;
+                        }
+                        else
+                        {
+                            default_up_downs[count].Value = frequency;
+                        }
+
+                        ++count;
 
                         for (int i = 0; i < frequency; ++i)
                         {
                             selected_gestures.Add(name);
                         }
                     }
+
                     if (selected_gestures.Count == 0)
                     {
                         useDefaults();
                     }
                 }
+
+                
             }
             catch (FileNotFoundException)
             {
                 useDefaults();
             }
 
-            if (configuration.ContainsKey("push"))
+            /*if (configuration.ContainsKey("push"))
                 this.pushUpDown.Value = configuration["push"];
             if (configuration.ContainsKey("pull"))
-                this.pullUpDown.Value = configuration["pull"];
+                this.swipeUpDown.Value = configuration["pull"];
             if (configuration.ContainsKey("swipe"))
-                this.swipeUpDown.Value = configuration["swipe"];
+                this.pushHardUpDown.Value = configuration["swipe"];
             if (configuration.ContainsKey("high_five"))
-                this.highFiveUpDown.Value = configuration["high_five"];
+                this.customUpDown1.Value = configuration["high_five"];
             if (configuration.ContainsKey("fist_bump"))
-                this.fistBumpUpDown.Value = configuration["fist_bump"];
+                this.customUpDown3.Value = configuration["fist_bump"];
             if (configuration.ContainsKey("push_hard"))
-                this.pushHardUpDown.Value = configuration["push_hard"];
+                this.customUpDown5.Value = configuration["push_hard"];
             if (configuration.ContainsKey("pull_hard"))
-                this.pullHardUpDown.Value = configuration["pull_hard"];
+                this.customUpDown7.Value = configuration["pull_hard"];
+             */
         }
 
         private void useDefaults()
         {
-            foreach (string name in GlobalVar.ALL_POSSIBLE_GESTURES_C)
+            selected_gestures.Clear();
+            
+            for(int i = 0; i < default_labels.Count; ++i)
+            {
+                selected_gestures.Add(default_labels[i].Text);
+                default_up_downs[i].Value = 1;
+            }
+            
+            /*foreach (string name in GlobalVar.ALL_POSSIBLE_GESTURES_C)
             {
                 selected_gestures.Add(name);
                 configuration[name] = 1;
             }
+             */
         }
 
-        public List<string> getGestures()
+        public string getGestureName()
         {
-            return selected_gestures;
+            Random r = new Random();
+            
+            return selected_gestures[r.Next(selected_gestures.Count)];
         }
 
         private void save()
         {
             using(StreamWriter sw = new StreamWriter(GlobalVar.SETTINGS_PATH_C))
             {
-                foreach(KeyValuePair<string, int> option in configuration)
+                for (int i = 0; i < default_labels.Count; ++i)
                 {
-                    sw.WriteLine(option.Key);
-                    sw.WriteLine(option.Value);
+                    sw.WriteLine(default_labels[i].Text);
+                    sw.WriteLine(default_up_downs[i].Value);
                 }
+
+                for (int i = 0; i < num_custom; ++i)
+                {
+                    sw.WriteLine(custom_labels[i].Text);
+                    sw.WriteLine(custom_up_downs[i].Value);
+                }
+
+                    /*foreach (KeyValuePair<string, int> option in configuration)
+                    {
+                        sw.WriteLine(option.Key);
+                        sw.WriteLine(option.Value);
+                    }*/
+            }
+        }
+
+        private void setSelectedGestures()
+        {
+            selected_gestures.Clear();
+            
+            for (int i = 0; i < default_up_downs.Count; ++i)
+            {
+                for (int j = 0; j < default_up_downs[i].Value; ++j)
+                    selected_gestures.Add(default_labels[i].Text);
+            }
+
+            for (int i = 0; i < num_custom; ++i)
+            {
+                for (int j = 0; j < custom_up_downs[i].Value; ++j)
+                    selected_gestures.Add(custom_labels[i].Text);
             }
         }
 
         private void backLabel_Click(object sender, EventArgs e)
         {
             save();
+
+            setSelectedGestures();
+
             this.Visible = false;
             inputText.Visible = false;
             retrieveInput.Visible = false;
+            
             GlobalVar.MAIN_MENU.Visible = true;
             GlobalVar.MAIN_MENU.Activate();
         }
@@ -122,6 +239,12 @@ namespace StretchIt
 
         private void recordLabel_Click(object sender, EventArgs e)
         {
+            if (num_custom >= custom_labels.Count)
+            {
+                MessageBox.Show("You have created the maximum number of gestures!");
+                return;
+            }
+            
             retrieveInput.Visible = true;
             inputText.Visible = true;
         }
@@ -145,8 +268,9 @@ namespace StretchIt
 
         private void retrieveInput_Click(object sender, EventArgs e)
         {
-            save(); //in case any settings were changed before recording
             record_gesture_name = this.inputText.Text;
+
+            
 
             DialogResult img_result = imageFileDialog.ShowDialog();
 
@@ -169,6 +293,15 @@ namespace StretchIt
                     }
                 }
             }
+        }
+
+        public void drawGesture(string gesture_name)
+        {
+            custom_labels[num_custom].Text = gesture_name;
+            custom_up_downs[num_custom].Value = 1;
+            custom_up_downs[num_custom].Visible = true;
+            
+            ++num_custom;
         }
 
         private void inputText_KeyUp(object sender, KeyEventArgs e)

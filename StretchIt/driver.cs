@@ -92,9 +92,9 @@ namespace StretchIt
 
         private void play_game()
         {
-            while (GlobalVar.MODE != Game_mode_e.Menu_Mode)
+            while (GlobalVar.MODE == Game_mode_e.Play)
             {
-                Gesture_t nextGesture = select_next_gesture();
+                Gesture_t nextGesture = reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestureName()];
                 nextGesture.sendPrompt();
 
                 kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
@@ -118,18 +118,20 @@ namespace StretchIt
             }
         }
 
-        private Gesture_t select_next_gesture()
+        /*private Gesture_t select_next_gesture()
         {
             Random r = new Random();
             
             int selected_index = r.Next(GlobalVar.MAIN_MENU.Settings.getGestures().Count);
             
             return reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestures()[selected_index]];
-        }
+        }*/
 
         private void createGesture()
         {
             string gesture_name = GlobalVar.MAIN_MENU.Settings.record_gesture_name;
+            string gesture_audio = GlobalVar.MAIN_MENU.Settings.record_gesture_audio;
+            string gesture_image = GlobalVar.MAIN_MENU.Settings.record_gesture_image;
             
             kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
 
@@ -149,6 +151,9 @@ namespace StretchIt
                 outFile.Close();
 
                 GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(gesture_name);
+
+                GlobalVar.MAIN_MENU.Settings.drawGesture(gesture_name);
+                //Create new Gesture_t in settings
             }
             else
             {

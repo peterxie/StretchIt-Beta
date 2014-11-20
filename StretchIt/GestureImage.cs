@@ -108,15 +108,15 @@ namespace StretchIt
             this.ClientSize = new System.Drawing.Size(624, 442);
             this.Name = "GestureImage";
             this.Text = "Gesture Image";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestureImage_FormClosing);
             this.ResumeLayout(false);
 
         }
 
-        private void GestureImage_FormClosing(object sender, FormClosingEventArgs e)
+        //Not sure we need this anymore since we are overwriting the png
+        /*private void GestureImage_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.BackgroundImage = null;
             this.Update();
-        }
+        }*/
     }
 }

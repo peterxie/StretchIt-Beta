@@ -1,0 +1,14 @@
+Push
+1
+Pull
+1
+Swipe
+3
+High Five
+5
+Push Hard
+1
+Push Hard
+1
+Fist Bump
+1
