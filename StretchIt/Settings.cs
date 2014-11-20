@@ -148,12 +148,12 @@ namespace StretchIt
             save(); //in case any settings were changed before recording
             record_gesture_name = this.inputText.Text;
 
-            /*DialogResult result = openFileDialog1.ShowDialog();
+            DialogResult result = openFileDialog1.ShowDialog();
 
             if(result == DialogResult.OK)
             {
                 record_gesture_image = openFileDialog1.FileName;
-            }*/
+            }
 
             backLabel_Click(sender, e);
 

@@ -14,6 +14,7 @@ namespace StretchIt
         Kinect_t kinect;
         public MessageBox gesture_valid_prompt;
 
+        [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
@@ -27,6 +28,8 @@ namespace StretchIt
             t.Start();
 
             Application.Run(m);
+
+            t.Abort();
         }
         
         public driver()
