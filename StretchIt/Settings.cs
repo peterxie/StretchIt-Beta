@@ -270,28 +270,64 @@ namespace StretchIt
         {
             record_gesture_name = this.inputText.Text;
 
-            
-
-            DialogResult img_result = imageFileDialog.ShowDialog();
-
-            if(img_result == DialogResult.OK)
+            lock (GlobalVar.key)
             {
-                record_gesture_image = imageFileDialog.FileName;
+                GlobalVar.MODE = Game_mode_e.Record;
+                Monitor.Pulse(GlobalVar.key);
+            }
 
-                DialogResult audio_result = audioFileDialog.ShowDialog();
+            System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
+            s.Start();
+            while (s.ElapsedMilliseconds < 7000) { }
+            s.Stop();
 
-                if(audio_result == DialogResult.OK)
+            GestureImage g = new GestureImage(record_gesture_name);
+
+            if (MessageBox.Show("Do you want to save this gesture?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                DialogResult img_result = imageFileDialog.ShowDialog();
+
+                if (img_result == DialogResult.OK)
                 {
-                    record_gesture_audio = audioFileDialog.FileName;
+                    record_gesture_image = imageFileDialog.FileName;
 
-                    backLabel_Click(sender, e);
+                    DialogResult audio_result = audioFileDialog.ShowDialog();
 
-                    lock (GlobalVar.key)
+                    if (audio_result == DialogResult.OK)
                     {
-                        GlobalVar.MODE = Game_mode_e.Record;
-                        Monitor.Pulse(GlobalVar.key);
+                        record_gesture_audio = audioFileDialog.FileName;
+
+                        backLabel_Click(sender, e);
                     }
                 }
+                
+                //Append Settings file with new gesture and default frequency
+                StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
+
+                outFile.WriteLine(record_gesture_name);
+                outFile.WriteLine(1);
+
+                outFile.Close();
+
+                //GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(record_gesture_name);
+
+                drawGesture(record_gesture_name);
+                
+                //Create new Gesture_t in driver
+            }
+            else
+            {
+                File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + record_gesture_name + ".txt");
+            }
+
+            g.Close();
+
+            //File.Delete(@"../../GestureImages/gesture.png");
+
+            lock (GlobalVar.key)
+            {
+                GlobalVar.MODE = Game_mode_e.Menu_Mode;
+                Monitor.Pulse(GlobalVar.key);
             }
         }
 

@@ -130,41 +130,11 @@ namespace StretchIt
         private void createGesture()
         {
             string gesture_name = GlobalVar.MAIN_MENU.Settings.record_gesture_name;
-            string gesture_audio = GlobalVar.MAIN_MENU.Settings.record_gesture_audio;
-            string gesture_image = GlobalVar.MAIN_MENU.Settings.record_gesture_image;
             
             kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
 
             Frame_t f = kinect.getFrame();
             f.write(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt", gesture_name);
-
-            GestureImage g = new GestureImage(gesture_name);
-            
-            if (MessageBox.Show("Do you want to save this gesture?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                //Append Settings file with new gesture and default frequency
-                StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
-
-                outFile.WriteLine(gesture_name);
-                outFile.WriteLine(1);
-
-                outFile.Close();
-
-                GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(gesture_name);
-
-                GlobalVar.MAIN_MENU.Settings.drawGesture(gesture_name);
-                //Create new Gesture_t in settings
-            }
-            else
-            {
-                File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt");
-            }
-
-            g.Close();
-
-            //File.Delete(@"../../GestureImages/gesture.png");
-            
-            GlobalVar.MODE = Game_mode_e.Menu_Mode;
         }
 
     }
