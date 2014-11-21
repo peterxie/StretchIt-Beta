@@ -310,7 +310,7 @@
             // 
             // imageFileDialog
             // 
-            this.imageFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.bmp;*.png;*.gif";
+            this.imageFileDialog.Filter = "Image Files|*.jpg";
             this.imageFileDialog.Title = "Open an Image File";
             // 
             // audioFileDialog
