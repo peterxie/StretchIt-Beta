@@ -54,7 +54,6 @@ namespace StretchIt
                 StreamReader inFile = new StreamReader(filePathsGestures[i]);
                 
                 String gesture_name = inFile.ReadLine();
-                GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(gesture_name);
 
                 Gesture_t ref_gesture = new Gesture_t(gesture_name, 
                     filePathsGestures[i],filePathsAudio[i],filePathsVideo[i], 
@@ -83,6 +82,12 @@ namespace StretchIt
                             createGesture();
                             Monitor.Wait(GlobalVar.key);
                             break;
+
+                        case Game_mode_e.Add_Gesture:
+                            addGesture();
+                            GlobalVar.MODE = Game_mode_e.Menu_Mode;
+                            break;
+
                         //default: maybe put a pause here
                     }
                 }
@@ -138,5 +143,18 @@ namespace StretchIt
             f.write(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt", gesture_name);
         }
 
+        private void addGesture()
+        {
+            string gesture_name = GlobalVar.MAIN_MENU.Settings.record_gesture_name;
+
+            Gesture_t ref_gesture = new Gesture_t(gesture_name,
+                GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name, 
+                GlobalVar.AUDIO_DIRECTORY_C + gesture_name, 
+                GlobalVar.IMAGE_DIRECTORY_C + gesture_name,
+                GlobalVar.AUDIO_DIRECTORY_C + "celebration.wav", 
+                GlobalVar.IMAGE_DIRECTORY_C + "celebration.jpg");
+
+            reference_gestures.Add(gesture_name, ref_gesture);
+        }
     }
 }

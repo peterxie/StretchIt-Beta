@@ -15,7 +15,8 @@ namespace StretchIt
         Play,
         Menu_Mode,
         Record,
-        Exit_Game
+        Add_Gesture
+        Exit_Game,
     }
 
     public static class GlobalVar
@@ -30,7 +31,6 @@ namespace StretchIt
         public const int                NUM_FRAMES_RECORD_C = 100;
 
 
-        public static List<string>      ALL_POSSIBLE_GESTURES_C = new List<string>();
         public static Game_mode_e       MODE = Game_mode_e.Menu_Mode;
         public static MainMenu_t        MAIN_MENU;// = new MainMenu_t();
     }
