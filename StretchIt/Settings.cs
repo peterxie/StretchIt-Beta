@@ -21,6 +21,7 @@ namespace StretchIt
         
         private List<NumericUpDown> custom_up_downs;
         private List<Label> custom_labels;
+        private List<Button> custom_delete_btns;
         private int num_custom;
 
         public string record_gesture_name { get; set; }
@@ -77,6 +78,18 @@ namespace StretchIt
             custom_labels.Add(customLabel7);
             custom_labels.Add(customLabel8);
 
+            custom_delete_btns.Add(deleteCustom1Btn);
+            custom_delete_btns.Add(deleteCustom2Btn);
+            custom_delete_btns.Add(deleteCustom3Btn);
+            custom_delete_btns.Add(deleteCustom4Btn);
+            custom_delete_btns.Add(deleteCustom5Btn);
+            custom_delete_btns.Add(deleteCustom6Btn);
+            custom_delete_btns.Add(deleteCustom7Btn);
+            custom_delete_btns.Add(deleteCustom8Btn);
+
+            foreach(Button btn in custom_delete_btns)
+                btn.Visible = false;
+
             num_custom = 0;
 
             try
@@ -106,6 +119,7 @@ namespace StretchIt
                             custom_labels[num_custom].Text = name;
                             custom_up_downs[num_custom].Value = frequency;
                             custom_up_downs[num_custom].Visible = true;
+                            custom_delete_btns[num_custom].Visible = true;
                             ++num_custom;
                         }
                         else
@@ -144,7 +158,6 @@ namespace StretchIt
                 selected_gestures.Add(default_labels[i].Text);
                 default_up_downs[i].Value = 1;
             }
-
         }
 
         public string getGestureName()
@@ -169,12 +182,6 @@ namespace StretchIt
                     sw.WriteLine(custom_labels[i].Text);
                     sw.WriteLine(custom_up_downs[i].Value);
                 }
-
-                    /*foreach (KeyValuePair<string, int> option in configuration)
-                    {
-                        sw.WriteLine(option.Key);
-                        sw.WriteLine(option.Value);
-                    }*/
             }
         }
 
@@ -235,6 +242,34 @@ namespace StretchIt
             //Refresh();
         }
 
+        private void deleteButtonClick(object sender, EventArgs e)
+        {
+            int index = 0;
+
+            //Find out which X button was pressed
+            for(int i = 0; i < custom_delete_btns.Count; ++i)
+            {
+                if(custom_delete_btns[i] == sender)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            --num_custom;
+
+            //Shift values backwards
+            for(int i = index; i < num_custom; ++i)
+            {
+                custom_up_downs[index].Value = custom_up_downs[index + 1].Value;
+                custom_labels[index].Text = custom_labels[index + 1].Text;
+            }
+
+            custom_delete_btns[num_custom].Visible = false;
+            custom_up_downs[num_custom].Visible = false;
+            custom_labels[num_custom].Text = "";
+        }
+
         private void upDownBound(object sender, EventArgs e)
         {
             NumericUpDown updown = (NumericUpDown)sender;
@@ -247,22 +282,28 @@ namespace StretchIt
         private void retrieveInput_Click(object sender, EventArgs e)
         {
             // Ensure that this gesture name does not already exist
-            for (int i = 0; i < default_labels.Count; ++i)
+            bool name_exists = false;
+
+            foreach(Label name in default_labels)
             {
-                if (default_labels[i].Text == inputText.Text)
+                if (name.Text == inputText.Text)
                 {
-                    MessageBox.Show("Looks like that name is already taken!", "Whoops!", MessageBoxButtons.OK);
-                    return;
+                    name_exists = true;
                 }
             }
 
-            for (int i = 0; i < num_custom; ++i)
+            foreach(Label name in custom_labels)
             {
-                if (custom_labels[i].Text == inputText.Text)
+                if(name.Text == inputText.Text)
                 {
-                    MessageBox.Show("Looks like that name is already taken!", "Whoops!", MessageBoxButtons.OK);
-                    return;
+                    name_exists = true;
                 }
+            }
+
+            if(name_exists)
+            {
+                MessageBox.Show("Looks like that name is already taken!", "Whoops!", MessageBoxButtons.OK);
+                return;
             }
 
             record_gesture_name = this.inputText.Text;
@@ -299,7 +340,6 @@ namespace StretchIt
                         File.Copy(record_gesture_audio, GlobalVar.AUDIO_DIRECTORY_C + record_gesture_name + ".wav");
                         File.Copy(GlobalVar.TEMP_GESTURE_FILE, GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + record_gesture_name + ".txt");
 
-
                         //Append Settings file with new gesture and default frequency
                         StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
 
@@ -327,9 +367,6 @@ namespace StretchIt
             }
 
             g.Close();
-
-
-
         }
 
         public void drawGesture(string gesture_name)
@@ -348,8 +385,5 @@ namespace StretchIt
                 retrieveInput_Click(sender, e);
             }
         }
-
-
-
     }
 }

@@ -64,6 +64,14 @@
             this.highFiveLabel = new System.Windows.Forms.Label();
             this.highFiveUpDown = new System.Windows.Forms.NumericUpDown();
             this.pullLabel = new System.Windows.Forms.Label();
+            this.deleteCustom1Btn = new System.Windows.Forms.Button();
+            this.deleteCustom3Btn = new System.Windows.Forms.Button();
+            this.deleteCustom5Btn = new System.Windows.Forms.Button();
+            this.deleteCustom7Btn = new System.Windows.Forms.Button();
+            this.deleteCustom8Btn = new System.Windows.Forms.Button();
+            this.deleteCustom6Btn = new System.Windows.Forms.Button();
+            this.deleteCustom4Btn = new System.Windows.Forms.Button();
+            this.deleteCustom2Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pushHardUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customUpDown5)).BeginInit();
@@ -489,12 +497,100 @@
             this.pullLabel.TabIndex = 22;
             this.pullLabel.Text = "Pull";
             // 
+            // deleteCustom1Btn
+            // 
+            this.deleteCustom1Btn.Location = new System.Drawing.Point(262, 196);
+            this.deleteCustom1Btn.Name = "deleteCustom1Btn";
+            this.deleteCustom1Btn.Size = new System.Drawing.Size(22, 22);
+            this.deleteCustom1Btn.TabIndex = 36;
+            this.deleteCustom1Btn.Text = "X";
+            this.deleteCustom1Btn.UseVisualStyleBackColor = true;
+            this.deleteCustom1Btn.Click += new System.EventHandler(this.deleteButtonClick);
+            // 
+            // deleteCustom3Btn
+            // 
+            this.deleteCustom3Btn.Location = new System.Drawing.Point(262, 222);
+            this.deleteCustom3Btn.Name = "deleteCustom3Btn";
+            this.deleteCustom3Btn.Size = new System.Drawing.Size(22, 22);
+            this.deleteCustom3Btn.TabIndex = 37;
+            this.deleteCustom3Btn.Text = "X";
+            this.deleteCustom3Btn.UseVisualStyleBackColor = true;
+            this.deleteCustom3Btn.Click += new System.EventHandler(this.deleteButtonClick);
+            // 
+            // deleteCustom5Btn
+            // 
+            this.deleteCustom5Btn.Location = new System.Drawing.Point(262, 248);
+            this.deleteCustom5Btn.Name = "deleteCustom5Btn";
+            this.deleteCustom5Btn.Size = new System.Drawing.Size(22, 22);
+            this.deleteCustom5Btn.TabIndex = 38;
+            this.deleteCustom5Btn.Text = "X";
+            this.deleteCustom5Btn.UseVisualStyleBackColor = true;
+            this.deleteCustom5Btn.Click += new System.EventHandler(this.deleteButtonClick);
+            // 
+            // deleteCustom7Btn
+            // 
+            this.deleteCustom7Btn.Location = new System.Drawing.Point(262, 275);
+            this.deleteCustom7Btn.Name = "deleteCustom7Btn";
+            this.deleteCustom7Btn.Size = new System.Drawing.Size(22, 22);
+            this.deleteCustom7Btn.TabIndex = 39;
+            this.deleteCustom7Btn.Text = "X";
+            this.deleteCustom7Btn.UseVisualStyleBackColor = true;
+            this.deleteCustom7Btn.Click += new System.EventHandler(this.deleteButtonClick);
+            // 
+            // deleteCustom8Btn
+            // 
+            this.deleteCustom8Btn.Location = new System.Drawing.Point(503, 275);
+            this.deleteCustom8Btn.Name = "deleteCustom8Btn";
+            this.deleteCustom8Btn.Size = new System.Drawing.Size(22, 22);
+            this.deleteCustom8Btn.TabIndex = 43;
+            this.deleteCustom8Btn.Text = "X";
+            this.deleteCustom8Btn.UseVisualStyleBackColor = true;
+            this.deleteCustom8Btn.Click += new System.EventHandler(this.deleteButtonClick);
+            // 
+            // deleteCustom6Btn
+            // 
+            this.deleteCustom6Btn.Location = new System.Drawing.Point(503, 248);
+            this.deleteCustom6Btn.Name = "deleteCustom6Btn";
+            this.deleteCustom6Btn.Size = new System.Drawing.Size(22, 22);
+            this.deleteCustom6Btn.TabIndex = 42;
+            this.deleteCustom6Btn.Text = "X";
+            this.deleteCustom6Btn.UseVisualStyleBackColor = true;
+            this.deleteCustom6Btn.Click += new System.EventHandler(this.deleteButtonClick);
+            // 
+            // deleteCustom4Btn
+            // 
+            this.deleteCustom4Btn.Location = new System.Drawing.Point(503, 222);
+            this.deleteCustom4Btn.Name = "deleteCustom4Btn";
+            this.deleteCustom4Btn.Size = new System.Drawing.Size(22, 22);
+            this.deleteCustom4Btn.TabIndex = 41;
+            this.deleteCustom4Btn.Text = "X";
+            this.deleteCustom4Btn.UseVisualStyleBackColor = true;
+            this.deleteCustom4Btn.Click += new System.EventHandler(this.deleteButtonClick);
+            // 
+            // deleteCustom2Btn
+            // 
+            this.deleteCustom2Btn.Location = new System.Drawing.Point(503, 196);
+            this.deleteCustom2Btn.Name = "deleteCustom2Btn";
+            this.deleteCustom2Btn.Size = new System.Drawing.Size(22, 22);
+            this.deleteCustom2Btn.TabIndex = 40;
+            this.deleteCustom2Btn.Text = "X";
+            this.deleteCustom2Btn.UseVisualStyleBackColor = true;
+            this.deleteCustom2Btn.Click += new System.EventHandler(this.deleteButtonClick);
+            // 
             // Settings_t
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(599, 399);
+            this.Controls.Add(this.deleteCustom8Btn);
+            this.Controls.Add(this.deleteCustom6Btn);
+            this.Controls.Add(this.deleteCustom4Btn);
+            this.Controls.Add(this.deleteCustom2Btn);
+            this.Controls.Add(this.deleteCustom7Btn);
+            this.Controls.Add(this.deleteCustom5Btn);
+            this.Controls.Add(this.deleteCustom3Btn);
+            this.Controls.Add(this.deleteCustom1Btn);
             this.Controls.Add(this.pullUpDown);
             this.Controls.Add(this.customLabel8);
             this.Controls.Add(this.customUpDown8);
@@ -588,5 +684,13 @@
         private System.Windows.Forms.Label highFiveLabel;
         private System.Windows.Forms.NumericUpDown highFiveUpDown;
         private System.Windows.Forms.Label pullLabel;
+        private System.Windows.Forms.Button deleteCustom1Btn;
+        private System.Windows.Forms.Button deleteCustom3Btn;
+        private System.Windows.Forms.Button deleteCustom5Btn;
+        private System.Windows.Forms.Button deleteCustom7Btn;
+        private System.Windows.Forms.Button deleteCustom8Btn;
+        private System.Windows.Forms.Button deleteCustom6Btn;
+        private System.Windows.Forms.Button deleteCustom4Btn;
+        private System.Windows.Forms.Button deleteCustom2Btn;
     }
 }
