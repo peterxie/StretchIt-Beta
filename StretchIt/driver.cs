@@ -141,7 +141,7 @@ namespace StretchIt
             kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
 
             Frame_t f = kinect.getFrame();
-            f.write(@"../../GestureImages/gesture.txt", gesture_name);
+            f.write(GlobalVar.TEMP_GESTURE_FILE, gesture_name);
         }
 
         private void addGesture()

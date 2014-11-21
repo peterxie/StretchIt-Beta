@@ -26,10 +26,10 @@ namespace StretchIt
 
             this.color_pixels = new byte[1228800];
             this.color_bitmap = new WriteableBitmap(640, 480, 96.0, 96.0, PixelFormats.Bgr32, null);
-            frame = new Frame_t(@"../../GestureImages/gesture.txt");
+            frame = new Frame_t(GlobalVar.TEMP_GESTURE_FILE);
             makeColor();
             saveImage();
-            this.BackgroundImage = Image.FromFile(@"../../GestureImages/gesture.png");
+            this.BackgroundImage = Image.FromFile(GlobalVar.TEMP_GESTURE_IMAGE_FILE);
             this.Visible = true;
         }
 
@@ -82,12 +82,10 @@ namespace StretchIt
             // create frame from the writable bitmap and add to encoder
             encoder.Frames.Add(BitmapFrame.Create(this.color_bitmap));
 
-            string path = @"../../GestureImages/gesture.png";
-
             // write the new file to disk
             try
             {
-                using (FileStream fs = new FileStream(path, FileMode.Create))
+                using (FileStream fs = new FileStream(GlobalVar.TEMP_GESTURE_IMAGE_FILE, FileMode.Create))
                 {
                     encoder.Save(fs);
                     fs.Close();

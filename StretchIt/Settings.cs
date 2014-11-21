@@ -297,7 +297,7 @@ namespace StretchIt
                         //Send files to local directories with correct names
                         File.Copy(record_gesture_image, GlobalVar.IMAGE_DIRECTORY_C + record_gesture_name + ".jpg");
                         File.Copy(record_gesture_audio, GlobalVar.AUDIO_DIRECTORY_C + record_gesture_name + ".wav");
-                        File.Copy(@"../../GestureImages/gesture.txt", GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + record_gesture_name + ".txt");
+                        File.Copy(GlobalVar.TEMP_GESTURE_FILE, GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + record_gesture_name + ".txt");
 
 
                         //Append Settings file with new gesture and default frequency
