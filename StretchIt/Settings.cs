@@ -78,6 +78,7 @@ namespace StretchIt
             custom_labels.Add(customLabel7);
             custom_labels.Add(customLabel8);
 
+            custom_delete_btns = new List<Button>();
             custom_delete_btns.Add(deleteCustom1Btn);
             custom_delete_btns.Add(deleteCustom2Btn);
             custom_delete_btns.Add(deleteCustom3Btn);
@@ -209,8 +210,6 @@ namespace StretchIt
             setSelectedGestures();
 
             this.Visible = false;
-            inputText.Visible = false;
-            retrieveInput.Visible = false;
             
             GlobalVar.MAIN_MENU.Visible = true;
             GlobalVar.MAIN_MENU.Activate();
@@ -232,14 +231,7 @@ namespace StretchIt
             
             retrieveInput.Visible = true;
             inputText.Visible = true;
-        }
-
-        private void Settings_t_Activated(object sender, EventArgs e)
-        {
-            //will we be reloading the settings file after a new gesture is written to it?
-            //dependent on how we handle a new gesture
-
-            //Refresh();
+            inputText.Text = "Enter name here...";
         }
 
         private void deleteButtonClick(object sender, EventArgs e)
@@ -257,6 +249,13 @@ namespace StretchIt
             }
 
             --num_custom;
+
+            //Need to delete Gesture_t in driver
+
+            //Need to delete gesture.txt, gesture.wav, gesture.jpg
+            File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + custom_labels[index].Text + ".txt");
+            File.Delete(GlobalVar.AUDIO_DIRECTORY_C + custom_labels[index].Text + ".wav");
+            File.Delete(GlobalVar.IMAGE_DIRECTORY_C + custom_labels[index].Text + ".jpg");
 
             //Shift values backwards
             for(int i = index; i < num_custom; ++i)
@@ -353,7 +352,8 @@ namespace StretchIt
                             GlobalVar.MODE = Game_mode_e.Add_Gesture;
                             Monitor.Pulse(GlobalVar.key);
                         }
-                        backLabel_Click(sender, e);
+                        
+                        //backLabel_Click(sender, e);
                     }
                 }
             }
@@ -371,9 +371,13 @@ namespace StretchIt
 
         public void drawGesture(string gesture_name)
         {
+            inputText.Visible = false;
+            retrieveInput.Visible = false;
+            
             custom_labels[num_custom].Text = gesture_name;
             custom_up_downs[num_custom].Value = 1;
             custom_up_downs[num_custom].Visible = true;
+            custom_delete_btns[num_custom].Visible = true;
             
             ++num_custom;
         }

@@ -626,7 +626,6 @@
             this.Controls.Add(this.title);
             this.Name = "Settings_t";
             this.Text = "Settings";
-            this.Activated += new System.EventHandler(this.Settings_t_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_t_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pushHardUpDown)).EndInit();
