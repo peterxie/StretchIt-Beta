@@ -70,7 +70,8 @@ namespace StretchIt
             while(GlobalVar.MODE != Game_mode_e.Exit_Game) {
                 lock (GlobalVar.key)
                 {
-                    while (GlobalVar.MODE != Game_mode_e.Play && GlobalVar.MODE != Game_mode_e.Record)
+                    while (GlobalVar.MODE != Game_mode_e.Play && GlobalVar.MODE != Game_mode_e.Record &&
+                            GlobalVar.MODE != Game_mode_e.Add_Gesture)
                         Monitor.Wait(GlobalVar.key);
                     switch (GlobalVar.MODE)
                     {
@@ -148,9 +149,9 @@ namespace StretchIt
             string gesture_name = GlobalVar.MAIN_MENU.Settings.record_gesture_name;
 
             Gesture_t ref_gesture = new Gesture_t(gesture_name,
-                GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name, 
-                GlobalVar.AUDIO_DIRECTORY_C + gesture_name, 
-                GlobalVar.IMAGE_DIRECTORY_C + gesture_name,
+                GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt", 
+                GlobalVar.AUDIO_DIRECTORY_C + gesture_name + ".wav", 
+                GlobalVar.IMAGE_DIRECTORY_C + gesture_name + ".jpg",
                 GlobalVar.AUDIO_DIRECTORY_C + "celebration.wav", 
                 GlobalVar.IMAGE_DIRECTORY_C + "celebration.jpg");
 

@@ -115,7 +115,6 @@ namespace StretchIt
 
                         ++count;
 
-                        GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(name);
                         for (int i = 0; i < frequency; ++i)
                         {
                             selected_gestures.Add(name);
@@ -146,18 +145,6 @@ namespace StretchIt
                 default_up_downs[i].Value = 1;
             }
 
-            GlobalVar.ALL_POSSIBLE_GESTURES_C.Clear();
-            foreach(Label label in default_labels)
-            {
-                GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(label.Text);
-            }
-            
-            /*foreach (string name in GlobalVar.ALL_POSSIBLE_GESTURES_C)
-            {
-                selected_gestures.Add(name);
-                configuration[name] = 1;
-            }
-             */
         }
 
         public string getGestureName()
@@ -260,14 +247,24 @@ namespace StretchIt
         private void retrieveInput_Click(object sender, EventArgs e)
         {
             // Ensure that this gesture name does not already exist
-            foreach (string name in GlobalVar.ALL_POSSIBLE_GESTURES_C)
+            for (int i = 0; i < default_labels.Count; ++i)
             {
-                if (name == inputText.Text)
+                if (default_labels[i].Text == inputText.Text)
                 {
                     MessageBox.Show("Looks like that name is already taken!", "Whoops!", MessageBoxButtons.OK);
                     return;
                 }
             }
+
+            for (int i = 0; i < num_custom; ++i)
+            {
+                if (custom_labels[i].Text == inputText.Text)
+                {
+                    MessageBox.Show("Looks like that name is already taken!", "Whoops!", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+
             record_gesture_name = this.inputText.Text;
 
             lock (GlobalVar.key)
@@ -302,33 +299,37 @@ namespace StretchIt
                         File.Copy(record_gesture_audio, GlobalVar.AUDIO_DIRECTORY_C + record_gesture_name + ".wav");
                         File.Copy(@"../../GestureImages/gesture.txt", GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + record_gesture_name + ".txt");
 
+
+                        //Append Settings file with new gesture and default frequency
+                        StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
+
+                        outFile.WriteLine(record_gesture_name);
+                        outFile.WriteLine(1);
+
+                        outFile.Close();
+                        drawGesture(record_gesture_name);
+                        lock (GlobalVar.key)
+                        {
+                            GlobalVar.MODE = Game_mode_e.Add_Gesture;
+                            Monitor.Pulse(GlobalVar.key);
+                        }
                         backLabel_Click(sender, e);
                     }
                 }
-                
-                //Append Settings file with new gesture and default frequency
-                StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
-
-                outFile.WriteLine(record_gesture_name);
-                outFile.WriteLine(1);
-
-                outFile.Close();
-
-                GlobalVar.ALL_POSSIBLE_GESTURES_C.Add(record_gesture_name);
-
-                drawGesture(record_gesture_name);
-                
-                //Create new Gesture_t in driver
+            }
+            else
+            {
+                lock (GlobalVar.key)
+                {
+                    GlobalVar.MODE = Game_mode_e.Menu_Mode;
+                    Monitor.Pulse(GlobalVar.key);
+                }
             }
 
             g.Close();
 
 
-            lock (GlobalVar.key)
-            {
-                GlobalVar.MODE = Game_mode_e.Menu_Mode;
-                Monitor.Pulse(GlobalVar.key);
-            }
+
         }
 
         public void drawGesture(string gesture_name)
