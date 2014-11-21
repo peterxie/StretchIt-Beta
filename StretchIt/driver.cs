@@ -81,6 +81,7 @@ namespace StretchIt
 
                         case Game_mode_e.Record:
                             createGesture();
+                            Monitor.Wait(GlobalVar.key);
                             break;
                         //default: maybe put a pause here
                     }

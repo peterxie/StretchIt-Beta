@@ -113,10 +113,10 @@ namespace StretchIt
         }
 
         //Not sure we need this anymore since we are overwriting the png
-        /*private void GestureImage_FormClosing(object sender, FormClosingEventArgs e)
+        private void GestureImage_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.BackgroundImage = null;
             this.Update();
-        }*/
+        }
     }
 }

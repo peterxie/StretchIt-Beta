@@ -306,6 +306,7 @@ namespace StretchIt
 
                         backLabel_Click(sender, e);
                     }
+                    File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + record_gesture_name + ".txt");
                 }
                 
                 //Append Settings file with new gesture and default frequency
@@ -324,6 +325,8 @@ namespace StretchIt
             }
             else
             {
+                //delete the recorded frame if the user does not want to save
+                g.Close();
                 File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + record_gesture_name + ".txt");
             }
 
