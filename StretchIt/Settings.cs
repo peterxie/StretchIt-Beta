@@ -297,12 +297,9 @@ namespace StretchIt
                     {
                         record_gesture_audio = audioFileDialog.FileName;
 
-                        string command_line_args = record_gesture_name + " " + record_gesture_image + " " +
-                                                            record_gesture_audio + " " + GlobalVar.IMAGE_DIRECTORY_C + 
-                                                            " " + GlobalVar.AUDIO_DIRECTORY_C;
-
-                        //run the script that copies image/audio files into local directories
-                        System.Diagnostics.Process.Start(GlobalVar.GESTURE_SCRIPT_PATH_C, command_line_args);
+                        //Send files to local directories with correct names
+                        File.Copy(record_gesture_image, GlobalVar.IMAGE_DIRECTORY_C + record_gesture_name + ".jpg");
+                        File.Copy(record_gesture_audio, GlobalVar.AUDIO_DIRECTORY_C + record_gesture_name + ".wav");
 
                         backLabel_Click(sender, e);
                     }
