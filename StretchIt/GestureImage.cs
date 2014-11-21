@@ -20,13 +20,13 @@ namespace StretchIt
         private byte[] color_pixels;
         Frame_t frame;
 
-        public GestureImage(string gesture_name)
+        public GestureImage()
         {
             InitializeComponent();
 
             this.color_pixels = new byte[1228800];
             this.color_bitmap = new WriteableBitmap(640, 480, 96.0, 96.0, PixelFormats.Bgr32, null);
-            frame = new Frame_t(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt");
+            frame = new Frame_t(@"../../GestureImages/gesture.txt");
             makeColor();
             saveImage();
             this.BackgroundImage = Image.FromFile(@"../../GestureImages/gesture.png");

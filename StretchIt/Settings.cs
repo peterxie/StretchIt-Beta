@@ -281,7 +281,7 @@ namespace StretchIt
             while (s.ElapsedMilliseconds < 7000) { }
             s.Stop();
 
-            GestureImage g = new GestureImage(record_gesture_name);
+            GestureImage g = new GestureImage();
 
             if (MessageBox.Show("Do you want to save this gesture?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -300,10 +300,10 @@ namespace StretchIt
                         //Send files to local directories with correct names
                         File.Copy(record_gesture_image, GlobalVar.IMAGE_DIRECTORY_C + record_gesture_name + ".jpg");
                         File.Copy(record_gesture_audio, GlobalVar.AUDIO_DIRECTORY_C + record_gesture_name + ".wav");
+                        File.Copy(@"../../GestureImages/gesture.txt", GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + record_gesture_name + ".txt");
 
                         backLabel_Click(sender, e);
                     }
-                    File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + record_gesture_name + ".txt");
                 }
                 
                 //Append Settings file with new gesture and default frequency
@@ -320,16 +320,9 @@ namespace StretchIt
                 
                 //Create new Gesture_t in driver
             }
-            else
-            {
-                //delete the recorded frame if the user does not want to save
-                g.Close();
-                File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + record_gesture_name + ".txt");
-            }
 
             g.Close();
 
-            //File.Delete(@"../../GestureImages/gesture.png");
 
             lock (GlobalVar.key)
             {

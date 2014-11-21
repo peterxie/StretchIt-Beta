@@ -27,6 +27,8 @@ namespace StretchIt
         public const string             IMAGE_DIRECTORY_C = @"..\..\Images\";
         public const string             STATS_PATH_C = @"..\..\statistics.txt";
         public const string             SETTINGS_PATH_C = @"..\..\settings.txt";
+        public const string             TEMP_GESTURE_FILE = @"../../GestureImages/gesture.txt";
+        public const string             TEMP_GESTURE_IMAGE_FILE = @"../../GestureImages/gesture.png";
         public const int                NUM_PIXELS_C = 307200;
         public const int                NUM_FRAMES_RECORD_C = 100;
 
