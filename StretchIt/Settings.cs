@@ -262,13 +262,15 @@ namespace StretchIt
             --num_custom;
 
             //Need to delete gesture.txt, gesture.wav, gesture.jpg
-            File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + custom_labels[index].Text + ".txt");
-            File.Delete(GlobalVar.AUDIO_DIRECTORY_C + custom_labels[index].Text + ".wav");
-            File.Delete(GlobalVar.IMAGE_DIRECTORY_C + custom_labels[index].Text + ".jpg");
+            gesture_name_in_focus = custom_labels[index].Text;
+
+            File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name_in_focus + ".txt");
+            File.Delete(GlobalVar.AUDIO_DIRECTORY_C + gesture_name_in_focus + ".wav");
+            File.Delete(GlobalVar.IMAGE_DIRECTORY_C + gesture_name_in_focus + ".jpg");
 
             selected_gestures.RemoveAll(delegate(string name)
             {
-                return name == custom_labels[index].Text;
+                return name == gesture_name_in_focus;
             });
 
             //Shift values backwards
