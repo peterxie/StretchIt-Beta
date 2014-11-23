@@ -121,12 +121,7 @@ namespace StretchIt
                         case Gesture_rc_e.Correct:
                             GlobalVar.MAIN_MENU.Stats.recordResult(true);
                             nextGesture.sendFeedback();
-
-                            System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
-                            s.Start();
-                            while (s.ElapsedMilliseconds < 5000) { }
-                            s.Stop();
-                            
+                            GlobalVar.sleep(5000);
                             break;
                         case Gesture_rc_e.Incorrect:
                             GlobalVar.MAIN_MENU.Stats.recordResult(false);
