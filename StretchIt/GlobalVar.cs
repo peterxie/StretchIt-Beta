@@ -38,6 +38,14 @@ namespace StretchIt
 
         public static Game_mode_e       MODE = Game_mode_e.Menu_Mode;
         public static MainMenu_t        MAIN_MENU;// = new MainMenu_t();
+        public static void sleep(int numMilli)
+        {
+            System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
+            s.Start();
+            while (s.ElapsedMilliseconds < numMilli) { }
+            s.Stop();
+        }
+
     }
 
 }

@@ -337,10 +337,7 @@ namespace StretchIt
                 Monitor.Pulse(GlobalVar.key);
             }
 
-            System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
-            s.Start();
-            while (s.ElapsedMilliseconds < 4000) { }
-            s.Stop();
+            GlobalVar.sleep(4000);
 
             GestureImage g = new GestureImage();
 
