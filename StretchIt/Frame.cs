@@ -12,16 +12,21 @@ namespace StretchIt
     {
         private int                 num_pixels;         //size of the short[] members                
         private double              error_threshold;    //average deviation/pixel threshold for determining correctness
+        private double              no_input_threshold; //average deviation/pixel threshold for determining no input
         private short[]             depth_pixels;       //stores the depth "image" for a motion
-        private static short[]      default_frame;      //stores the depth "image" reference across all Frame_t objects
+        private static short[]      no_input_frame;      //stores the depth "image" reference across all Frame_t objects
         
         private const double        default_threshold_c = 100.0;
+        private const double        default_no_input_threshold_c = 30.0;
 
         //default constructor which takes the number of pixels as an argument
-        public Frame_t(int num_pixels_ = GlobalVar.NUM_PIXELS_C, double threshold_ = default_threshold_c)
+        public Frame_t(int num_pixels_ = GlobalVar.NUM_PIXELS_C,
+                        double threshold_ = default_threshold_c,
+                        double no_input_threshold_ = default_no_input_threshold_c)
         {
             num_pixels = num_pixels_;
             error_threshold = threshold_;
+            no_input_threshold = no_input_threshold_;
             depth_pixels = new short[num_pixels];
         }
 
@@ -30,6 +35,7 @@ namespace StretchIt
         {
             this.num_pixels = copyFrame.num_pixels;
             error_threshold = copyFrame.error_threshold;
+            no_input_threshold = copyFrame.no_input_threshold;
 
             //perform a deep copy
             depth_pixels = new short[num_pixels];
@@ -58,6 +64,7 @@ namespace StretchIt
                 }
             }
             this.error_threshold = default_threshold_c;
+            this.no_input_threshold = default_no_input_threshold_c;
         }
 
         //constructor given an array of depth information
@@ -76,6 +83,7 @@ namespace StretchIt
                 pixels.CopyTo(depth_pixels, 0);
             }
             error_threshold = default_threshold_c;
+            no_input_threshold = default_no_input_threshold_c;
         }
 
         //saves the depth_pixels to a text file in the following format
@@ -108,6 +116,7 @@ namespace StretchIt
 
             num_pixels = Int32.Parse(file.ReadLine());
             error_threshold = Double.Parse(file.ReadLine());
+            no_input_threshold = default_no_input_threshold_c;
 
             //if the file specifies a different size, create a new array
             if (depth_pixels == null || depth_pixels.Length != num_pixels)
@@ -137,8 +146,8 @@ namespace StretchIt
         //set the static default_frame variable
         static public void setDefault(short[] frame)
         {
-            default_frame = new short[frame.Length];
-            frame.CopyTo(default_frame, 0);
+            no_input_frame = new short[frame.Length];
+            frame.CopyTo(no_input_frame, 0);
         }
 
         //accessor for the depth_pixels
@@ -167,7 +176,7 @@ namespace StretchIt
         {
             for (int i = 0; i < num_pixels; ++i)
             {
-                short input_diff = (short) ((raw_depth_pixels[i] >> DepthImageFrame.PlayerIndexBitmaskWidth) - default_frame[i]);
+                short input_diff = (short)((raw_depth_pixels[i] >> DepthImageFrame.PlayerIndexBitmaskWidth) - no_input_frame[i]);
 
                 if (Math.Abs(input_diff) > Math.Abs(depth_pixels[i]))
                 {
@@ -180,25 +189,25 @@ namespace StretchIt
         public Gesture_rc_e computeDeviation(Frame_t input_frame)
         {
             double input_gesture_error = 0;
-            double def_gesture_error = 0;
+            double no_input_gesture_error = 0;
 
             for (int i = 0; i < num_pixels; ++i)
             {
                 input_gesture_error += Math.Abs(depth_pixels[i] - input_frame.depth_pixels[i]);
                 //being close to the default_frame would mean input_frame has an array of close to 0
-                def_gesture_error += Math.Abs(input_frame.depth_pixels[i]);
+                no_input_gesture_error += Math.Abs(input_frame.depth_pixels[i]);
             }
 
             double input_error = input_gesture_error / num_pixels;
-            double def_error = def_gesture_error / num_pixels;
-            double min_error = System.Math.Min(input_error, def_error);
+            double no_input_error = no_input_gesture_error / num_pixels;
+            double min_error = System.Math.Min(input_error, no_input_error);
 
             if(min_error == input_error && input_error < error_threshold)
             {
                 return Gesture_rc_e.Correct;
             }
 
-            else if (min_error == def_error && def_error < error_threshold)
+            else if (min_error == no_input_error && no_input_error < no_input_threshold)
             {
                 return Gesture_rc_e.No_Input;
             }

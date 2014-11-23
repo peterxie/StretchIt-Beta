@@ -104,12 +104,11 @@ namespace StretchIt
                 Gesture_t nextGesture = reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestureName()];
                 nextGesture.sendPrompt();
 
-                kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
-
                 Gesture_rc_e state_gesture = Gesture_rc_e.No_Input;
 
                 while (state_gesture == Gesture_rc_e.No_Input)
                 {
+                    kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
                     state_gesture = nextGesture.processGesture(kinect.getFrame());
                     
                     switch (state_gesture)
