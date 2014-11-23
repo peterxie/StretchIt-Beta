@@ -16,6 +16,7 @@ namespace StretchIt
         Menu_Mode,
         Record,
         Add_Gesture,
+        Remove_Gesture,
         Exit_Game,
     }
 

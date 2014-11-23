@@ -261,12 +261,15 @@ namespace StretchIt
 
             --num_custom;
 
-            //Need to delete Gesture_t in driver
-
             //Need to delete gesture.txt, gesture.wav, gesture.jpg
             File.Delete(GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + custom_labels[index].Text + ".txt");
             File.Delete(GlobalVar.AUDIO_DIRECTORY_C + custom_labels[index].Text + ".wav");
             File.Delete(GlobalVar.IMAGE_DIRECTORY_C + custom_labels[index].Text + ".jpg");
+
+            selected_gestures.RemoveAll(delegate(string name)
+            {
+                return name == custom_labels[index].Text;
+            });
 
             //Shift values backwards
             for(int i = index; i < num_custom; ++i)
@@ -280,6 +283,12 @@ namespace StretchIt
             custom_labels[num_custom].Text = "";
 
             ResumeLayout();
+
+            lock (GlobalVar.key)
+            {
+                GlobalVar.MODE = Game_mode_e.Remove_Gesture;
+                Monitor.Pulse(GlobalVar.key);
+            }
         }
 
         private void upDownBound(object sender, EventArgs e)
