@@ -19,6 +19,8 @@ namespace StretchIt
         
         public DisplayWindow()
         {
+            
+            
             InitializeComponent();
 
             player = new SoundPlayer();
@@ -30,6 +32,7 @@ namespace StretchIt
 
             BackgroundImage = Image.FromFile(image_file);
             Update();
+            this.Visible = true;
 
             player.SoundLocation = audio_file;
             player.Play();

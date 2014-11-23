@@ -328,7 +328,7 @@ namespace StretchIt
 
             System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
             s.Start();
-            while (s.ElapsedMilliseconds < 7000) { }
+            while (s.ElapsedMilliseconds < 4000) { }
             s.Stop();
 
             GestureImage g = new GestureImage();

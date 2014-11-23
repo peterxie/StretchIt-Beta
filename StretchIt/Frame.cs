@@ -21,6 +21,7 @@ namespace StretchIt
         public Frame_t(int num_pixels_ = GlobalVar.NUM_PIXELS_C, double threshold_ = default_threshold_c)
         {
             num_pixels = num_pixels_;
+            error_threshold = threshold_;
             depth_pixels = new short[num_pixels];
         }
 
@@ -188,12 +189,16 @@ namespace StretchIt
                 def_gesture_error += Math.Abs(input_frame.depth_pixels[i]);
             }
 
-            if(input_gesture_error / num_pixels < error_threshold)
+            double input_error = input_gesture_error / num_pixels;
+            double def_error = def_gesture_error / num_pixels;
+            double min_error = System.Math.Min(input_error, def_error);
+
+            if(min_error == input_error && input_error < error_threshold)
             {
                 return Gesture_rc_e.Correct;
             }
 
-            else if(def_gesture_error / num_pixels < error_threshold)
+            else if (min_error == def_error && def_error < error_threshold)
             {
                 return Gesture_rc_e.No_Input;
             }

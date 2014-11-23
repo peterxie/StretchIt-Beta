@@ -56,8 +56,8 @@ namespace StretchIt
                 String gesture_name = inFile.ReadLine();
 
                 Gesture_t ref_gesture = new Gesture_t(gesture_name, 
-                    filePathsGestures[i],filePathsAudio[i],filePathsVideo[i], 
-                    GlobalVar.AUDIO_DIRECTORY_C+"celebration.wav",GlobalVar.IMAGE_DIRECTORY_C+"celebration.jpg");
+                    filePathsGestures[i],filePathsAudio[i],filePathsVideo[i],
+                    GlobalVar.CELEB_AUDIO_FILE, GlobalVar.CELEB_IMAGE_FILE);
                 
                 reference_gestures.Add(gesture_name, ref_gesture);
                 
@@ -116,6 +116,13 @@ namespace StretchIt
                     {
                         case Gesture_rc_e.Correct:
                             GlobalVar.MAIN_MENU.Stats.recordResult(true);
+                            nextGesture.sendFeedback();
+
+                            System.Diagnostics.Stopwatch s = new System.Diagnostics.Stopwatch();
+                            s.Start();
+                            while (s.ElapsedMilliseconds < 5000) { }
+                            s.Stop();
+                            
                             break;
                         case Gesture_rc_e.Incorrect:
                             GlobalVar.MAIN_MENU.Stats.recordResult(false);
@@ -141,6 +148,7 @@ namespace StretchIt
             kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
 
             Frame_t f = kinect.getFrame();
+
             f.write(GlobalVar.TEMP_GESTURE_FILE, gesture_name);
         }
 
@@ -152,8 +160,7 @@ namespace StretchIt
                 GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt", 
                 GlobalVar.AUDIO_DIRECTORY_C + gesture_name + ".wav", 
                 GlobalVar.IMAGE_DIRECTORY_C + gesture_name + ".jpg",
-                GlobalVar.AUDIO_DIRECTORY_C + "celebration.wav", 
-                GlobalVar.IMAGE_DIRECTORY_C + "celebration.jpg");
+                GlobalVar.CELEB_AUDIO_FILE, GlobalVar.CELEB_IMAGE_FILE);
 
             reference_gestures.Add(gesture_name, ref_gesture);
         }
