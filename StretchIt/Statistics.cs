@@ -25,8 +25,18 @@ namespace StretchIt
         
         public Statistics_t()
         {
+            this.DoubleBuffered = true;
+
             InitializeComponent();
             this.Visible = false;
+
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+
+            foreach (Control c in this.Controls)
+            {
+                c.Anchor = AnchorStyles.None;
+            }
 
             loadStatistics();
 
@@ -106,9 +116,9 @@ namespace StretchIt
 
         private void backLabel_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            GlobalVar.MAIN_MENU.Visible = true;
             GlobalVar.MAIN_MENU.Activate();
+            GlobalVar.MAIN_MENU.Visible = true;
+            this.Visible = false;
         }
 
         private void Statistics_t_Activated(object sender, EventArgs e)

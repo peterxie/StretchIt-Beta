@@ -28,29 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ImageHolder = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageHolder)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ImageHolder
-            // 
-            this.ImageHolder.Location = new System.Drawing.Point(12, 12);
-            this.ImageHolder.Name = "ImageHolder";
-            this.ImageHolder.Size = new System.Drawing.Size(410, 373);
-            this.ImageHolder.TabIndex = 0;
-            this.ImageHolder.TabStop = false;
             // 
             // DisplayWindow
             // 
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(434, 412);
-            this.Controls.Add(this.ImageHolder);
             this.Name = "DisplayWindow";
-            ((System.ComponentModel.ISupportInitialize)(this.ImageHolder)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox ImageHolder;
     }
 }

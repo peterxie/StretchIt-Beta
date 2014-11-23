@@ -26,20 +26,30 @@ namespace StretchIt
 
         public Help_t()
         {
+            this.DoubleBuffered = true;
+
             InitializeComponent();
             this.Visible = false;
             // help sub-menu fields should not be visible
             this.headerLabel.Visible = false;
             this.helpText.Visible = false;
+
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+
+            foreach (Control c in this.Controls)
+            {
+                c.Anchor = AnchorStyles.None;
+            }
         }
 
         private void backLabel_Click(object sender, EventArgs e)
         {
             if (is_nested == false)
             {
-                this.Visible = false;
-                GlobalVar.MAIN_MENU.Visible = true;
                 GlobalVar.MAIN_MENU.Activate();
+                GlobalVar.MAIN_MENU.Visible = true;
+                this.Visible = false;
             } else
             {
                 toggle_help_menu();

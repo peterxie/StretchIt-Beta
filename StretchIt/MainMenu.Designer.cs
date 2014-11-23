@@ -39,7 +39,7 @@
             // 
             // titleLabel
             // 
-            this.titleLabel.AutoSize = true;
+            this.titleLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Action Jackson", 47.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -48,9 +48,11 @@
             this.titleLabel.Size = new System.Drawing.Size(441, 65);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Stretch-It!";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // playLabel
             // 
+            this.playLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.playLabel.AutoSize = true;
             this.playLabel.BackColor = System.Drawing.Color.Transparent;
             this.playLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -64,6 +66,7 @@
             // 
             // statsLabel
             // 
+            this.statsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.statsLabel.AutoSize = true;
             this.statsLabel.BackColor = System.Drawing.Color.Transparent;
             this.statsLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -77,6 +80,7 @@
             // 
             // settingsLabel
             // 
+            this.settingsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.settingsLabel.AutoSize = true;
             this.settingsLabel.BackColor = System.Drawing.Color.Transparent;
             this.settingsLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -90,6 +94,7 @@
             // 
             // helpLabel
             // 
+            this.helpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.helpLabel.AutoSize = true;
             this.helpLabel.BackColor = System.Drawing.Color.Transparent;
             this.helpLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,6 +108,7 @@
             // 
             // exitLabel
             // 
+            this.exitLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.exitLabel.AutoSize = true;
             this.exitLabel.BackColor = System.Drawing.Color.Transparent;
             this.exitLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -119,6 +125,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(599, 399);
             this.Controls.Add(this.exitLabel);
             this.Controls.Add(this.helpLabel);

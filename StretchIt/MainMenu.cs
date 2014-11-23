@@ -18,10 +18,20 @@ namespace StretchIt
 
         public MainMenu_t()
         {
+            this.DoubleBuffered = true;
+            
             InitializeComponent();
             stats_menu = new Statistics_t();
             settings_menu = new Settings_t();
             help_menu = new Help_t();
+
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+
+            foreach (Control c in this.Controls)
+            {
+                c.Anchor = AnchorStyles.None;
+            }
 
             this.Visible = true;
         }
@@ -65,23 +75,23 @@ namespace StretchIt
 
         private void statsLabel_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            stats_menu.Visible = true;
             stats_menu.Activate();
+            stats_menu.Visible = true;
+            this.Visible = false;
         }
 
         private void settingsLabel_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            settings_menu.Visible = true;
             settings_menu.Activate();
+            settings_menu.Visible = true;
+            this.Visible = false;
         }
 
         private void helpLabel_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            help_menu.Visible = true;
             help_menu.Activate();
+            help_menu.Visible = true;
+            this.Visible = false;
         }
 
         private void MainMenu_t_FormClosing(object sender, FormClosingEventArgs e)

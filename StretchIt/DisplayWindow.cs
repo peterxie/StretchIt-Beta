@@ -14,7 +14,7 @@ namespace StretchIt
     public partial class DisplayWindow : Form
     {
         SoundPlayer player;
-        Thread t;
+        //Thread t;
         
         
         public DisplayWindow()
@@ -26,14 +26,15 @@ namespace StretchIt
 
         public void loadOutput(string audio_file, string image_file)
         {
-            t = new Thread(player.PlaySync);
+            //t = new Thread(player.PlaySync);
 
-            ImageHolder.Image = Image.FromFile(image_file);
-            ImageHolder.Update();
+            BackgroundImage = Image.FromFile(image_file);
+            Update();
 
             player.SoundLocation = audio_file;
-            
-            t.Start();
+            player.Play();
+
+            //t.Start();
 
             //should be able to remove thread and use player.Play()
         }

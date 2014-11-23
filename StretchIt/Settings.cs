@@ -30,10 +30,20 @@ namespace StretchIt
 
         public Settings_t()
         {
+            this.DoubleBuffered = true;
+
             InitializeComponent();
             this.Visible = false;
             inputText.Visible = false;
             retrieveInput.Visible = false;
+
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+
+            foreach (Control c in this.Controls)
+            {
+                c.Anchor = AnchorStyles.None;
+            }
 
             selected_gestures = new List<string>();
             configuration = new Dictionary<string, int>();
@@ -209,10 +219,9 @@ namespace StretchIt
 
             setSelectedGestures();
 
-            this.Visible = false;
-            
-            GlobalVar.MAIN_MENU.Visible = true;
             GlobalVar.MAIN_MENU.Activate();
+            GlobalVar.MAIN_MENU.Visible = true;
+            this.Visible = false;
         }
 
         private void Settings_t_FormClosing(object sender, FormClosingEventArgs e)
@@ -236,6 +245,8 @@ namespace StretchIt
 
         private void deleteButtonClick(object sender, EventArgs e)
         {
+            SuspendLayout();
+            
             int index = 0;
 
             //Find out which X button was pressed
@@ -260,13 +271,15 @@ namespace StretchIt
             //Shift values backwards
             for(int i = index; i < num_custom; ++i)
             {
-                custom_up_downs[index].Value = custom_up_downs[index + 1].Value;
-                custom_labels[index].Text = custom_labels[index + 1].Text;
+                custom_up_downs[i].Value = custom_up_downs[i + 1].Value;
+                custom_labels[i].Text = custom_labels[i + 1].Text;
             }
 
             custom_delete_btns[num_custom].Visible = false;
             custom_up_downs[num_custom].Visible = false;
             custom_labels[num_custom].Text = "";
+
+            ResumeLayout();
         }
 
         private void upDownBound(object sender, EventArgs e)
