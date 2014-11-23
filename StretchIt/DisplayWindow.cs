@@ -20,8 +20,11 @@ namespace StretchIt
         public DisplayWindow()
         {
             
-            
             InitializeComponent();
+            mainPicture.Visible = true;
+
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
 
             player = new SoundPlayer();
         }
@@ -30,7 +33,7 @@ namespace StretchIt
         {
             //t = new Thread(player.PlaySync);
 
-            BackgroundImage = Image.FromFile(image_file);
+            mainPicture.Image = Image.FromFile(image_file);
             Update();
             this.Visible = true;
 
@@ -40,6 +43,19 @@ namespace StretchIt
             //t.Start();
 
             //should be able to remove thread and use player.Play()
+        }
+
+        private void backLabel_Click(object sender, EventArgs e)
+        {
+            GlobalVar.MAIN_MENU.Activate();
+            GlobalVar.MAIN_MENU.Visible = true;
+            this.Visible = false;
+
+            lock (GlobalVar.key)
+            {
+                GlobalVar.MODE = Game_mode_e.Menu_Mode;
+                Monitor.Pulse(GlobalVar.key);
+            }
         }
 
  
