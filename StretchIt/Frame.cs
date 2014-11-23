@@ -17,7 +17,7 @@ namespace StretchIt
         private static short[]      no_input_frame;      //stores the depth "image" reference across all Frame_t objects
         
         private const double        default_threshold_c = 100.0;
-        private const double        default_no_input_threshold_c = 30.0;
+        private const double        default_no_input_threshold_c = 20.0;
 
         //default constructor which takes the number of pixels as an argument
         public Frame_t(int num_pixels_ = GlobalVar.NUM_PIXELS_C,
