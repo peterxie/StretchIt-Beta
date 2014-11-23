@@ -71,7 +71,7 @@ namespace StretchIt
                 lock (GlobalVar.key)
                 {
                     while (GlobalVar.MODE != Game_mode_e.Play && GlobalVar.MODE != Game_mode_e.Record &&
-                            GlobalVar.MODE != Game_mode_e.Add_Gesture)
+                            GlobalVar.MODE != Game_mode_e.Add_Gesture && GlobalVar.MODE != Game_mode_e.Remove_Gesture)
                         Monitor.Wait(GlobalVar.key);
                     switch (GlobalVar.MODE)
                     {
