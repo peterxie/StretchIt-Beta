@@ -102,6 +102,7 @@
             // 
             // pushLabel
             // 
+            this.pushLabel.AutoEllipsis = true;
             this.pushLabel.AutoSize = true;
             this.pushLabel.BackColor = System.Drawing.Color.Transparent;
             this.pushLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,6 +115,7 @@
             // 
             // swipeLabel
             // 
+            this.swipeLabel.AutoEllipsis = true;
             this.swipeLabel.AutoSize = true;
             this.swipeLabel.BackColor = System.Drawing.Color.Transparent;
             this.swipeLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -139,6 +141,7 @@
             // 
             // pushHardLabel
             // 
+            this.pushHardLabel.AutoEllipsis = true;
             this.pushHardLabel.AutoSize = true;
             this.pushHardLabel.BackColor = System.Drawing.Color.Transparent;
             this.pushHardLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -164,11 +167,13 @@
             // 
             // customLabel5
             // 
+            this.customLabel5.AutoEllipsis = true;
             this.customLabel5.AutoSize = true;
             this.customLabel5.BackColor = System.Drawing.Color.Transparent;
             this.customLabel5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.customLabel5.Location = new System.Drawing.Point(104, 251);
+            this.customLabel5.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel5.Name = "customLabel5";
             this.customLabel5.Size = new System.Drawing.Size(0, 18);
             this.customLabel5.TabIndex = 14;
@@ -188,11 +193,13 @@
             // 
             // customLabel3
             // 
+            this.customLabel3.AutoEllipsis = true;
             this.customLabel3.AutoSize = true;
             this.customLabel3.BackColor = System.Drawing.Color.Transparent;
             this.customLabel3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.customLabel3.Location = new System.Drawing.Point(104, 225);
+            this.customLabel3.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel3.Name = "customLabel3";
             this.customLabel3.Size = new System.Drawing.Size(0, 18);
             this.customLabel3.TabIndex = 12;
@@ -212,11 +219,13 @@
             // 
             // customLabel1
             // 
+            this.customLabel1.AutoEllipsis = true;
             this.customLabel1.AutoSize = true;
             this.customLabel1.BackColor = System.Drawing.Color.Transparent;
             this.customLabel1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.customLabel1.Location = new System.Drawing.Point(104, 199);
+            this.customLabel1.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel1.Name = "customLabel1";
             this.customLabel1.Size = new System.Drawing.Size(0, 18);
             this.customLabel1.TabIndex = 10;
@@ -236,11 +245,13 @@
             // 
             // customLabel7
             // 
+            this.customLabel7.AutoEllipsis = true;
             this.customLabel7.AutoSize = true;
             this.customLabel7.BackColor = System.Drawing.Color.Transparent;
             this.customLabel7.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel7.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.customLabel7.Location = new System.Drawing.Point(104, 278);
+            this.customLabel7.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel7.Name = "customLabel7";
             this.customLabel7.Size = new System.Drawing.Size(0, 18);
             this.customLabel7.TabIndex = 16;
@@ -304,7 +315,7 @@
             this.inputText.Name = "inputText";
             this.inputText.Size = new System.Drawing.Size(175, 20);
             this.inputText.TabIndex = 20;
-            this.inputText.Text = "Enter name here...";
+            this.inputText.Text = "Enter name here";
             this.inputText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.inputText_KeyUp);
             // 
             // retrieveInput
@@ -342,11 +353,13 @@
             // 
             // customLabel8
             // 
+            this.customLabel8.AutoEllipsis = true;
             this.customLabel8.AutoSize = true;
             this.customLabel8.BackColor = System.Drawing.Color.Transparent;
             this.customLabel8.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel8.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.customLabel8.Location = new System.Drawing.Point(346, 278);
+            this.customLabel8.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel8.Name = "customLabel8";
             this.customLabel8.Size = new System.Drawing.Size(0, 18);
             this.customLabel8.TabIndex = 34;
@@ -366,11 +379,13 @@
             // 
             // customLabel6
             // 
+            this.customLabel6.AutoEllipsis = true;
             this.customLabel6.AutoSize = true;
             this.customLabel6.BackColor = System.Drawing.Color.Transparent;
             this.customLabel6.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.customLabel6.Location = new System.Drawing.Point(346, 251);
+            this.customLabel6.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel6.Name = "customLabel6";
             this.customLabel6.Size = new System.Drawing.Size(0, 18);
             this.customLabel6.TabIndex = 32;
@@ -390,11 +405,13 @@
             // 
             // customLabel4
             // 
+            this.customLabel4.AutoEllipsis = true;
             this.customLabel4.AutoSize = true;
             this.customLabel4.BackColor = System.Drawing.Color.Transparent;
             this.customLabel4.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.customLabel4.Location = new System.Drawing.Point(346, 225);
+            this.customLabel4.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel4.Name = "customLabel4";
             this.customLabel4.Size = new System.Drawing.Size(0, 18);
             this.customLabel4.TabIndex = 30;
@@ -414,11 +431,13 @@
             // 
             // customLabel2
             // 
+            this.customLabel2.AutoEllipsis = true;
             this.customLabel2.AutoSize = true;
             this.customLabel2.BackColor = System.Drawing.Color.Transparent;
             this.customLabel2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.customLabel2.Location = new System.Drawing.Point(346, 199);
+            this.customLabel2.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel2.Name = "customLabel2";
             this.customLabel2.Size = new System.Drawing.Size(0, 18);
             this.customLabel2.TabIndex = 28;
@@ -438,6 +457,7 @@
             // 
             // pullHardLabel
             // 
+            this.pullHardLabel.AutoEllipsis = true;
             this.pullHardLabel.AutoSize = true;
             this.pullHardLabel.BackColor = System.Drawing.Color.Transparent;
             this.pullHardLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -463,6 +483,7 @@
             // 
             // highFiveLabel
             // 
+            this.highFiveLabel.AutoEllipsis = true;
             this.highFiveLabel.AutoSize = true;
             this.highFiveLabel.BackColor = System.Drawing.Color.Transparent;
             this.highFiveLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -488,6 +509,7 @@
             // 
             // pullLabel
             // 
+            this.pullLabel.AutoEllipsis = true;
             this.pullLabel.AutoSize = true;
             this.pullLabel.BackColor = System.Drawing.Color.Transparent;
             this.pullLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

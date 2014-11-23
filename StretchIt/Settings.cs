@@ -240,7 +240,7 @@ namespace StretchIt
             
             retrieveInput.Visible = true;
             inputText.Visible = true;
-            inputText.Text = "Enter name here...";
+            inputText.Text = "Enter name here";
         }
 
         private void deleteButtonClick(object sender, EventArgs e)
