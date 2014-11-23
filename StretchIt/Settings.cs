@@ -24,9 +24,7 @@ namespace StretchIt
         private List<Button> custom_delete_btns;
         private int num_custom;
 
-        public string record_gesture_name { get; set; }
-        public string record_gesture_image { get; set; }
-        public string record_gesture_audio { get; set; }
+        public string gesture_name_in_focus { get; set; }
 
         public Settings_t()
         {
@@ -47,7 +45,7 @@ namespace StretchIt
 
             selected_gestures = new List<string>();
             configuration = new Dictionary<string, int>();
-            record_gesture_name = "";
+            gesture_name_in_focus = "";
 
             default_up_downs = new List<NumericUpDown>();
             default_up_downs.Add(pushUpDown);
@@ -222,6 +220,8 @@ namespace StretchIt
             GlobalVar.MAIN_MENU.Activate();
             GlobalVar.MAIN_MENU.Visible = true;
             this.Visible = false;
+            inputText.Visible = false;
+            retrieveInput.Visible = false;
         }
 
         private void Settings_t_FormClosing(object sender, FormClosingEventArgs e)
@@ -327,7 +327,7 @@ namespace StretchIt
                 return;
             }
 
-            record_gesture_name = this.inputText.Text;
+            gesture_name_in_focus = this.inputText.Text;
 
             lock (GlobalVar.key)
             {
@@ -348,27 +348,27 @@ namespace StretchIt
 
                 if (img_result == DialogResult.OK)
                 {
-                    record_gesture_image = imageFileDialog.FileName;
+                    string record_gesture_image = imageFileDialog.FileName;
 
                     DialogResult audio_result = audioFileDialog.ShowDialog();
 
                     if (audio_result == DialogResult.OK)
                     {
-                        record_gesture_audio = audioFileDialog.FileName;
+                        string record_gesture_audio = audioFileDialog.FileName;
 
                         //Send files to local directories with correct names
-                        File.Copy(record_gesture_image, GlobalVar.IMAGE_DIRECTORY_C + record_gesture_name + ".jpg");
-                        File.Copy(record_gesture_audio, GlobalVar.AUDIO_DIRECTORY_C + record_gesture_name + ".wav");
-                        File.Copy(GlobalVar.TEMP_GESTURE_FILE, GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + record_gesture_name + ".txt");
+                        File.Copy(record_gesture_image, GlobalVar.IMAGE_DIRECTORY_C + gesture_name_in_focus + ".jpg");
+                        File.Copy(record_gesture_audio, GlobalVar.AUDIO_DIRECTORY_C + gesture_name_in_focus + ".wav");
+                        File.Copy(GlobalVar.TEMP_GESTURE_FILE, GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name_in_focus + ".txt");
 
                         //Append Settings file with new gesture and default frequency
                         StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
 
-                        outFile.WriteLine(record_gesture_name);
+                        outFile.WriteLine(gesture_name_in_focus);
                         outFile.WriteLine(1);
 
                         outFile.Close();
-                        drawGesture(record_gesture_name);
+                        drawGesture(gesture_name_in_focus);
                         lock (GlobalVar.key)
                         {
                             GlobalVar.MODE = Game_mode_e.Add_Gesture;

@@ -89,6 +89,11 @@ namespace StretchIt
                             GlobalVar.MODE = Game_mode_e.Menu_Mode;
                             break;
 
+                        case Game_mode_e.Remove_Gesture:
+                            removeGesture();
+                            GlobalVar.MODE = Game_mode_e.Menu_Mode;
+                            break;
+
                         //default: maybe put a pause here
                     }
                 }
@@ -142,7 +147,7 @@ namespace StretchIt
 
         private void createGesture()
         {
-            string gesture_name = GlobalVar.MAIN_MENU.Settings.record_gesture_name;
+            string gesture_name = GlobalVar.MAIN_MENU.Settings.gesture_name_in_focus;
             
             kinect.recordGesture(GlobalVar.NUM_FRAMES_RECORD_C);
 
@@ -153,7 +158,7 @@ namespace StretchIt
 
         private void addGesture()
         {
-            string gesture_name = GlobalVar.MAIN_MENU.Settings.record_gesture_name;
+            string gesture_name = GlobalVar.MAIN_MENU.Settings.gesture_name_in_focus;
 
             Gesture_t ref_gesture = new Gesture_t(gesture_name,
                 GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt", 
@@ -162,6 +167,11 @@ namespace StretchIt
                 GlobalVar.CELEB_AUDIO_FILE, GlobalVar.CELEB_IMAGE_FILE);
 
             reference_gestures.Add(gesture_name, ref_gesture);
+        }
+
+        private void removeGesture()
+        {
+            reference_gestures.Remove(GlobalVar.MAIN_MENU.Settings.gesture_name_in_focus);
         }
     }
 }
