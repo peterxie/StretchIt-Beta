@@ -26,18 +26,13 @@ namespace StretchIt
 
         public void loadOutput(string audio_file, string image_file)
         {
-            //t = new Thread(player.PlaySync);
-
+            this.Visible = true;
+            
             mainPicture.Image = Image.FromFile(image_file);
             Update();
-            this.Visible = true;
 
             player.SoundLocation = audio_file;
             player.Play();
-
-            //t.Start();
-
-            //should be able to remove thread and use player.Play()
         }
 
         private void backLabel_Click(object sender, EventArgs e)

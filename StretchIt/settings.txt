@@ -3,11 +3,10 @@ Push
 Pull
 1
 Swipe
-3
+1
 High Five
-5
+1
 Push Hard
 1
 Pull Hard
 1
-
