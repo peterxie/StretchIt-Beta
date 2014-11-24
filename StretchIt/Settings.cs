@@ -13,6 +13,8 @@ namespace StretchIt
 {
     public partial class Settings_t : Form
     {
+        private Setup_t setup_menu = new Setup_t();
+
         private List<string> selected_gestures;
         private Dictionary<string, int> configuration;
 
@@ -416,11 +418,9 @@ namespace StretchIt
 
         private void setupLabel_Click(object sender, EventArgs e)
         {
-            lock (GlobalVar.key)
-            {
-                GlobalVar.MODE = Game_mode_e.Calibrate;
-                Monitor.Pulse(GlobalVar.key);
-            }
+            setup_menu.SetupSensorVideoInput();
+            setup_menu.Visible = true;
+            this.Visible = false;
         }
     }
 }
