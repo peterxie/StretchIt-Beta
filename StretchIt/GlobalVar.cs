@@ -15,6 +15,7 @@ namespace StretchIt
         Play,
         Menu_Mode,
         Record,
+        Calibrate,
         Add_Gesture,
         Remove_Gesture,
         Exit_Game,

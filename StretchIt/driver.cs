@@ -52,8 +52,9 @@ namespace StretchIt
             for (int i = 0; i < filePathsGestures.Length; ++i)
             {
                 StreamReader inFile = new StreamReader(filePathsGestures[i]);
-                
-                String gesture_name = inFile.ReadLine();
+
+                String gesture_name = filePathsGestures[i].Substring(15, filePathsGestures[i].Length - 19);
+                inFile.ReadLine();
 
                 Gesture_t ref_gesture = new Gesture_t(gesture_name, 
                     filePathsGestures[i],filePathsAudio[i],filePathsVideo[i],
@@ -70,8 +71,7 @@ namespace StretchIt
             while(GlobalVar.MODE != Game_mode_e.Exit_Game) {
                 lock (GlobalVar.key)
                 {
-                    while (GlobalVar.MODE != Game_mode_e.Play && GlobalVar.MODE != Game_mode_e.Record &&
-                            GlobalVar.MODE != Game_mode_e.Add_Gesture && GlobalVar.MODE != Game_mode_e.Remove_Gesture)
+                    while (GlobalVar.MODE == Game_mode_e.Menu_Mode)
                         Monitor.Wait(GlobalVar.key);
                     switch (GlobalVar.MODE)
                     {
@@ -94,7 +94,13 @@ namespace StretchIt
                             GlobalVar.MODE = Game_mode_e.Menu_Mode;
                             break;
 
-                        //default: maybe put a pause here
+                        case Game_mode_e.Calibrate:
+                            kinect.resetReference();
+                            GlobalVar.MODE = Game_mode_e.Menu_Mode;
+                            break;
+
+                        default:
+                            break;
                     }
                 }
             }
@@ -130,15 +136,6 @@ namespace StretchIt
                 }
             }
         }
-
-        /*private Gesture_t select_next_gesture()
-        {
-            Random r = new Random();
-            
-            int selected_index = r.Next(GlobalVar.MAIN_MENU.Settings.getGestures().Count);
-            
-            return reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestures()[selected_index]];
-        }*/
 
         private void createGesture()
         {

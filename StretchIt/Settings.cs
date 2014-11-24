@@ -143,11 +143,6 @@ namespace StretchIt
                             selected_gestures.Add(name);
                         }
                     }
-
-                    if (selected_gestures.Count == 0)
-                    {
-                        useDefaults();
-                    }
                 }
 
                 
@@ -213,9 +208,15 @@ namespace StretchIt
 
         private void backLabel_Click(object sender, EventArgs e)
         {
-            save();
-
             setSelectedGestures();
+            
+            if (selected_gestures.Count == 0)
+            {
+                MessageBox.Show("You must select at least one gesture!", "No Gestures Selected", MessageBoxButtons.OK);
+                return;
+            }
+            
+            save();
 
             GlobalVar.MAIN_MENU.Activate();
             GlobalVar.MAIN_MENU.Visible = true;
@@ -237,10 +238,15 @@ namespace StretchIt
                 MessageBox.Show("You have created the maximum number of gestures!");
                 return;
             }
-            
+
+            recordLabel.Visible = false;
+
             retrieveInput.Visible = true;
             inputText.Visible = true;
             inputText.Text = "Enter name here";
+            inputText.Focus();
+            inputText.SelectionStart = 0;
+            inputText.SelectionLength = inputText.Text.Length;
         }
 
         private void deleteButtonClick(object sender, EventArgs e)
@@ -373,8 +379,8 @@ namespace StretchIt
                             GlobalVar.MODE = Game_mode_e.Add_Gesture;
                             Monitor.Pulse(GlobalVar.key);
                         }
-                        
-                        //backLabel_Click(sender, e);
+
+                        recordLabel.Visible = true;
                     }
                 }
             }
@@ -408,6 +414,15 @@ namespace StretchIt
             if(e.KeyCode == Keys.Enter)
             {
                 retrieveInput_Click(sender, e);
+            }
+        }
+
+        private void setupLabel_Click(object sender, EventArgs e)
+        {
+            lock (GlobalVar.key)
+            {
+                GlobalVar.MODE = Game_mode_e.Calibrate;
+                Monitor.Pulse(GlobalVar.key);
             }
         }
     }

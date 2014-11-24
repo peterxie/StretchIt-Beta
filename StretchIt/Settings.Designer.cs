@@ -72,6 +72,7 @@
             this.deleteCustom6Btn = new System.Windows.Forms.Button();
             this.deleteCustom4Btn = new System.Windows.Forms.Button();
             this.deleteCustom2Btn = new System.Windows.Forms.Button();
+            this.setupLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pushHardUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customUpDown5)).BeginInit();
@@ -107,7 +108,7 @@
             this.pushLabel.BackColor = System.Drawing.Color.Transparent;
             this.pushLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pushLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pushLabel.Location = new System.Drawing.Point(104, 121);
+            this.pushLabel.Location = new System.Drawing.Point(89, 121);
             this.pushLabel.Name = "pushLabel";
             this.pushLabel.Size = new System.Drawing.Size(47, 18);
             this.pushLabel.TabIndex = 4;
@@ -120,7 +121,7 @@
             this.swipeLabel.BackColor = System.Drawing.Color.Transparent;
             this.swipeLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.swipeLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.swipeLabel.Location = new System.Drawing.Point(104, 147);
+            this.swipeLabel.Location = new System.Drawing.Point(89, 147);
             this.swipeLabel.Name = "swipeLabel";
             this.swipeLabel.Size = new System.Drawing.Size(56, 18);
             this.swipeLabel.TabIndex = 6;
@@ -128,7 +129,7 @@
             // 
             // swipeUpDown
             // 
-            this.swipeUpDown.Location = new System.Drawing.Point(212, 145);
+            this.swipeUpDown.Location = new System.Drawing.Point(197, 145);
             this.swipeUpDown.Name = "swipeUpDown";
             this.swipeUpDown.Size = new System.Drawing.Size(43, 20);
             this.swipeUpDown.TabIndex = 5;
@@ -146,7 +147,7 @@
             this.pushHardLabel.BackColor = System.Drawing.Color.Transparent;
             this.pushHardLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pushHardLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pushHardLabel.Location = new System.Drawing.Point(104, 173);
+            this.pushHardLabel.Location = new System.Drawing.Point(89, 173);
             this.pushHardLabel.Name = "pushHardLabel";
             this.pushHardLabel.Size = new System.Drawing.Size(91, 18);
             this.pushHardLabel.TabIndex = 8;
@@ -154,7 +155,7 @@
             // 
             // pushHardUpDown
             // 
-            this.pushHardUpDown.Location = new System.Drawing.Point(212, 171);
+            this.pushHardUpDown.Location = new System.Drawing.Point(197, 171);
             this.pushHardUpDown.Name = "pushHardUpDown";
             this.pushHardUpDown.Size = new System.Drawing.Size(43, 20);
             this.pushHardUpDown.TabIndex = 7;
@@ -172,7 +173,7 @@
             this.customLabel5.BackColor = System.Drawing.Color.Transparent;
             this.customLabel5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.customLabel5.Location = new System.Drawing.Point(104, 251);
+            this.customLabel5.Location = new System.Drawing.Point(89, 251);
             this.customLabel5.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel5.Name = "customLabel5";
             this.customLabel5.Size = new System.Drawing.Size(0, 18);
@@ -180,7 +181,7 @@
             // 
             // customUpDown5
             // 
-            this.customUpDown5.Location = new System.Drawing.Point(212, 249);
+            this.customUpDown5.Location = new System.Drawing.Point(197, 249);
             this.customUpDown5.Name = "customUpDown5";
             this.customUpDown5.Size = new System.Drawing.Size(43, 20);
             this.customUpDown5.TabIndex = 13;
@@ -198,7 +199,7 @@
             this.customLabel3.BackColor = System.Drawing.Color.Transparent;
             this.customLabel3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.customLabel3.Location = new System.Drawing.Point(104, 225);
+            this.customLabel3.Location = new System.Drawing.Point(89, 225);
             this.customLabel3.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel3.Name = "customLabel3";
             this.customLabel3.Size = new System.Drawing.Size(0, 18);
@@ -206,7 +207,7 @@
             // 
             // customUpDown3
             // 
-            this.customUpDown3.Location = new System.Drawing.Point(212, 223);
+            this.customUpDown3.Location = new System.Drawing.Point(197, 223);
             this.customUpDown3.Name = "customUpDown3";
             this.customUpDown3.Size = new System.Drawing.Size(43, 20);
             this.customUpDown3.TabIndex = 11;
@@ -224,7 +225,7 @@
             this.customLabel1.BackColor = System.Drawing.Color.Transparent;
             this.customLabel1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.customLabel1.Location = new System.Drawing.Point(104, 199);
+            this.customLabel1.Location = new System.Drawing.Point(89, 199);
             this.customLabel1.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel1.Name = "customLabel1";
             this.customLabel1.Size = new System.Drawing.Size(0, 18);
@@ -232,7 +233,7 @@
             // 
             // customUpDown1
             // 
-            this.customUpDown1.Location = new System.Drawing.Point(212, 197);
+            this.customUpDown1.Location = new System.Drawing.Point(197, 197);
             this.customUpDown1.Name = "customUpDown1";
             this.customUpDown1.Size = new System.Drawing.Size(43, 20);
             this.customUpDown1.TabIndex = 9;
@@ -250,7 +251,7 @@
             this.customLabel7.BackColor = System.Drawing.Color.Transparent;
             this.customLabel7.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel7.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.customLabel7.Location = new System.Drawing.Point(104, 278);
+            this.customLabel7.Location = new System.Drawing.Point(89, 278);
             this.customLabel7.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel7.Name = "customLabel7";
             this.customLabel7.Size = new System.Drawing.Size(0, 18);
@@ -258,7 +259,7 @@
             // 
             // customUpDown7
             // 
-            this.customUpDown7.Location = new System.Drawing.Point(212, 276);
+            this.customUpDown7.Location = new System.Drawing.Point(197, 276);
             this.customUpDown7.Name = "customUpDown7";
             this.customUpDown7.Size = new System.Drawing.Size(43, 20);
             this.customUpDown7.TabIndex = 15;
@@ -271,7 +272,7 @@
             // 
             // pushUpDown
             // 
-            this.pushUpDown.Location = new System.Drawing.Point(212, 119);
+            this.pushUpDown.Location = new System.Drawing.Point(197, 119);
             this.pushUpDown.Name = "pushUpDown";
             this.pushUpDown.Size = new System.Drawing.Size(43, 20);
             this.pushUpDown.TabIndex = 17;
@@ -301,7 +302,7 @@
             this.recordLabel.BackColor = System.Drawing.Color.Transparent;
             this.recordLabel.Font = new System.Drawing.Font("Action Jackson", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recordLabel.ForeColor = System.Drawing.Color.White;
-            this.recordLabel.Location = new System.Drawing.Point(436, 355);
+            this.recordLabel.Location = new System.Drawing.Point(222, 355);
             this.recordLabel.Name = "recordLabel";
             this.recordLabel.Size = new System.Drawing.Size(151, 32);
             this.recordLabel.TabIndex = 19;
@@ -340,7 +341,7 @@
             // 
             // pullUpDown
             // 
-            this.pullUpDown.Location = new System.Drawing.Point(454, 119);
+            this.pullUpDown.Location = new System.Drawing.Point(439, 119);
             this.pullUpDown.Name = "pullUpDown";
             this.pullUpDown.Size = new System.Drawing.Size(43, 20);
             this.pullUpDown.TabIndex = 35;
@@ -358,7 +359,7 @@
             this.customLabel8.BackColor = System.Drawing.Color.Transparent;
             this.customLabel8.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel8.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.customLabel8.Location = new System.Drawing.Point(346, 278);
+            this.customLabel8.Location = new System.Drawing.Point(331, 278);
             this.customLabel8.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel8.Name = "customLabel8";
             this.customLabel8.Size = new System.Drawing.Size(0, 18);
@@ -366,7 +367,7 @@
             // 
             // customUpDown8
             // 
-            this.customUpDown8.Location = new System.Drawing.Point(454, 276);
+            this.customUpDown8.Location = new System.Drawing.Point(439, 276);
             this.customUpDown8.Name = "customUpDown8";
             this.customUpDown8.Size = new System.Drawing.Size(43, 20);
             this.customUpDown8.TabIndex = 33;
@@ -384,7 +385,7 @@
             this.customLabel6.BackColor = System.Drawing.Color.Transparent;
             this.customLabel6.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.customLabel6.Location = new System.Drawing.Point(346, 251);
+            this.customLabel6.Location = new System.Drawing.Point(331, 251);
             this.customLabel6.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel6.Name = "customLabel6";
             this.customLabel6.Size = new System.Drawing.Size(0, 18);
@@ -392,7 +393,7 @@
             // 
             // customUpDown6
             // 
-            this.customUpDown6.Location = new System.Drawing.Point(454, 249);
+            this.customUpDown6.Location = new System.Drawing.Point(439, 249);
             this.customUpDown6.Name = "customUpDown6";
             this.customUpDown6.Size = new System.Drawing.Size(43, 20);
             this.customUpDown6.TabIndex = 31;
@@ -410,7 +411,7 @@
             this.customLabel4.BackColor = System.Drawing.Color.Transparent;
             this.customLabel4.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.customLabel4.Location = new System.Drawing.Point(346, 225);
+            this.customLabel4.Location = new System.Drawing.Point(331, 225);
             this.customLabel4.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel4.Name = "customLabel4";
             this.customLabel4.Size = new System.Drawing.Size(0, 18);
@@ -418,7 +419,7 @@
             // 
             // customUpDown4
             // 
-            this.customUpDown4.Location = new System.Drawing.Point(454, 223);
+            this.customUpDown4.Location = new System.Drawing.Point(439, 223);
             this.customUpDown4.Name = "customUpDown4";
             this.customUpDown4.Size = new System.Drawing.Size(43, 20);
             this.customUpDown4.TabIndex = 29;
@@ -436,7 +437,7 @@
             this.customLabel2.BackColor = System.Drawing.Color.Transparent;
             this.customLabel2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customLabel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.customLabel2.Location = new System.Drawing.Point(346, 199);
+            this.customLabel2.Location = new System.Drawing.Point(331, 199);
             this.customLabel2.MaximumSize = new System.Drawing.Size(100, 18);
             this.customLabel2.Name = "customLabel2";
             this.customLabel2.Size = new System.Drawing.Size(0, 18);
@@ -444,7 +445,7 @@
             // 
             // customUpDown2
             // 
-            this.customUpDown2.Location = new System.Drawing.Point(454, 197);
+            this.customUpDown2.Location = new System.Drawing.Point(439, 197);
             this.customUpDown2.Name = "customUpDown2";
             this.customUpDown2.Size = new System.Drawing.Size(43, 20);
             this.customUpDown2.TabIndex = 27;
@@ -462,7 +463,7 @@
             this.pullHardLabel.BackColor = System.Drawing.Color.Transparent;
             this.pullHardLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pullHardLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pullHardLabel.Location = new System.Drawing.Point(346, 173);
+            this.pullHardLabel.Location = new System.Drawing.Point(331, 173);
             this.pullHardLabel.Name = "pullHardLabel";
             this.pullHardLabel.Size = new System.Drawing.Size(82, 18);
             this.pullHardLabel.TabIndex = 26;
@@ -470,7 +471,7 @@
             // 
             // pullHardUpDown
             // 
-            this.pullHardUpDown.Location = new System.Drawing.Point(454, 171);
+            this.pullHardUpDown.Location = new System.Drawing.Point(439, 171);
             this.pullHardUpDown.Name = "pullHardUpDown";
             this.pullHardUpDown.Size = new System.Drawing.Size(43, 20);
             this.pullHardUpDown.TabIndex = 25;
@@ -488,7 +489,7 @@
             this.highFiveLabel.BackColor = System.Drawing.Color.Transparent;
             this.highFiveLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highFiveLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.highFiveLabel.Location = new System.Drawing.Point(346, 147);
+            this.highFiveLabel.Location = new System.Drawing.Point(331, 147);
             this.highFiveLabel.Name = "highFiveLabel";
             this.highFiveLabel.Size = new System.Drawing.Size(84, 18);
             this.highFiveLabel.TabIndex = 24;
@@ -496,7 +497,7 @@
             // 
             // highFiveUpDown
             // 
-            this.highFiveUpDown.Location = new System.Drawing.Point(454, 145);
+            this.highFiveUpDown.Location = new System.Drawing.Point(439, 145);
             this.highFiveUpDown.Name = "highFiveUpDown";
             this.highFiveUpDown.Size = new System.Drawing.Size(43, 20);
             this.highFiveUpDown.TabIndex = 23;
@@ -514,7 +515,7 @@
             this.pullLabel.BackColor = System.Drawing.Color.Transparent;
             this.pullLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pullLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pullLabel.Location = new System.Drawing.Point(346, 121);
+            this.pullLabel.Location = new System.Drawing.Point(331, 121);
             this.pullLabel.Name = "pullLabel";
             this.pullLabel.Size = new System.Drawing.Size(38, 18);
             this.pullLabel.TabIndex = 22;
@@ -522,7 +523,7 @@
             // 
             // deleteCustom1Btn
             // 
-            this.deleteCustom1Btn.Location = new System.Drawing.Point(262, 196);
+            this.deleteCustom1Btn.Location = new System.Drawing.Point(247, 196);
             this.deleteCustom1Btn.Name = "deleteCustom1Btn";
             this.deleteCustom1Btn.Size = new System.Drawing.Size(22, 22);
             this.deleteCustom1Btn.TabIndex = 36;
@@ -532,7 +533,7 @@
             // 
             // deleteCustom3Btn
             // 
-            this.deleteCustom3Btn.Location = new System.Drawing.Point(262, 222);
+            this.deleteCustom3Btn.Location = new System.Drawing.Point(247, 222);
             this.deleteCustom3Btn.Name = "deleteCustom3Btn";
             this.deleteCustom3Btn.Size = new System.Drawing.Size(22, 22);
             this.deleteCustom3Btn.TabIndex = 37;
@@ -542,7 +543,7 @@
             // 
             // deleteCustom5Btn
             // 
-            this.deleteCustom5Btn.Location = new System.Drawing.Point(262, 248);
+            this.deleteCustom5Btn.Location = new System.Drawing.Point(247, 248);
             this.deleteCustom5Btn.Name = "deleteCustom5Btn";
             this.deleteCustom5Btn.Size = new System.Drawing.Size(22, 22);
             this.deleteCustom5Btn.TabIndex = 38;
@@ -552,7 +553,7 @@
             // 
             // deleteCustom7Btn
             // 
-            this.deleteCustom7Btn.Location = new System.Drawing.Point(262, 275);
+            this.deleteCustom7Btn.Location = new System.Drawing.Point(247, 275);
             this.deleteCustom7Btn.Name = "deleteCustom7Btn";
             this.deleteCustom7Btn.Size = new System.Drawing.Size(22, 22);
             this.deleteCustom7Btn.TabIndex = 39;
@@ -562,7 +563,7 @@
             // 
             // deleteCustom8Btn
             // 
-            this.deleteCustom8Btn.Location = new System.Drawing.Point(503, 275);
+            this.deleteCustom8Btn.Location = new System.Drawing.Point(488, 275);
             this.deleteCustom8Btn.Name = "deleteCustom8Btn";
             this.deleteCustom8Btn.Size = new System.Drawing.Size(22, 22);
             this.deleteCustom8Btn.TabIndex = 43;
@@ -572,7 +573,7 @@
             // 
             // deleteCustom6Btn
             // 
-            this.deleteCustom6Btn.Location = new System.Drawing.Point(503, 248);
+            this.deleteCustom6Btn.Location = new System.Drawing.Point(488, 248);
             this.deleteCustom6Btn.Name = "deleteCustom6Btn";
             this.deleteCustom6Btn.Size = new System.Drawing.Size(22, 22);
             this.deleteCustom6Btn.TabIndex = 42;
@@ -582,7 +583,7 @@
             // 
             // deleteCustom4Btn
             // 
-            this.deleteCustom4Btn.Location = new System.Drawing.Point(503, 222);
+            this.deleteCustom4Btn.Location = new System.Drawing.Point(488, 222);
             this.deleteCustom4Btn.Name = "deleteCustom4Btn";
             this.deleteCustom4Btn.Size = new System.Drawing.Size(22, 22);
             this.deleteCustom4Btn.TabIndex = 41;
@@ -592,13 +593,26 @@
             // 
             // deleteCustom2Btn
             // 
-            this.deleteCustom2Btn.Location = new System.Drawing.Point(503, 196);
+            this.deleteCustom2Btn.Location = new System.Drawing.Point(488, 196);
             this.deleteCustom2Btn.Name = "deleteCustom2Btn";
             this.deleteCustom2Btn.Size = new System.Drawing.Size(22, 22);
             this.deleteCustom2Btn.TabIndex = 40;
             this.deleteCustom2Btn.Text = "X";
             this.deleteCustom2Btn.UseVisualStyleBackColor = true;
             this.deleteCustom2Btn.Click += new System.EventHandler(this.deleteButtonClick);
+            // 
+            // setupLabel
+            // 
+            this.setupLabel.AutoSize = true;
+            this.setupLabel.BackColor = System.Drawing.Color.Transparent;
+            this.setupLabel.Font = new System.Drawing.Font("Action Jackson", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setupLabel.ForeColor = System.Drawing.Color.White;
+            this.setupLabel.Location = new System.Drawing.Point(472, 355);
+            this.setupLabel.Name = "setupLabel";
+            this.setupLabel.Size = new System.Drawing.Size(115, 32);
+            this.setupLabel.TabIndex = 44;
+            this.setupLabel.Text = "Setup";
+            this.setupLabel.Click += new System.EventHandler(this.setupLabel_Click);
             // 
             // Settings_t
             // 
@@ -607,6 +621,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(599, 399);
+            this.Controls.Add(this.setupLabel);
             this.Controls.Add(this.deleteCustom8Btn);
             this.Controls.Add(this.deleteCustom6Btn);
             this.Controls.Add(this.deleteCustom4Btn);
@@ -715,5 +730,6 @@
         private System.Windows.Forms.Button deleteCustom6Btn;
         private System.Windows.Forms.Button deleteCustom4Btn;
         private System.Windows.Forms.Button deleteCustom2Btn;
+        private System.Windows.Forms.Label setupLabel;
     }
 }
