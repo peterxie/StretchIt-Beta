@@ -9,7 +9,7 @@ namespace StretchIt
     {
         private string image_path;
         private string audio_path;
-        private static DisplayWindow display = new DisplayWindow();
+        private static Play_t display = GlobalVar.MAIN_MENU.Play;
 
         public AV_Output_t(string image_path_, string audio_path_)
         {

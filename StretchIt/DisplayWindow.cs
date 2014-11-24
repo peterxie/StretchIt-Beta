@@ -11,13 +11,11 @@ using System.Threading;
 
 namespace StretchIt
 {
-    public partial class DisplayWindow : Form
+    public partial class Play_t : Form
     {
         SoundPlayer player;
-        //Thread t;
-        
-        
-        public DisplayWindow()
+
+        public Play_t()
         {
             
             InitializeComponent();

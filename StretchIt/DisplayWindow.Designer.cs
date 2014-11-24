@@ -1,6 +1,6 @@
 ﻿namespace StretchIt
 {
-    partial class DisplayWindow
+    partial class Play_t
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Play_t));
             this.mainPicture = new System.Windows.Forms.PictureBox();
             this.backLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mainPicture)).BeginInit();

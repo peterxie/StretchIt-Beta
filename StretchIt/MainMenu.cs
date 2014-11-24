@@ -15,6 +15,7 @@ namespace StretchIt
         private Statistics_t stats_menu;
         private Settings_t settings_menu;
         private Help_t help_menu;
+        private Play_t play_window;
 
         public MainMenu_t()
         {
@@ -24,6 +25,7 @@ namespace StretchIt
             stats_menu = new Statistics_t();
             settings_menu = new Settings_t();
             help_menu = new Help_t();
+            play_window = new Play_t();
 
             foreach (Control c in this.Controls)
             {
@@ -56,6 +58,14 @@ namespace StretchIt
             get
             {
                 return this.help_menu;
+            }
+        }
+
+        public Play_t Play
+        {
+            get
+            {
+                return this.play_window;
             }
         }
 
