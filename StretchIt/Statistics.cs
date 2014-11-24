@@ -39,7 +39,11 @@ namespace StretchIt
             }
 
             loadStatistics();
+            display();
+        }
 
+        private void display()
+        {
             streakAllTimeValue.Text = all_longest_streak.ToString();
             percentAllTimeValue.Text = all_percent_correct.ToString();
             streakMonthlyValue.Text = rec_longest_streak.ToString();
@@ -62,7 +66,7 @@ namespace StretchIt
                 all_longest_streak = Math.Max(rec_longest_streak, all_longest_streak);
                 tmp_streak_count = 0;
             }
-            rec_percent_correct = (num_moves_correct_in_game / num_moves_game) * 100;
+            rec_percent_correct = ((double) num_moves_correct_in_game / num_moves_game) * 100;
         }
 
         public void loadStatistics()
@@ -101,7 +105,7 @@ namespace StretchIt
 
             else
             {
-                all_percent_correct = (all_number_correct_moves / all_number_executed_moves);
+                all_percent_correct = ((double) all_number_correct_moves / all_number_executed_moves);
             }
 
             StreamWriter file = new StreamWriter(GlobalVar.STATS_PATH_C);
@@ -123,8 +127,7 @@ namespace StretchIt
 
         private void Statistics_t_Activated(object sender, EventArgs e)
         {
-            loadStatistics();
-            this.Refresh();
+            display();
         }
 
         private void Statistics_t_FormClosing(object sender, FormClosingEventArgs e)

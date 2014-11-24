@@ -311,7 +311,7 @@
             // inputText
             // 
             this.inputText.Location = new System.Drawing.Point(216, 327);
-            this.inputText.MaxLength = 12;
+            this.inputText.MaxLength = 25;
             this.inputText.Name = "inputText";
             this.inputText.Size = new System.Drawing.Size(175, 20);
             this.inputText.TabIndex = 20;
