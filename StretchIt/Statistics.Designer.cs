@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Statistics_t));
             this.StatisticsLabel = new System.Windows.Forms.Label();
             this.streakAllTimeLabel = new System.Windows.Forms.Label();
-            this.streakMonthlyLabel = new System.Windows.Forms.Label();
+            this.streakRecentLabel = new System.Windows.Forms.Label();
             this.percentAllTimeLabel = new System.Windows.Forms.Label();
-            this.percentMonthlyLabel = new System.Windows.Forms.Label();
+            this.percentRecentLabel = new System.Windows.Forms.Label();
             this.streakAllTimeValue = new System.Windows.Forms.Label();
             this.streakMonthlyValue = new System.Windows.Forms.Label();
             this.percentAllTimeValue = new System.Windows.Forms.Label();
@@ -65,17 +65,17 @@
             this.streakAllTimeLabel.TabIndex = 2;
             this.streakAllTimeLabel.Text = "Longest Streak (All Time):";
             // 
-            // streakMonthlyLabel
+            // streakRecentLabel
             // 
-            this.streakMonthlyLabel.AutoSize = true;
-            this.streakMonthlyLabel.BackColor = System.Drawing.Color.Transparent;
-            this.streakMonthlyLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.streakMonthlyLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.streakMonthlyLabel.Location = new System.Drawing.Point(158, 201);
-            this.streakMonthlyLabel.Name = "streakMonthlyLabel";
-            this.streakMonthlyLabel.Size = new System.Drawing.Size(222, 18);
-            this.streakMonthlyLabel.TabIndex = 3;
-            this.streakMonthlyLabel.Text = "Longest Streak (Monthly):";
+            this.streakRecentLabel.AutoSize = true;
+            this.streakRecentLabel.BackColor = System.Drawing.Color.Transparent;
+            this.streakRecentLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.streakRecentLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.streakRecentLabel.Location = new System.Drawing.Point(158, 201);
+            this.streakRecentLabel.Name = "streakRecentLabel";
+            this.streakRecentLabel.Size = new System.Drawing.Size(233, 18);
+            this.streakRecentLabel.TabIndex = 3;
+            this.streakRecentLabel.Text = "Longest Streak (Last Play):";
             // 
             // percentAllTimeLabel
             // 
@@ -89,17 +89,17 @@
             this.percentAllTimeLabel.TabIndex = 4;
             this.percentAllTimeLabel.Text = "Percent Correct (All Time):";
             // 
-            // percentMonthlyLabel
+            // percentRecentLabel
             // 
-            this.percentMonthlyLabel.AutoSize = true;
-            this.percentMonthlyLabel.BackColor = System.Drawing.Color.Transparent;
-            this.percentMonthlyLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.percentMonthlyLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.percentMonthlyLabel.Location = new System.Drawing.Point(158, 277);
-            this.percentMonthlyLabel.Name = "percentMonthlyLabel";
-            this.percentMonthlyLabel.Size = new System.Drawing.Size(224, 18);
-            this.percentMonthlyLabel.TabIndex = 5;
-            this.percentMonthlyLabel.Text = "Percent Correct (Monthly):";
+            this.percentRecentLabel.AutoSize = true;
+            this.percentRecentLabel.BackColor = System.Drawing.Color.Transparent;
+            this.percentRecentLabel.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.percentRecentLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.percentRecentLabel.Location = new System.Drawing.Point(158, 277);
+            this.percentRecentLabel.Name = "percentRecentLabel";
+            this.percentRecentLabel.Size = new System.Drawing.Size(235, 18);
+            this.percentRecentLabel.TabIndex = 5;
+            this.percentRecentLabel.Text = "Percent Correct (Last Play):";
             // 
             // streakAllTimeValue
             // 
@@ -174,9 +174,9 @@
             this.Controls.Add(this.percentAllTimeValue);
             this.Controls.Add(this.streakMonthlyValue);
             this.Controls.Add(this.streakAllTimeValue);
-            this.Controls.Add(this.percentMonthlyLabel);
+            this.Controls.Add(this.percentRecentLabel);
             this.Controls.Add(this.percentAllTimeLabel);
-            this.Controls.Add(this.streakMonthlyLabel);
+            this.Controls.Add(this.streakRecentLabel);
             this.Controls.Add(this.streakAllTimeLabel);
             this.Controls.Add(this.StatisticsLabel);
             this.Name = "Statistics_t";
@@ -192,9 +192,9 @@
 
         private System.Windows.Forms.Label StatisticsLabel;
         private System.Windows.Forms.Label streakAllTimeLabel;
-        private System.Windows.Forms.Label streakMonthlyLabel;
+        private System.Windows.Forms.Label streakRecentLabel;
         private System.Windows.Forms.Label percentAllTimeLabel;
-        private System.Windows.Forms.Label percentMonthlyLabel;
+        private System.Windows.Forms.Label percentRecentLabel;
         private System.Windows.Forms.Label streakAllTimeValue;
         private System.Windows.Forms.Label streakMonthlyValue;
         private System.Windows.Forms.Label percentAllTimeValue;

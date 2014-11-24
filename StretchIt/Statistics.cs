@@ -45,9 +45,9 @@ namespace StretchIt
         private void display()
         {
             streakAllTimeValue.Text = all_longest_streak.ToString();
-            percentAllTimeValue.Text = all_percent_correct.ToString();
+            percentAllTimeValue.Text = all_percent_correct.ToString().Substring(0, 5) + "%";
             streakMonthlyValue.Text = rec_longest_streak.ToString();
-            percentMonthlyValue.Text = rec_percent_correct.ToString();
+            percentMonthlyValue.Text = rec_percent_correct.ToString().Substring(0, 5) + "%";
         }
 
         public void recordResult(bool correctInput)
