@@ -24,6 +24,8 @@ namespace StretchIt
             InitializeComponent();
             imageFormat = ColorImageFormat.RgbResolution640x480Fps30;
 
+            DoubleBuffered = true;
+
             foreach(var potentialSensor in KinectSensor.KinectSensors)
             {
                 if(potentialSensor.Status == KinectStatus.Connected)
@@ -103,6 +105,8 @@ namespace StretchIt
 
         private void calibrateLabel_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Calibration Completed!", "Kinect Calibration", MessageBoxButtons.OK);
+            
             lock (GlobalVar.key)
             {
                 GlobalVar.MODE = Game_mode_e.Calibrate;

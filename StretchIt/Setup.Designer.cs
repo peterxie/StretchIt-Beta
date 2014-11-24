@@ -43,7 +43,7 @@
             this.backLabel.BackColor = System.Drawing.Color.Transparent;
             this.backLabel.Font = new System.Drawing.Font("Action Jackson", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backLabel.ForeColor = System.Drawing.Color.White;
-            this.backLabel.Location = new System.Drawing.Point(12, 358);
+            this.backLabel.Location = new System.Drawing.Point(15, 649);
             this.backLabel.Name = "backLabel";
             this.backLabel.Size = new System.Drawing.Size(96, 32);
             this.backLabel.TabIndex = 45;
@@ -57,7 +57,7 @@
             this.setupLabel.BackColor = System.Drawing.Color.Transparent;
             this.setupLabel.Font = new System.Drawing.Font("Action Jackson", 47.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setupLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.setupLabel.Location = new System.Drawing.Point(195, 24);
+            this.setupLabel.Location = new System.Drawing.Point(287, 20);
             this.setupLabel.Name = "setupLabel";
             this.setupLabel.Size = new System.Drawing.Size(226, 65);
             this.setupLabel.TabIndex = 46;
@@ -65,10 +65,11 @@
             // 
             // kinectPictureBox
             // 
+            this.kinectPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.kinectPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.kinectPictureBox.Location = new System.Drawing.Point(45, 89);
+            this.kinectPictureBox.Location = new System.Drawing.Point(80, 112);
             this.kinectPictureBox.Name = "kinectPictureBox";
-            this.kinectPictureBox.Size = new System.Drawing.Size(515, 259);
+            this.kinectPictureBox.Size = new System.Drawing.Size(640, 480);
             this.kinectPictureBox.TabIndex = 47;
             this.kinectPictureBox.TabStop = false;
             // 
@@ -79,7 +80,7 @@
             this.calibrateLabel.BackColor = System.Drawing.Color.Transparent;
             this.calibrateLabel.Font = new System.Drawing.Font("Action Jackson", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.calibrateLabel.ForeColor = System.Drawing.Color.White;
-            this.calibrateLabel.Location = new System.Drawing.Point(203, 354);
+            this.calibrateLabel.Location = new System.Drawing.Point(301, 649);
             this.calibrateLabel.Name = "calibrateLabel";
             this.calibrateLabel.Size = new System.Drawing.Size(198, 32);
             this.calibrateLabel.TabIndex = 48;
@@ -92,7 +93,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(599, 399);
+            this.ClientSize = new System.Drawing.Size(800, 700);
             this.Controls.Add(this.calibrateLabel);
             this.Controls.Add(this.kinectPictureBox);
             this.Controls.Add(this.setupLabel);
