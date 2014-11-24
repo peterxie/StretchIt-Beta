@@ -131,6 +131,7 @@ namespace StretchIt
                             break;
                         case Gesture_rc_e.Incorrect:
                             GlobalVar.MAIN_MENU.Stats.recordResult(false);
+                            GlobalVar.sleep(3000);
                             break;
                     }
                 }
