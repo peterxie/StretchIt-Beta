@@ -25,9 +25,6 @@ namespace StretchIt
             settings_menu = new Settings_t();
             help_menu = new Help_t();
 
-            FormBorderStyle = FormBorderStyle.None;
-            WindowState = FormWindowState.Maximized;
-
             foreach (Control c in this.Controls)
             {
                 c.Anchor = AnchorStyles.None;

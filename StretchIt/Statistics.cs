@@ -30,9 +30,6 @@ namespace StretchIt
             InitializeComponent();
             this.Visible = false;
 
-            FormBorderStyle = FormBorderStyle.None;
-            WindowState = FormWindowState.Maximized;
-
             foreach (Control c in this.Controls)
             {
                 c.Anchor = AnchorStyles.None;
@@ -45,9 +42,9 @@ namespace StretchIt
         private void display()
         {
             streakAllTimeValue.Text = all_longest_streak.ToString();
-            percentAllTimeValue.Text = all_percent_correct.ToString().Substring(0, 5) + "%";
+            percentAllTimeValue.Text = all_percent_correct.ToString("F2") + "%";
             streakMonthlyValue.Text = rec_longest_streak.ToString();
-            percentMonthlyValue.Text = rec_percent_correct.ToString().Substring(0, 5) + "%";
+            percentMonthlyValue.Text = rec_percent_correct.ToString("F2") + "%";
         }
 
         public void recordResult(bool correctInput)

@@ -57,8 +57,7 @@ namespace StretchIt
                 inFile.ReadLine();
 
                 Gesture_t ref_gesture = new Gesture_t(gesture_name, 
-                    filePathsGestures[i],filePathsAudio[i],filePathsVideo[i],
-                    GlobalVar.CELEB_AUDIO_FILE, GlobalVar.CELEB_IMAGE_FILE);
+                    filePathsGestures[i],filePathsAudio[i],filePathsVideo[i]);
                 
                 reference_gestures.Add(gesture_name, ref_gesture);
                 
@@ -156,8 +155,7 @@ namespace StretchIt
             Gesture_t ref_gesture = new Gesture_t(gesture_name,
                 GlobalVar.REFERENCE_GESTURE_DIRECTORY_C + gesture_name + ".txt", 
                 GlobalVar.AUDIO_DIRECTORY_C + gesture_name + ".wav", 
-                GlobalVar.IMAGE_DIRECTORY_C + gesture_name + ".jpg",
-                GlobalVar.CELEB_AUDIO_FILE, GlobalVar.CELEB_IMAGE_FILE);
+                GlobalVar.IMAGE_DIRECTORY_C + gesture_name + ".jpg");
 
             reference_gestures.Add(gesture_name, ref_gesture);
         }

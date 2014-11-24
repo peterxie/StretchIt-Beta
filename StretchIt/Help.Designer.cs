@@ -141,8 +141,10 @@
             this.Controls.Add(this.helpText);
             this.Controls.Add(this.backLabel);
             this.Controls.Add(this.Title);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Help_t";
             this.Text = "Help";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Help_t_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

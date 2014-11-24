@@ -34,9 +34,6 @@ namespace StretchIt
             this.headerLabel.Visible = false;
             this.helpText.Visible = false;
 
-            FormBorderStyle = FormBorderStyle.None;
-            WindowState = FormWindowState.Maximized;
-
             foreach (Control c in this.Controls)
             {
                 c.Anchor = AnchorStyles.None;

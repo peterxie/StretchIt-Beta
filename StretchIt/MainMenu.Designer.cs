@@ -133,8 +133,10 @@
             this.Controls.Add(this.statsLabel);
             this.Controls.Add(this.playLabel);
             this.Controls.Add(this.titleLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainMenu_t";
             this.Text = "Main Menu";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_t_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

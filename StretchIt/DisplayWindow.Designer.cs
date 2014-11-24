@@ -65,7 +65,9 @@
             this.ClientSize = new System.Drawing.Size(434, 412);
             this.Controls.Add(this.backLabel);
             this.Controls.Add(this.mainPicture);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DisplayWindow";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.mainPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -179,8 +179,10 @@
             this.Controls.Add(this.streakRecentLabel);
             this.Controls.Add(this.streakAllTimeLabel);
             this.Controls.Add(this.StatisticsLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Statistics_t";
             this.Text = "Statistics";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.Statistics_t_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Statistics_t_FormClosing);
             this.ResumeLayout(false);

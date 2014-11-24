@@ -8,13 +8,12 @@ namespace StretchIt
         private AV_Output_t celebration;
 
         public Gesture_t(string name_, string cg_path_, 
-            string prompt_audio_, string prompt_image_,
-            string celeb_audio_, string celeb_image_)
+            string prompt_audio_, string prompt_image_)
         {
             name = name_;
             correct_gesture = new Frame_t(cg_path_);
             prompt = new AV_Output_t(prompt_image_, prompt_audio_);
-            celebration = new AV_Output_t(celeb_image_, celeb_audio_);
+            celebration = new AV_Output_t(GlobalVar.CELEB_IMAGE_FILE, GlobalVar.CELEB_AUDIO_FILE);
         }
 
         public void sendPrompt()

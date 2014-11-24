@@ -663,8 +663,10 @@
             this.Controls.Add(this.swipeUpDown);
             this.Controls.Add(this.pushLabel);
             this.Controls.Add(this.title);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Settings_t";
             this.Text = "Settings";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_t_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.swipeUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pushHardUpDown)).EndInit();

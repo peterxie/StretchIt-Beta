@@ -23,9 +23,6 @@ namespace StretchIt
             InitializeComponent();
             mainPicture.Visible = true;
 
-            FormBorderStyle = FormBorderStyle.None;
-            WindowState = FormWindowState.Maximized;
-
             player = new SoundPlayer();
         }
 
