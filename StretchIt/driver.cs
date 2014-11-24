@@ -109,10 +109,17 @@ namespace StretchIt
 
         private void play_game()
         {
-            while (GlobalVar.MODE == Game_mode_e.Play)
+            int num_rounds_completed = 0;
+            bool get_new_gesture = true;
+            Gesture_t nextGesture = reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestureName()];
+            while (GlobalVar.MODE == Game_mode_e.Play && 
+                    num_rounds_completed < GlobalVar.NUM_GESTURES_IN_GAME_C)
             {
-                Gesture_t nextGesture = reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestureName()];
-                nextGesture.sendPrompt();
+                if (get_new_gesture)
+                {
+                    nextGesture = reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestureName()];
+                    nextGesture.sendPrompt();
+                }
 
                 Gesture_rc_e state_gesture = Gesture_rc_e.No_Input;
 
@@ -126,10 +133,13 @@ namespace StretchIt
                         case Gesture_rc_e.Correct:
                             GlobalVar.MAIN_MENU.Stats.recordResult(true);
                             nextGesture.sendFeedback();
+                            get_new_gesture = true;
+                            ++num_rounds_completed;
                             GlobalVar.sleep(5000);
                             break;
                         case Gesture_rc_e.Incorrect:
                             GlobalVar.MAIN_MENU.Stats.recordResult(false);
+                            get_new_gesture = false;
                             GlobalVar.sleep(3000);
                             break;
                     }
