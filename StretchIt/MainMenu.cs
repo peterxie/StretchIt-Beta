@@ -25,7 +25,11 @@ namespace StretchIt
             stats_menu = new Statistics_t();
             settings_menu = new Settings_t();
             help_menu = new Help_t();
-            play_window = new Play_t();
+            
+            Thread newPlayThread = new Thread(new ThreadStart(ThreadStartingPoint));
+            newPlayThread.SetApartmentState(ApartmentState.STA);
+            newPlayThread.IsBackground = true;
+            newPlayThread.Start();
 
             foreach (Control c in this.Controls)
             {
@@ -34,7 +38,12 @@ namespace StretchIt
 
             this.Visible = true;
         }
-
+        private void ThreadStartingPoint()
+        {
+            play_window = new Play_t();
+            play_window.Show();
+            System.Windows.Threading.Dispatcher.Run();
+        }
         /* Accessor Properties */
 
         public Statistics_t Stats
