@@ -1,3 +1,5 @@
+using System;
+
 namespace StretchIt
 {
     class Gesture_t
@@ -13,7 +15,11 @@ namespace StretchIt
             name = name_;
             correct_gesture = new Frame_t(cg_path_);
             prompt = new AV_Output_t(prompt_image_, prompt_audio_);
-            celebration = new AV_Output_t(GlobalVar.CELEB_IMAGE_FILE, GlobalVar.CELEB_AUDIO_FILE);
+
+            Random r = new Random();
+            int index = r.Next(GlobalVar.CELEB_AUDIO_FILES.Length);
+
+            celebration = new AV_Output_t(GlobalVar.CELEB_IMAGE_FILE, GlobalVar.CELEB_AUDIO_FILES[index]);
         }
 
         public void sendPrompt()
