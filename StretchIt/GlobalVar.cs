@@ -31,7 +31,7 @@ namespace StretchIt
         public const string             SETTINGS_PATH_C = @"..\..\settings.txt";
         public const string             TEMP_GESTURE_FILE = @"..\..\GestureImages\gesture.txt";
         public const string             TEMP_GESTURE_IMAGE_FILE = @"..\..\GestureImages\gesture.png";
-        public const string[]           CELEB_AUDIO_FILES = Directory.GetFiles(@"..\..\Celebrations", "celebration*.wav");
+        public static string[]                 CELEB_AUDIO_FILES = Directory.GetFiles(@"..\..\Celebrations", "celebration*.wav");
         public const string             CELEB_IMAGE_FILE = @"..\..\Celebrations\celebration1.jpg";
         public const int                NUM_PIXELS_C = 307200;
         public const int                NUM_FRAMES_RECORD_C = 100;

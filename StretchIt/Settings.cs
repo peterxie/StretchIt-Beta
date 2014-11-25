@@ -165,7 +165,8 @@ namespace StretchIt
 
         public string getGestureName()
         {
-            Random r = new Random();
+            int seed = unchecked(DateTime.Now.Ticks.GetHashCode());
+            Random r = new Random(seed);
             
             return selected_gestures[r.Next(selected_gestures.Count)];
         }

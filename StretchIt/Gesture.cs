@@ -16,7 +16,8 @@ namespace StretchIt
             correct_gesture = new Frame_t(cg_path_);
             prompt = new AV_Output_t(prompt_image_, prompt_audio_);
 
-            Random r = new Random();
+            int seed = unchecked(DateTime.Now.Ticks.GetHashCode());
+            Random r = new Random(seed);
             int index = r.Next(GlobalVar.CELEB_AUDIO_FILES.Length);
 
             celebration = new AV_Output_t(GlobalVar.CELEB_IMAGE_FILE, GlobalVar.CELEB_AUDIO_FILES[index]);
