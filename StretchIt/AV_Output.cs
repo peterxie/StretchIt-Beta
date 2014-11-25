@@ -21,5 +21,10 @@ namespace StretchIt
         {
             display.loadOutput(audio_path, image_path);
         }
+
+        public void closeWindow()
+        {
+            display.Visible = false;
+        }
     }
 }

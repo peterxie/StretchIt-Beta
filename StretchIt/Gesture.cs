@@ -30,5 +30,10 @@ namespace StretchIt
         {
             celebration.load();
         }
+
+        public void closeWindow()
+        {
+            prompt.closeWindow();
+        }
     }
 }

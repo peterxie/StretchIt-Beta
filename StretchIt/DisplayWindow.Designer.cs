@@ -56,9 +56,10 @@
             this.backLabel.Size = new System.Drawing.Size(96, 32);
             this.backLabel.TabIndex = 1;
             this.backLabel.Text = "Back";
+            this.backLabel.Visible = false;
             this.backLabel.Click += new System.EventHandler(this.backLabel_Click);
             // 
-            // DisplayWindow
+            // Play_t
             // 
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -66,7 +67,7 @@
             this.Controls.Add(this.backLabel);
             this.Controls.Add(this.mainPicture);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "DisplayWindow";
+            this.Name = "Play_t";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.mainPicture)).EndInit();
             this.ResumeLayout(false);

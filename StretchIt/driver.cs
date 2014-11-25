@@ -76,6 +76,7 @@ namespace StretchIt
                     {
                         case Game_mode_e.Play:
                             play_game();
+                            GlobalVar.MODE = Game_mode_e.Menu_Mode;
                             break;
 
                         case Game_mode_e.Record:
@@ -110,16 +111,17 @@ namespace StretchIt
         private void play_game()
         {
             int num_rounds_completed = 0;
-            bool get_new_gesture = true;
+            //bool get_new_gesture = true;
             Gesture_t nextGesture = reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestureName()];
             while (GlobalVar.MODE == Game_mode_e.Play && 
                     num_rounds_completed < GlobalVar.NUM_GESTURES_IN_GAME_C)
             {
-                if (get_new_gesture)
-                {
+                ++num_rounds_completed;
+                //if (get_new_gesture)
+                //{
                     nextGesture = reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestureName()];
                     nextGesture.sendPrompt();
-                }
+                //}
 
                 Gesture_rc_e state_gesture = Gesture_rc_e.No_Input;
 
@@ -133,18 +135,19 @@ namespace StretchIt
                         case Gesture_rc_e.Correct:
                             GlobalVar.MAIN_MENU.Stats.recordResult(true);
                             nextGesture.sendFeedback();
-                            get_new_gesture = true;
-                            ++num_rounds_completed;
-                            GlobalVar.sleep(5000);
+                            //get_new_gesture = true;
+                            GlobalVar.sleep(3000); 
                             break;
                         case Gesture_rc_e.Incorrect:
                             GlobalVar.MAIN_MENU.Stats.recordResult(false);
-                            get_new_gesture = false;
-                            GlobalVar.sleep(3000);
+                            //get_new_gesture = true;
+                            GlobalVar.sleep(1500);
                             break;
                     }
                 }
             }
+
+            nextGesture.closeWindow();
         }
 
         private void createGesture()
