@@ -16,7 +16,7 @@ namespace StretchIt
         private short[]             depth_pixels;       //stores the depth "image" for a motion
         private static short[]      no_input_frame;      //stores the depth "image" reference across all Frame_t objects
         
-        private const double        default_threshold_c = 100.0;
+        private const double        default_threshold_c = 75.0;
         private const double        default_no_input_threshold_c = 20.0;
 
         //default constructor which takes the number of pixels as an argument
