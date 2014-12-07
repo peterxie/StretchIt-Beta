@@ -217,9 +217,8 @@ namespace StretchIt
             }
             
             save();
-
-            GlobalVar.MAIN_MENU.Activate();
             GlobalVar.MAIN_MENU.Visible = true;
+            GlobalVar.MAIN_MENU.Activate();
             this.Visible = false;
             inputText.Visible = false;
             retrieveInput.Visible = false;

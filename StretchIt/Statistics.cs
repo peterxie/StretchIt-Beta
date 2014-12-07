@@ -133,8 +133,8 @@ namespace StretchIt
 
         private void backLabel_Click(object sender, EventArgs e)
         {
-            GlobalVar.MAIN_MENU.Activate();
             GlobalVar.MAIN_MENU.Visible = true;
+            GlobalVar.MAIN_MENU.Activate();
             this.Visible = false;
         }
 

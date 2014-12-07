@@ -40,9 +40,10 @@ namespace StretchIt
 
         private void backLabel_Click(object sender, EventArgs e)
         {
-            GlobalVar.MAIN_MENU.Activate();
             GlobalVar.MAIN_MENU.Visible = true;
+            GlobalVar.MAIN_MENU.Activate();
             this.Visible = false;
+            Cursor.Show();
 
             lock (GlobalVar.key)
             {
@@ -69,6 +70,11 @@ namespace StretchIt
                 timeLabel.Text = "Time's up!";
                 timeLeft = GlobalVar.TIME_TO_COMPLETE_GESTURE;
             }
+        }
+
+        private void Play_t_Activated(object sender, EventArgs e)
+        {
+            Cursor.Hide();
         }
 
  

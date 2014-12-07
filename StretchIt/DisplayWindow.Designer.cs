@@ -88,6 +88,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Play_t";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.Play_t_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.mainPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
