@@ -36,6 +36,7 @@ namespace StretchIt
         public const int                NUM_PIXELS_C = 307200;
         public const int                NUM_FRAMES_RECORD_C = 100;
         public const int                NUM_GESTURES_IN_GAME_C = 15;
+        public const int                TIME_TO_COMPLETE_GESTURE = 5;
 
 
         public static Game_mode_e       MODE = Game_mode_e.Menu_Mode;

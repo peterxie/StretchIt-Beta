@@ -17,11 +17,14 @@ namespace StretchIt
         private string settings_help_text = "The Settings screen is where " +
             "you may select the frequency that each gesture appears in the game. " +
             "Setting a frequency of 0 disables the gesture. You can also record " +
-            "new gestures from this panel.";
-        private string howTo_help_text = "When PLAY is selected, the left side of" +
-            " the textile will depict a visual cue of the type of gesture. The " +
-            "zone where the textile should be manipulated will glow. After " + 
-            "interacting, the game will return feedback indicating correctness.";
+            "new gestures from this panel. When a gesture is recorded, a colored " +
+            "impression of the action will appear. Green symbolizes a push, while" +
+            "blue symbolizes a pull.";
+        private string howTo_help_text = "When PLAY is selected, the screen will " +
+            "depict a visual cue of the type of gesture. The zone where the " +
+            "textile should be manipulated will glow. After interacting, the game " + 
+            "will return congratulatory feedback if the gesture was correct, but " +
+            "nothing for an incorrect gesture.";
         private bool is_nested = false;
 
         public Help_t()
@@ -44,8 +47,8 @@ namespace StretchIt
         {
             if (is_nested == false)
             {
-                GlobalVar.MAIN_MENU.Activate();
                 GlobalVar.MAIN_MENU.Visible = true;
+                GlobalVar.MAIN_MENU.Activate();
                 this.Visible = false;
             } else
             {
