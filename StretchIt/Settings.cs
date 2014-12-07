@@ -370,6 +370,7 @@ namespace StretchIt
                         StreamWriter outFile = new StreamWriter(GlobalVar.SETTINGS_PATH_C, true);
 
                         outFile.WriteLine(gesture_name_in_focus);
+
                         outFile.WriteLine(1);
 
                         outFile.Close();
