@@ -31,12 +31,12 @@ namespace StretchIt
         public const string             SETTINGS_PATH_C = @"..\..\settings.txt";
         public const string             TEMP_GESTURE_FILE = @"..\..\GestureImages\gesture.txt";
         public const string             TEMP_GESTURE_IMAGE_FILE = @"..\..\GestureImages\gesture.png";
-        public static string[]                 CELEB_AUDIO_FILES = Directory.GetFiles(@"..\..\Celebrations", "celebration*.wav");
+        public static string[]          CELEB_AUDIO_FILES = Directory.GetFiles(@"..\..\Celebrations", "celebration*.wav");
         public const string             CELEB_IMAGE_FILE = @"..\..\Celebrations\celebration1.jpg";
         public const int                NUM_PIXELS_C = 307200;
         public const int                NUM_FRAMES_RECORD_C = 100;
         public const int                NUM_GESTURES_IN_GAME_C = 15;
-        public const int                TIME_TO_COMPLETE_GESTURE = 5;
+        public const int                TIME_TO_COMPLETE_GESTURE_C = 5;
 
 
         public static Game_mode_e       MODE = Game_mode_e.Menu_Mode;

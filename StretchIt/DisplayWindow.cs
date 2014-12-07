@@ -21,7 +21,7 @@ namespace StretchIt
             
             InitializeComponent();
             mainPicture.Visible = true;
-            timeLeft = GlobalVar.TIME_TO_COMPLETE_GESTURE;
+            timeLeft = GlobalVar.TIME_TO_COMPLETE_GESTURE_C;
 
             player = new SoundPlayer();
         }
@@ -68,7 +68,7 @@ namespace StretchIt
                 // a MessageBox, and fill in the answers.
                 timer1.Stop();
                 timeLabel.Text = "Time's up!";
-                timeLeft = GlobalVar.TIME_TO_COMPLETE_GESTURE;
+                timeLeft = GlobalVar.TIME_TO_COMPLETE_GESTURE_C;
             }
         }
 
