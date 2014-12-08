@@ -15,11 +15,11 @@ namespace StretchIt
         private Statistics_t stats_menu;
         private Settings_t settings_menu;
         private Help_t help_menu;
+        public static Point projector_location;
 
         public MainMenu_t()
         {
             this.DoubleBuffered = true;
-            
             InitializeComponent();
             stats_menu = new Statistics_t();
             settings_menu = new Settings_t();
@@ -30,7 +30,17 @@ namespace StretchIt
                 c.Anchor = AnchorStyles.None;
             }
 
+            screenTest();
             this.Visible = true;
+        }
+
+        private void screenTest()
+        {
+            foreach(Screen screen in System.Windows.Forms.Screen.AllScreens)
+            {
+                Console.WriteLine(screen.DeviceName);
+                // SET projector screen location here
+            }
         }
 
         /* Accessor Properties */

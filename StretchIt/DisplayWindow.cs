@@ -22,7 +22,7 @@ namespace StretchIt
             InitializeComponent();
             mainPicture.Visible = true;
             timeLeft = GlobalVar.TIME_TO_COMPLETE_GESTURE_C;
-
+            this.Location = MainMenu_t.projector_location;
             player = new SoundPlayer();
         }
 
