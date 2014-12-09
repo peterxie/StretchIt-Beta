@@ -18,12 +18,27 @@ namespace StretchIt
 
         public Play_t()
         {
-            
             InitializeComponent();
+            showOnMonitor(1);
             mainPicture.Visible = true;
             timeLeft = GlobalVar.TIME_TO_COMPLETE_GESTURE_C;
-            this.Location = MainMenu_t.projector_location;
             player = new SoundPlayer();
+        }
+
+        private void showOnMonitor(int showOnMonitor)
+        {
+            Screen[] sc;
+            sc = Screen.AllScreens;
+            if (showOnMonitor >= sc.Length)
+            {
+                showOnMonitor = 0;
+            }
+
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(sc[showOnMonitor].Bounds.Left, sc[showOnMonitor].Bounds.Top);
+            // If you intend the form to be maximized, change it to normal then maximized.
+            this.WindowState = FormWindowState.Normal;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         public void loadOutput(string audio_file, string image_file)
@@ -31,7 +46,8 @@ namespace StretchIt
             this.Visible = true;
             
             mainPicture.Image = Image.FromFile(image_file);
-            timer1.Start();
+            Thread t = new Thread(timer1.Start);
+            t.Start();
             Update();
 
             player.SoundLocation = audio_file;

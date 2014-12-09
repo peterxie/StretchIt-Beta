@@ -35,7 +35,7 @@ namespace StretchIt
         public const string             CELEB_IMAGE_FILE = @"..\..\Celebrations\celebration1.jpg";
         public const int                NUM_PIXELS_C = 307200;
         public const int                NUM_FRAMES_RECORD_C = 100;
-        public const int                NUM_GESTURES_IN_GAME_C = 15;
+        public const int                NUM_GESTURES_IN_GAME_C = 3;
         public const int                TIME_TO_COMPLETE_GESTURE_C = 5;
 
 

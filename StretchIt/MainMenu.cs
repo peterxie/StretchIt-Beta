@@ -36,11 +36,8 @@ namespace StretchIt
 
         private void screenTest()
         {
-            foreach(Screen screen in System.Windows.Forms.Screen.AllScreens)
-            {
-                Console.WriteLine(screen.DeviceName);
-                // SET projector screen location here
-            }
+            MainMenu_t.projector_location = System.Windows.Forms.Screen.AllScreens[1].Bounds.Location;
+
         }
 
         /* Accessor Properties */
