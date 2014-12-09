@@ -20,7 +20,6 @@ namespace StretchIt
         {
             InitializeComponent();
             showOnMonitor(1);
-            mainPicture.Visible = true;
             timeLeft = GlobalVar.TIME_TO_COMPLETE_GESTURE_C;
             player = new SoundPlayer();
         }
@@ -45,7 +44,7 @@ namespace StretchIt
         {
             this.Visible = true;
             
-            mainPicture.Image = Image.FromFile(image_file);
+            this.BackgroundImage = Image.FromFile(image_file);
             Thread t = new Thread(timer1.Start);
             t.Start();
             Update();

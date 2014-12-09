@@ -30,22 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Play_t));
-            this.mainPicture = new System.Windows.Forms.PictureBox();
             this.backLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timeLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPicture)).BeginInit();
             this.SuspendLayout();
-            // 
-            // mainPicture
-            // 
-            this.mainPicture.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.mainPicture.BackColor = System.Drawing.Color.Transparent;
-            this.mainPicture.Location = new System.Drawing.Point(67, 45);
-            this.mainPicture.Name = "mainPicture";
-            this.mainPicture.Size = new System.Drawing.Size(305, 281);
-            this.mainPicture.TabIndex = 0;
-            this.mainPicture.TabStop = false;
             // 
             // backLabel
             // 
@@ -66,7 +54,6 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // timeLabel
             // 
@@ -85,12 +72,10 @@
             this.ClientSize = new System.Drawing.Size(434, 412);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.backLabel);
-            this.Controls.Add(this.mainPicture);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Play_t";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.Play_t_Activated);
-            ((System.ComponentModel.ISupportInitialize)(this.mainPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,7 +83,6 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox mainPicture;
         private System.Windows.Forms.Label backLabel;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label timeLabel;
