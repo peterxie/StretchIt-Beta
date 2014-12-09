@@ -32,7 +32,7 @@ namespace StretchIt
         public const string             TEMP_GESTURE_FILE = @"..\..\GestureImages\gesture.txt";
         public const string             TEMP_GESTURE_IMAGE_FILE = @"..\..\GestureImages\gesture.png";
         public static string[]          CELEB_AUDIO_FILES = Directory.GetFiles(@"..\..\Celebrations", "celebration*.wav");
-        public const string             CELEB_IMAGE_FILE = @"..\..\Celebrations\celebration1.jpg";
+        public static string[]          CELEB_IMAGE_FILES = Directory.GetFiles(@"..\..\Celebrations", "celebration*.jpg");
         public const int                NUM_PIXELS_C = 307200;
         public const int                NUM_FRAMES_RECORD_C = 100;
         public const int                NUM_GESTURES_IN_GAME_C = 3;

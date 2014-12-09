@@ -17,10 +17,12 @@ namespace StretchIt
             prompt = new AV_Output_t(prompt_image_, prompt_audio_);
 
             int seed = unchecked(DateTime.Now.Ticks.GetHashCode());
-            Random r = new Random(seed);
-            int index = r.Next(GlobalVar.CELEB_AUDIO_FILES.Length);
+            Random r1 = new Random(seed);
+            Random r2 = new Random(seed);
+            int audio_idx = r1.Next(GlobalVar.CELEB_AUDIO_FILES.Length);
+            int image_idx = r2.Next(GlobalVar.CELEB_IMAGE_FILES.Length);
 
-            celebration = new AV_Output_t(GlobalVar.CELEB_IMAGE_FILE, GlobalVar.CELEB_AUDIO_FILES[index]);
+            celebration = new AV_Output_t(GlobalVar.CELEB_IMAGE_FILES[image_idx], GlobalVar.CELEB_AUDIO_FILES[audio_idx]);
         }
 
         public void sendPrompt()
