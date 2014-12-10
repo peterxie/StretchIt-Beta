@@ -325,7 +325,7 @@ namespace StretchIt
 
             foreach(Label name in default_labels)
             {
-                if (name.Text == inputText.Text)
+                if (name.Text.ToLower() == inputText.Text.ToLower())
                 {
                     name_exists = true;
                 }
@@ -333,7 +333,7 @@ namespace StretchIt
 
             foreach(Label name in custom_labels)
             {
-                if(name.Text == inputText.Text)
+                if(name.Text.ToLower() == inputText.Text.ToLower())
                 {
                     name_exists = true;
                 }
