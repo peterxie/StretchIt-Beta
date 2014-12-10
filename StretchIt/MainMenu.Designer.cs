@@ -35,7 +35,6 @@
             this.settingsLabel = new System.Windows.Forms.Label();
             this.helpLabel = new System.Windows.Forms.Label();
             this.exitLabel = new System.Windows.Forms.Label();
-            this.quitLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -121,21 +120,6 @@
             this.exitLabel.Text = "exit";
             this.exitLabel.Click += new System.EventHandler(this.exitLabel_Click);
             // 
-            // quitLabel
-            // 
-            this.quitLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.quitLabel.AutoSize = true;
-            this.quitLabel.BackColor = System.Drawing.Color.Transparent;
-            this.quitLabel.Font = new System.Drawing.Font("Action Jackson", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quitLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.quitLabel.Location = new System.Drawing.Point(250, 178);
-            this.quitLabel.Name = "quitLabel";
-            this.quitLabel.Size = new System.Drawing.Size(113, 38);
-            this.quitLabel.TabIndex = 6;
-            this.quitLabel.Text = "quit";
-            this.quitLabel.Visible = false;
-            this.quitLabel.Click += new System.EventHandler(this.quitLabel_Click);
-            // 
             // MainMenu_t
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,7 +127,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(599, 399);
-            this.Controls.Add(this.quitLabel);
             this.Controls.Add(this.exitLabel);
             this.Controls.Add(this.helpLabel);
             this.Controls.Add(this.settingsLabel);
@@ -168,6 +151,5 @@
         private System.Windows.Forms.Label settingsLabel;
         private System.Windows.Forms.Label helpLabel;
         private System.Windows.Forms.Label exitLabel;
-        private System.Windows.Forms.Label quitLabel;
     }
 }

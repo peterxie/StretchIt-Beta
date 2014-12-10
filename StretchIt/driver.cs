@@ -144,8 +144,6 @@ namespace StretchIt
                 }
             }
 
-            GlobalVar.MAIN_MENU.enterMenuMode();
-
             nextGesture.closeWindow();
         }
 
