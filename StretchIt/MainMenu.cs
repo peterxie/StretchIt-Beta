@@ -69,6 +69,13 @@ namespace StretchIt
 
         private void playLabel_Click(object sender, EventArgs e)
         {
+            playLabel.Visible = false;
+            statsLabel.Visible = false;
+            settingsLabel.Visible = false;
+            exitLabel.Visible = false;
+
+            quitLabel.Visible = true;
+            
             lock (GlobalVar.key)
             {
                 GlobalVar.MODE = Game_mode_e.Play;
@@ -114,6 +121,25 @@ namespace StretchIt
                 Monitor.Pulse(GlobalVar.key);
             }
             Close();
+        }
+
+        private void quitLabel_Click(object sender, EventArgs e)
+        {
+            lock(GlobalVar.key)
+            {
+                GlobalVar.MODE = Game_mode_e.Menu_Mode;
+                Monitor.Pulse(GlobalVar.key);
+            }
+        }
+
+        public void enterMenuMode()
+        {
+            playLabel.Visible = true;
+            statsLabel.Visible = true;
+            settingsLabel.Visible = true;
+            exitLabel.Visible = true;
+
+            quitLabel.Visible = false;
         }
     }
 }
