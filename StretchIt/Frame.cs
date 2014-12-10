@@ -11,22 +11,16 @@ namespace StretchIt
     public class Frame_t
     {
         private int                 num_pixels;         //size of the short[] members                
-        private double              error_threshold;    //average deviation/pixel threshold for determining correctness
-        private double              no_input_threshold; //average deviation/pixel threshold for determining no input
         private short[]             depth_pixels;       //stores the depth "image" for a motion
         private static short[]      no_input_frame;      //stores the depth "image" reference across all Frame_t objects
         
-        private const double        default_threshold_c = 75.0;
-        private const double        default_no_input_threshold_c = 20.0;
 
         //default constructor which takes the number of pixels as an argument
         public Frame_t(int num_pixels_ = GlobalVar.NUM_PIXELS_C,
-                        double threshold_ = default_threshold_c,
-                        double no_input_threshold_ = default_no_input_threshold_c)
+                        double threshold_ = 70.0,
+                        double no_input_threshold_ = 20.0)
         {
             num_pixels = num_pixels_;
-            error_threshold = threshold_;
-            no_input_threshold = no_input_threshold_;
             depth_pixels = new short[num_pixels];
         }
 
@@ -34,8 +28,6 @@ namespace StretchIt
         public Frame_t(Frame_t copyFrame)
         {
             this.num_pixels = copyFrame.num_pixels;
-            error_threshold = copyFrame.error_threshold;
-            no_input_threshold = copyFrame.no_input_threshold;
 
             //perform a deep copy
             depth_pixels = new short[num_pixels];
@@ -63,8 +55,6 @@ namespace StretchIt
                     depth_pixels[i] = (short) (depth_pixels[i] >> DepthImageFrame.PlayerIndexBitmaskWidth);
                 }
             }
-            this.error_threshold = default_threshold_c;
-            this.no_input_threshold = default_no_input_threshold_c;
         }
 
         //constructor given an array of depth information
@@ -82,8 +72,6 @@ namespace StretchIt
                 depth_pixels = new short[num_pixels];
                 pixels.CopyTo(depth_pixels, 0);
             }
-            error_threshold = default_threshold_c;
-            no_input_threshold = default_no_input_threshold_c;
         }
 
         //saves the depth_pixels to a text file in the following format
@@ -98,7 +86,6 @@ namespace StretchIt
             StreamWriter file = new StreamWriter(fileName);
             file.WriteLine(gestureName);
             file.WriteLine(num_pixels.ToString());
-            file.WriteLine(error_threshold.ToString());
 
             for (int i = 0; i < num_pixels; ++i)
             {
@@ -115,8 +102,6 @@ namespace StretchIt
             string gestureName = file.ReadLine();   //not used
 
             num_pixels = Int32.Parse(file.ReadLine());
-            error_threshold = Double.Parse(file.ReadLine());
-            no_input_threshold = default_no_input_threshold_c;
 
             //if the file specifies a different size, create a new array
             if (depth_pixels == null || depth_pixels.Length != num_pixels)
@@ -202,12 +187,12 @@ namespace StretchIt
             double no_input_error = no_input_gesture_error / num_pixels;
             double min_error = System.Math.Min(input_error, no_input_error);
 
-            if(min_error == input_error && input_error < error_threshold)
+            if(min_error == input_error && input_error < GlobalVar.error_threshold)
             {
                 return Gesture_rc_e.Correct;
             }
 
-            else if (min_error == no_input_error && no_input_error < no_input_threshold)
+            else if (min_error == no_input_error && no_input_error < GlobalVar.no_input_threshold_c)
             {
                 return Gesture_rc_e.No_Input;
             }
@@ -215,18 +200,5 @@ namespace StretchIt
             return Gesture_rc_e.Incorrect;
         }
 
-        //finish this (yeah its not an empty function)
-        public void aggregate(Frame_t frame)
-        {
-
-        }
-
-        /*public Frame_t(Frame_t frame_one, Frame_t frame_two)
-        {
-            num_pixels = frame_one.num_pixels;
-            //Not sure which array to copy from either one
-            Buffer.BlockCopy(frame_one.depth_pixels, 0, depth_pixels, 0, num_pixels);
-            Buffer.BlockCopy(default_frame, 0, default_frame, 0, num_pixels);
-        }*/
     }
 }

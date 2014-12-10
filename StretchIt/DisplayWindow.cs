@@ -14,13 +14,13 @@ namespace StretchIt
     public partial class Play_t : Form
     {
         SoundPlayer player;
-        int timeLeft;
+        //int timeLeft;
 
         public Play_t()
         {
             InitializeComponent();
             showOnMonitor(1);
-            timeLeft = GlobalVar.TIME_TO_COMPLETE_GESTURE_C;
+            //timeLeft = GlobalVar.TIME_TO_COMPLETE_GESTURE_C;
             player = new SoundPlayer();
         }
 
@@ -69,7 +69,7 @@ namespace StretchIt
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+/*
             if (timeLeft > 0)
             {
                 // Display the new time left 
@@ -85,7 +85,7 @@ namespace StretchIt
                 timeLabel.Text = "Time's up!";
                 timeLeft = GlobalVar.TIME_TO_COMPLETE_GESTURE_C;
             }
-        }
+ */       }
 
         private void Play_t_Activated(object sender, EventArgs e)
         {

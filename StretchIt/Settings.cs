@@ -105,6 +105,13 @@ namespace StretchIt
                 using (StreamReader sr = new StreamReader(GlobalVar.SETTINGS_PATH_C))
                 {
                     string line;
+                    line = sr.ReadLine();
+                    GlobalVar.NUM_GESTURES_IN_GAME = int.Parse(line);
+                    numRoundsUpDown.Value = GlobalVar.NUM_GESTURES_IN_GAME;
+                    line = sr.ReadLine();
+                    GlobalVar.error_threshold = double.Parse(line);
+                    errorSlider.Value = 150 - (int)GlobalVar.error_threshold;
+
                     int count = 0;
 
                     //each loop reads one pair of (name, frequency) values
@@ -161,6 +168,8 @@ namespace StretchIt
                 selected_gestures.Add(default_labels[i].Text);
                 default_up_downs[i].Value = 1;
             }
+            GlobalVar.error_threshold = 75.0;
+            GlobalVar.NUM_GESTURES_IN_GAME = 5;
         }
 
         public string getGestureName()
@@ -175,6 +184,8 @@ namespace StretchIt
         {
             using(StreamWriter sw = new StreamWriter(GlobalVar.SETTINGS_PATH_C))
             {
+                sw.WriteLine(GlobalVar.NUM_GESTURES_IN_GAME);
+                sw.WriteLine(GlobalVar.error_threshold);
                 for (int i = 0; i < default_labels.Count; ++i)
                 {
                     sw.WriteLine(default_labels[i].Text);
@@ -422,6 +433,17 @@ namespace StretchIt
             setup_menu.SetupSensorVideoInput();
             setup_menu.Visible = true;
             this.Visible = false;
+        }
+
+        private void errorSlider_ValueChanged(object sender, EventArgs e)
+        {
+            GlobalVar.error_threshold = 150 - errorSlider.Value;
+        }
+
+        private void numRoundsUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            GlobalVar.NUM_GESTURES_IN_GAME = (int)numRoundsUpDown.Value;
+
         }
     }
 }

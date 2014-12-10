@@ -1,0 +1,17 @@
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\DepthBasics-WPF.csprojResolveAssemblyReference.cache
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\MainWindow.baml
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\App.g.cs
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\MainWindow.g.cs
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\DepthBasics-WPF_MarkupCompile.cache
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\DepthBasics-WPF.g.resources
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\Microsoft.Samples.Kinect.DepthBasics.Properties.Resources.resources
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\DepthBasics-WPF.csproj.GenerateResource.Cache
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\StretchIt.DisplayWindow.resources
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\StretchIt.Help_t.resources
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\StretchIt.MainMenu_t.resources
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\StretchIt.Settings_t.resources
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\StretchIt.Statistics_t.resources
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\bin\Debug\DepthBasics-WPF.exe
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\bin\Debug\DepthBasics-WPF.pdb
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\DepthBasics-WPF.exe
+C:\Users\Nick\Documents\GitHub\StretchIt-Beta\DepthBasics-WPF\obj\Debug\DepthBasics-WPF.pdb

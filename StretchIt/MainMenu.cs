@@ -30,15 +30,14 @@ namespace StretchIt
                 c.Anchor = AnchorStyles.None;
             }
 
-            screenTest();
             this.Visible = true;
         }
 
-        private void screenTest()
-        {
-            MainMenu_t.projector_location = System.Windows.Forms.Screen.AllScreens[1].Bounds.Location;
+        //private void screenTest()
+        //{
+         //   MainMenu_t.projector_location = System.Windows.Forms.Screen.AllScreens[1].Bounds.Location;
 
-        }
+        //}
 
         /* Accessor Properties */
 

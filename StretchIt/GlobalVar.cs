@@ -35,8 +35,10 @@ namespace StretchIt
         public static string[]          CELEB_IMAGE_FILES = Directory.GetFiles(@"..\..\Celebrations", "celebration*.jpg");
         public const int                NUM_PIXELS_C = 307200;
         public const int                NUM_FRAMES_RECORD_C = 100;
-        public const int                NUM_GESTURES_IN_GAME_C = 3;
-        public const int                TIME_TO_COMPLETE_GESTURE_C = 5;
+        public static int               NUM_GESTURES_IN_GAME = 5;
+        //public const int              TIME_TO_COMPLETE_GESTURE_C = 5;
+        public static double            error_threshold = 75.0;
+        public const double             no_input_threshold_c = 20.0;
 
 
         public static Game_mode_e       MODE = Game_mode_e.Menu_Mode;

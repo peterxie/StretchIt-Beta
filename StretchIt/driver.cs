@@ -114,7 +114,7 @@ namespace StretchIt
             //bool get_new_gesture = true;
             Gesture_t nextGesture = reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestureName()];
             while (GlobalVar.MODE == Game_mode_e.Play && 
-                    num_rounds_completed < GlobalVar.NUM_GESTURES_IN_GAME_C)
+                    num_rounds_completed < GlobalVar.NUM_GESTURES_IN_GAME)
             {
                 ++num_rounds_completed;
                 nextGesture = reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestureName()];
