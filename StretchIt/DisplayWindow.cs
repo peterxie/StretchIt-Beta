@@ -45,11 +45,11 @@ namespace StretchIt
             this.Visible = true;
             
             this.BackgroundImage = Image.FromFile(image_file);
-            Thread t = new Thread(timer1.Start);
-            t.Start();
+            //Thread t = new Thread(timer1.Start);
+            //t.Start();
             Update();
 
-            player.SoundLocation = audio_file;
+             player.SoundLocation = audio_file;
             player.Play();
         }
 

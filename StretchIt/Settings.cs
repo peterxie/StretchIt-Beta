@@ -233,6 +233,7 @@ namespace StretchIt
             this.Visible = false;
             inputText.Visible = false;
             retrieveInput.Visible = false;
+            recordLabel.Visible = true;
         }
 
         private void Settings_t_FormClosing(object sender, FormClosingEventArgs e)

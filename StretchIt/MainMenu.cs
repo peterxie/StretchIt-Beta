@@ -15,7 +15,6 @@ namespace StretchIt
         private Statistics_t stats_menu;
         private Settings_t settings_menu;
         private Help_t help_menu;
-        public static Point projector_location;
 
         public MainMenu_t()
         {
@@ -32,12 +31,6 @@ namespace StretchIt
 
             this.Visible = true;
         }
-
-        //private void screenTest()
-        //{
-         //   MainMenu_t.projector_location = System.Windows.Forms.Screen.AllScreens[1].Bounds.Location;
-
-        //}
 
         /* Accessor Properties */
 
