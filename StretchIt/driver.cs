@@ -110,6 +110,8 @@ namespace StretchIt
 
         private void play_game()
         {
+            GlobalVar.MAIN_MENU.Stats.resetRecent();
+            
             int num_rounds_completed = 0;
             //bool get_new_gesture = true;
             Gesture_t nextGesture = reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestureName()];
@@ -144,7 +146,6 @@ namespace StretchIt
                 }
             }
 
-            GlobalVar.MAIN_MENU.Stats.resetRecent();
             nextGesture.closeWindow();
         }
 
