@@ -144,6 +144,7 @@ namespace StretchIt
                 }
             }
 
+            GlobalVar.MAIN_MENU.Stats.resetRecent();
             nextGesture.closeWindow();
         }
 

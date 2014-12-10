@@ -114,7 +114,7 @@ namespace StretchIt
 
             else
             {
-                all_percent_correct = ((double) all_number_correct_moves / all_number_executed_moves);
+                all_percent_correct = ((double) all_number_correct_moves / all_number_executed_moves * 100);
             }
 
             StreamWriter file = new StreamWriter(GlobalVar.STATS_PATH_C);
@@ -154,6 +154,14 @@ namespace StretchIt
             useDefaults();
             display();
             saveStatistics();
+        }
+
+        public resetRecent()
+        {
+            recent_longest_streak = 0;
+            recent_num_correct_moves = 0;
+            recent_num_executed_moves = 0;
+            recent_percent_correct = 0;
         }
     }
 }
