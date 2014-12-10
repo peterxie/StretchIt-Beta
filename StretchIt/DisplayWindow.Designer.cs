@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Play_t));
             this.backLabel = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -49,11 +47,6 @@
             this.backLabel.Text = "Back";
             this.backLabel.Visible = false;
             this.backLabel.Click += new System.EventHandler(this.backLabel_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
             // 
             // timeLabel
             // 
@@ -84,7 +77,6 @@
         #endregion
 
         private System.Windows.Forms.Label backLabel;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label timeLabel;
 
     }
