@@ -233,6 +233,7 @@ namespace StretchIt
             this.Visible = false;
             inputText.Visible = false;
             retrieveInput.Visible = false;
+            recordLabel.Visible = true;
         }
 
         private void Settings_t_FormClosing(object sender, FormClosingEventArgs e)
@@ -325,7 +326,7 @@ namespace StretchIt
 
             foreach(Label name in default_labels)
             {
-                if (name.Text == inputText.Text)
+                if (name.Text.ToLower() == inputText.Text.ToLower())
                 {
                     name_exists = true;
                 }
@@ -333,7 +334,7 @@ namespace StretchIt
 
             foreach(Label name in custom_labels)
             {
-                if(name.Text == inputText.Text)
+                if(name.Text.ToLower() == inputText.Text.ToLower())
                 {
                     name_exists = true;
                 }
