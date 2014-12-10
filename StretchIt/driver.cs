@@ -117,17 +117,7 @@ namespace StretchIt
                     num_rounds_completed < GlobalVar.NUM_GESTURES_IN_GAME_C)
             {
                 ++num_rounds_completed;
-                List<string> matchingGestures = new List<string>();
-                string gestureName = GlobalVar.MAIN_MENU.Settings.getGestureName();
-                foreach (string key in reference_gestures.Keys)
-                {
-                    if (key.Contains(gestureName))
-                    {
-                        matchingGestures.Add(key);
-                    }
-                }
-                Random r = new Random();
-                nextGesture = reference_gestures[matchingGestures[r.Next(0,matchingGestures.Count)]];
+                nextGesture = reference_gestures[GlobalVar.MAIN_MENU.Settings.getGestureName()];
                 nextGesture.sendPrompt();
 
                 Gesture_rc_e state_gesture = Gesture_rc_e.No_Input;
